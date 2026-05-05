@@ -1,0 +1,61 @@
+aid: amc-entertainment-holdings
+name: AMC Entertainment Holdings
+description: >-
+  AMC Entertainment Holdings is the largest movie exhibition company in the
+  United States and the world, operating AMC Theatres, AMC Stubs loyalty
+  programs, and related entertainment brands. AMC publishes a public developer
+  portal at developers.amctheatres.com that exposes data on movies, showtimes,
+  theatres, and ticketing for partner integration. The API is REST-based and
+  is the primary integration surface for distributors, partners, and third-party
+  developers building movie discovery and ticketing experiences.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Entertainment
+  - Movies
+  - Theatres
+  - Ticketing
+  - Fortune 500
+url: >-
+  https://raw.githubusercontent.com/api-evangelist/amc-entertainment-holdings/refs/heads/main/apis.yml
+created: '2026-05-04'
+modified: '2026-05-04'
+specificationVersion: '0.19'
+apis:
+  - aid: amc-entertainment-holdings:amc-theatres-api
+    name: AMC Theatres API
+    description: >-
+      The AMC Theatres API is a public REST API providing programmatic access
+      to AMC Theatres data including theatres, locations, showtimes, movies,
+      and related metadata. The API is intended for partner integrations such
+      as movie discovery, ticketing, and entertainment listings. Access is
+      controlled via API keys obtained through the AMC developer portal.
+    humanURL: https://developers.amctheatres.com
+    tags:
+      - Theatres
+      - Showtimes
+      - Movies
+      - Ticketing
+    properties:
+      - type: DeveloperPortal
+        url: https://developers.amctheatres.com
+      - type: Documentation
+        url: https://developers.amctheatres.com
+      - type: Authentication
+        url: https://developers.amctheatres.com
+common:
+  - type: Website
+    url: https://www.amctheatres.com
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Customers
+    url: https://www.amctheatres.com/amcstubs
+  - type: TermsOfService
+    url: https://www.amctheatres.com/legal/terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.amctheatres.com/legal/privacy-policy
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/amc-theatres
+maintainers:
+  - FN: API Evangelist
+    url: https://apievangelist.com
