@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amc-entertainment-holdings/refs/heads/main/json-structure/amc-theatres-loyalty-account-structure.json",
+  "name": "LoyaltyAccount",
+  "description": "Structure for an AMC Stubs loyalty account as returned by the AMC Theatres API v4.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "example": "loyalty-9c4aabf3" },
+    "amcAccountId": { "type": "string", "example": "abc-123-account" },
+    "cardNumber": { "type": "string", "example": "611700123456789" },
+    "email": { "type": "string", "example": "jane.doe@example.com" },
+    "firstName": { "type": "string", "example": "Jane" },
+    "lastName": { "type": "string", "example": "Doe" },
+    "loyaltyTier": {
+      "type": "string",
+      "enum": ["Insider", "Premiere", "A-List"],
+      "example": "A-List"
+    },
+    "pointsBalance": { "type": "integer", "example": 4250 }
+  }
+}

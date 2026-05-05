@@ -1,0 +1,38 @@
+{
+  "pageSize": 10,
+  "pageNumber": 1,
+  "count": 28,
+  "_embedded": {
+    "movies": [
+      {
+        "id": 73482,
+        "name": "Mission: Impossible - The Final Reckoning",
+        "sortableName": "Mission Impossible The Final Reckoning",
+        "slug": "mission-impossible-the-final-reckoning",
+        "synopsis": "Ethan Hunt and his IMF team race against time in the conclusion to the Mission: Impossible saga.",
+        "genre": "Action",
+        "mpaaRating": "PG-13",
+        "runTime": 169,
+        "releaseDateUtc": "2026-05-22T05:00:00Z",
+        "earliestShowingUtc": "2026-05-22T16:00:00Z",
+        "hasScheduledShowtimes": true,
+        "directors": "Christopher McQuarrie",
+        "starringActors": "Tom Cruise, Hayley Atwell, Simon Pegg",
+        "websiteUrl": "https://www.amctheatres.com/movies/mission-impossible-the-final-reckoning-73482",
+        "showtimesUrl": "https://www.amctheatres.com/movies/mission-impossible-the-final-reckoning-73482/showtimes",
+        "media": {
+          "posterDynamic": "https://amc-theatres-res.cloudinary.com/image/upload/v1/amc-cdn/movies/73482/poster.jpg",
+          "trailerHd": "https://amc-theatres-res.cloudinary.com/video/upload/v1/amc-cdn/movies/73482/trailer-hd.mp4"
+        },
+        "attributes": [
+          { "code": "imax", "name": "IMAX" },
+          { "code": "atmos", "name": "Dolby Atmos" },
+          { "code": "reald3d", "name": "RealD 3D" }
+        ],
+        "_links": {
+          "self": { "href": "https://api.amctheatres.com/v2/movies/73482", "templated": false }
+        }
+      }
+    ]
+  }
+}

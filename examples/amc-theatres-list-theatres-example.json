@@ -1,0 +1,58 @@
+{
+  "pageSize": 10,
+  "pageNumber": 1,
+  "count": 902,
+  "_embedded": {
+    "theatres": [
+      {
+        "id": 4001,
+        "name": "AMC Empire 25",
+        "longName": "AMC Empire 25",
+        "slug": "amc-empire-25",
+        "showtimesPhoneNumber": "(212) 398-3939",
+        "guestServicesPhoneNumber": "(212) 398-3939",
+        "utcOffset": "-04:00",
+        "timezone": "America/New_York",
+        "timezoneAbbreviation": "EDT",
+        "websiteUrl": "https://www.amctheatres.com/movie-theatres/new-york-city/amc-empire-25",
+        "loyaltyVersion": "AmcStubs",
+        "isClosed": false,
+        "brand": "AMC",
+        "westWorldMediaTheatreNumber": 4001,
+        "concessionsDeliveryOptions": ["DeliveryToSeat", "ExpressPickup"],
+        "onlineConcessions": true,
+        "location": {
+          "addressLine1": "234 West 42nd Street",
+          "city": "New York",
+          "state": "NY",
+          "stateName": "New York",
+          "postalCode": "10036",
+          "country": "USA",
+          "latitude": 40.7567,
+          "longitude": -73.9881,
+          "marketName": "New York",
+          "marketId": 1
+        },
+        "media": {
+          "theatreImageStandard": "https://amc-theatres-res.cloudinary.com/image/upload/v1/amc-cdn/theatres/0001/4001/standard.jpg",
+          "theatreImageThumbnail": "https://amc-theatres-res.cloudinary.com/image/upload/v1/amc-cdn/theatres/0001/4001/thumbnail.jpg"
+        },
+        "redemptionMethods": ["Print", "ETicket", "MobilePass"],
+        "_links": {
+          "self": {
+            "href": "https://api.amctheatres.com/v2/theatres/4001",
+            "templated": false
+          },
+          "showtimes": {
+            "href": "https://api.amctheatres.com/v2/theatres/4001/showtimes",
+            "templated": false
+          }
+        }
+      }
+    ]
+  },
+  "_links": {
+    "self": { "href": "https://api.amctheatres.com/v2/theatres?page-number=1&page-size=10", "templated": false },
+    "next": { "href": "https://api.amctheatres.com/v2/theatres?page-number=2&page-size=10", "templated": false }
+  }
+}

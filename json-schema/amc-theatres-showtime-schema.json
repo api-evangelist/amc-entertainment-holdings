@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amc-entertainment-holdings/json-schema/amc-theatres-showtime-schema.json",
+  "title": "AMC Showtime",
+  "description": "Schema for an AMC showtime as returned by the AMC Theatres API.",
+  "type": "object",
+  "required": ["id", "movieId", "theatreId", "showDateTimeUtc"],
+  "properties": {
+    "id": { "type": "integer" },
+    "movieId": { "type": "integer" },
+    "movieName": { "type": "string" },
+    "movieSlug": { "type": "string" },
+    "sortableMovieName": { "type": "string" },
+    "showDateTimeUtc": { "type": "string", "format": "date-time" },
+    "showDateTimeLocal": { "type": "string" },
+    "utcOffset": { "type": "string" },
+    "theatreId": { "type": "integer" },
+    "auditorium": { "type": "integer" },
+    "layoutId": { "type": "integer" },
+    "wamc": { "type": "string" },
+    "runTime": { "type": "integer" },
+    "mpaaRating": { "type": "string" },
+    "genre": { "type": "string" },
+    "purchaseUrl": { "type": "string", "format": "uri" },
+    "mobilePurchaseUrl": { "type": "string", "format": "uri" },
+    "isSoldOut": { "type": "boolean" },
+    "isAlmostSoldOut": { "type": "boolean" },
+    "isCanceled": { "type": "boolean" },
+    "isPrivateRental": { "type": "boolean" },
+    "isDiscountMatineePriced": { "type": "boolean" },
+    "ticketPrices": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "priceType": { "type": "string" },
+          "sku": { "type": "string" },
+          "price": { "type": "number" },
+          "tax": { "type": "number" },
+          "formattedPrice": { "type": "string" }
+        }
+      }
+    },
+    "attributes": {
+      "type": "array",
+      "items": { "$ref": "amc-theatres-attribute-schema.json" }
+    }
+  }
+}

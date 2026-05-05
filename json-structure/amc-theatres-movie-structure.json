@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amc-entertainment-holdings/refs/heads/main/json-structure/amc-theatres-movie-structure.json",
+  "name": "Movie",
+  "description": "Structure for an AMC Movie as returned by the AMC Theatres API v2.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer", "example": 73482 },
+    "name": { "type": "string", "example": "Mission: Impossible - The Final Reckoning" },
+    "slug": { "type": "string", "example": "mission-impossible-the-final-reckoning" },
+    "synopsis": { "type": "string", "example": "Ethan Hunt and his IMF team race against time..." },
+    "genre": { "type": "string", "example": "Action" },
+    "mpaaRating": { "type": "string", "example": "PG-13" },
+    "runTime": { "type": "integer", "example": 169 },
+    "releaseDateUtc": { "type": "datetime", "example": "2026-05-22T05:00:00Z" },
+    "earliestShowingUtc": { "type": "datetime", "example": "2026-05-22T16:00:00Z" },
+    "hasScheduledShowtimes": { "type": "boolean", "example": true },
+    "directors": { "type": "string", "example": "Christopher McQuarrie" },
+    "starringActors": { "type": "string", "example": "Tom Cruise, Hayley Atwell" },
+    "websiteUrl": { "type": "string", "example": "https://www.amctheatres.com/movies/mission-impossible-the-final-reckoning-73482" }
+  }
+}

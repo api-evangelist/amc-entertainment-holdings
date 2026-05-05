@@ -1,0 +1,49 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://api.amctheatres.com/v3/orders",
+    "headers": {
+      "X-AMC-Vendor-Key": "00000000-0000-0000-0000-000000000000",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "theatreId": 4001,
+      "amcAccountId": "abc-123-account",
+      "contact": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+12125550123",
+        "zipCode": "10036"
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "orderId": "ord_01HZX7R12K9P0Z",
+      "token": "tok_d6f0b1e8c4a4",
+      "amcAccountId": "abc-123-account",
+      "status": "Pending",
+      "createdUtc": "2026-05-22T15:42:11Z",
+      "expirationUtc": "2026-05-22T16:02:11Z",
+      "totalAmount": 0.0,
+      "totalTax": 0.0,
+      "totalConvenienceFees": 0.0,
+      "contact": {
+        "firstName": "Jane",
+        "lastName": "Doe",
+        "email": "jane.doe@example.com",
+        "phone": "+12125550123",
+        "zipCode": "10036"
+      },
+      "products": [],
+      "payments": [],
+      "_links": {
+        "self": { "href": "https://api.amctheatres.com/v3/orders/ord_01HZX7R12K9P0Z" },
+        "products": { "href": "https://api.amctheatres.com/v3/orders/ord_01HZX7R12K9P0Z/products" },
+        "payments": { "href": "https://api.amctheatres.com/v3/orders/ord_01HZX7R12K9P0Z/payments" }
+      }
+    }
+  }
+}

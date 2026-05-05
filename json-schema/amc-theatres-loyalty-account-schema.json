@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amc-entertainment-holdings/json-schema/amc-theatres-loyalty-account-schema.json",
+  "title": "AMC Stubs Loyalty Account",
+  "description": "Schema for an AMC Stubs loyalty account as returned by the AMC Theatres API v4.",
+  "type": "object",
+  "required": ["id", "loyaltyTier"],
+  "properties": {
+    "id": { "type": "string" },
+    "amcAccountId": { "type": "string" },
+    "cardNumber": { "type": "string" },
+    "email": { "type": "string", "format": "email" },
+    "firstName": { "type": "string" },
+    "lastName": { "type": "string" },
+    "loyaltyTier": { "type": "string", "enum": ["Insider", "Premiere", "A-List"] },
+    "pointsBalance": { "type": "integer" },
+    "rewards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sku": { "type": "string" },
+          "description": { "type": "string" },
+          "expiresUtc": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "registrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "campaign": { "type": "string" },
+          "registeredUtc": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

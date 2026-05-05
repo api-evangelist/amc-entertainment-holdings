@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amc-entertainment-holdings/json-schema/amc-theatres-theatre-schema.json",
+  "title": "AMC Theatre",
+  "description": "Schema for an AMC theatre as returned by the AMC Theatres API.",
+  "type": "object",
+  "required": ["id", "name", "slug"],
+  "properties": {
+    "id": { "type": "integer", "description": "The theatre id." },
+    "name": { "type": "string", "description": "The name of the theatre." },
+    "longName": { "type": "string", "description": "The long name of the theatre." },
+    "secondaryLongName": { "type": "string" },
+    "showtimesPhoneNumber": { "type": "string" },
+    "guestServicesPhoneNumber": { "type": "string" },
+    "utcOffset": { "type": "string", "description": "Current UTC offset of the theatre's timezone." },
+    "timezone": { "type": "string" },
+    "timezoneAbbreviation": { "type": "string" },
+    "slug": { "type": "string", "description": "The URL-friendly theatre slug." },
+    "facebookUrl": { "type": "string", "format": "uri" },
+    "outageDescription": { "type": "string" },
+    "websiteUrl": { "type": "string", "format": "uri" },
+    "directionsUrl": { "type": "string", "format": "uri" },
+    "loyaltyVersion": { "type": "string" },
+    "isClosed": { "type": "boolean" },
+    "lastBusinessDate": { "type": "string", "format": "date" },
+    "brand": { "type": "string", "description": "AMC brand abbreviation (AMC, DIT, Classic, etc.)." },
+    "westWorldMediaTheatreNumber": { "type": "integer" },
+    "concessionsDeliveryOptions": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["DeliveryToSeat", "ExpressPickup"] }
+    },
+    "convenienceFeeTaxPercent": { "type": "number" },
+    "convenienceFeeTaxFlatAmount": { "type": "number" },
+    "onlineConcessions": { "type": "boolean" },
+    "hasMultipleKitchens": { "type": "boolean" },
+    "redemptionMethods": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "addressLine1": { "type": "string" },
+        "addressLine2": { "type": "string" },
+        "city": { "type": "string" },
+        "postalCode": { "type": "string" },
+        "state": { "type": "string" },
+        "stateName": { "type": "string" },
+        "country": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "marketName": { "type": "string" },
+        "marketId": { "type": "integer" }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "format": "uri" }
+    },
+    "attributes": {
+      "type": "array",
+      "items": { "$ref": "amc-theatres-attribute-schema.json" }
+    }
+  }
+}

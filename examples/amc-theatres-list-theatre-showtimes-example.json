@@ -1,0 +1,45 @@
+{
+  "pageSize": 10,
+  "pageNumber": 1,
+  "count": 24,
+  "_embedded": {
+    "showtimes": [
+      {
+        "id": 21349872,
+        "movieId": 73482,
+        "movieName": "Mission: Impossible - The Final Reckoning",
+        "movieSlug": "mission-impossible-the-final-reckoning",
+        "sortableMovieName": "Mission Impossible The Final Reckoning",
+        "showDateTimeUtc": "2026-05-22T23:30:00Z",
+        "showDateTimeLocal": "2026-05-22T19:30:00",
+        "utcOffset": "-04:00",
+        "theatreId": 4001,
+        "auditorium": 12,
+        "layoutId": 412,
+        "wamc": "WAMC1234",
+        "runTime": 169,
+        "mpaaRating": "PG-13",
+        "genre": "Action",
+        "isSoldOut": false,
+        "isAlmostSoldOut": false,
+        "isCanceled": false,
+        "isPrivateRental": false,
+        "isDiscountMatineePriced": false,
+        "purchaseUrl": "https://www.amctheatres.com/showtimes/21349872/seats",
+        "ticketPrices": [
+          { "priceType": "Adult", "sku": "TIX-ADULT", "price": 19.99, "tax": 1.65, "formattedPrice": "$19.99" },
+          { "priceType": "Child", "sku": "TIX-CHILD", "price": 12.99, "tax": 1.07, "formattedPrice": "$12.99" },
+          { "priceType": "Senior", "sku": "TIX-SENIOR", "price": 15.99, "tax": 1.32, "formattedPrice": "$15.99" }
+        ],
+        "attributes": [
+          { "code": "imax", "name": "IMAX" },
+          { "code": "reservedseating", "name": "Reserved Seating" }
+        ],
+        "_links": {
+          "self": { "href": "https://api.amctheatres.com/v2/showtimes/21349872", "templated": false },
+          "seating-layout": { "href": "https://api.amctheatres.com/v2/seating-layouts/4001/21349872", "templated": false }
+        }
+      }
+    ]
+  }
+}

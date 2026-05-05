@@ -1,0 +1,126 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "AMC Movie Discovery"
+  description: >-
+    Workflow capability for movie discovery and showtime search using the AMC
+    Theatres API. Allows partner sites and apps to surface now-playing,
+    advance, and coming-soon movies, find theatres by location, and look up
+    showtimes by theatre, date, or proximity to a user's location. Designed
+    for entertainment listings, movie discovery apps, and ticket-aggregator
+    integrations.
+  tags:
+    - AMC Theatres
+    - Movie Discovery
+    - Showtimes
+    - Locations
+    - Search
+  created: "2026-05-05"
+  modified: "2026-05-05"
+
+binds:
+  - namespace: env
+    keys:
+      AMC_VENDOR_KEY: AMC_VENDOR_KEY
+
+capability:
+  consumes:
+    - import: amc-theatres-api
+      location: ./shared/amc-theatres-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8092
+      namespace: amc-discovery-api
+      description: "Unified REST API for AMC movie and theatre discovery."
+      resources:
+        - path: /movies
+          name: movies
+          operations:
+            - method: GET
+              name: list-movies-now-playing
+              description: List now-playing movies.
+              call: "amc-theatres-api.list-movies-now-playing"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: GET
+              name: list-movies-coming-soon
+              description: List coming-soon movies.
+              call: "amc-theatres-api.list-movies-coming-soon"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /movies/{idOrSlug}
+          name: movie
+          operations:
+            - method: GET
+              name: get-movie
+              call: "amc-theatres-api.get-movie"
+              with:
+                idOrSlug: "rest.idOrSlug"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /theatres
+          name: theatres
+          operations:
+            - method: GET
+              name: search-theatres
+              description: Search theatres by name/state/city.
+              call: "amc-theatres-api.list-theatres"
+              with:
+                name: "rest.name"
+                state: "rest.state"
+                city: "rest.city"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /theatres/{theatre-number}/showtimes
+          name: theatre-showtimes
+          operations:
+            - method: GET
+              name: list-theatre-showtimes
+              call: "amc-theatres-api.list-theatre-showtimes"
+              with:
+                theatre-number: "rest.theatre-number"
+                movie-id: "rest.movie-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /showtimes/near/{latitude}/{longitude}/{date}
+          name: nearby-showtimes
+          operations:
+            - method: GET
+              name: list-nearby-showtimes
+              description: List showtimes within proximity of a coordinate on a date.
+              call: "amc-theatres-api.list-showtimes-by-location"
+              with:
+                date: "rest.date"
+                latitude: "rest.latitude"
+                longitude: "rest.longitude"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9092
+      namespace: amc-discovery-mcp
+      transport: http
+      description: "MCP server for AI-assisted AMC movie and showtime discovery."
+      tools:
+        - name: list-movies-now-playing
+          description: List the current AMC now-playing movies.
+          call: "amc-theatres-api.list-movies-now-playing"
+        - name: search-amc-theatres
+          description: Search AMC theatres by name, state, or city.
+          call: "amc-theatres-api.list-theatres"
+        - name: get-amc-theatre-showtimes
+          description: Get showtimes at a specific AMC theatre, optionally filtered by movie.
+          call: "amc-theatres-api.list-theatre-showtimes"
+        - name: get-nearby-amc-showtimes
+          description: Find AMC showtimes near a coordinate on a date.
+          call: "amc-theatres-api.list-showtimes-by-location"
+        - name: get-amc-movie
+          description: Get details for an AMC movie by id or slug.
+          call: "amc-theatres-api.get-movie"

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amc-entertainment-holdings/json-schema/amc-theatres-attribute-schema.json",
+  "title": "AMC Attribute",
+  "description": "An attribute applied to a movie, showtime, or theatre (e.g., IMAX, Atmos, Reserved Seating).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer" },
+    "code": { "type": "string", "description": "Stable code identifier (e.g., imax, atmos, reald3d)." },
+    "name": { "type": "string" },
+    "shortDescription": { "type": "string" },
+    "longDescription": { "type": "string" },
+    "url": { "type": "string", "format": "uri" },
+    "sort": { "type": "integer" },
+    "appliesToMovie": { "type": "boolean" },
+    "appliesToShowtime": { "type": "boolean" },
+    "appliesToTheatre": { "type": "boolean" }
+  }
+}

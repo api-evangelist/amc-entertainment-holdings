@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amc-entertainment-holdings/refs/heads/main/json-structure/amc-theatres-theatre-structure.json",
+  "name": "Theatre",
+  "description": "Structure for an AMC Theatre as returned by the AMC Theatres API v2.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer", "description": "The theatre id.", "example": 4001 },
+    "name": { "type": "string", "description": "Short name of the theatre.", "example": "AMC Empire 25" },
+    "longName": { "type": "string", "example": "AMC Empire 25" },
+    "slug": { "type": "string", "example": "amc-empire-25" },
+    "showtimesPhoneNumber": { "type": "string", "example": "(212) 398-3939" },
+    "guestServicesPhoneNumber": { "type": "string", "example": "(212) 398-3939" },
+    "utcOffset": { "type": "string", "example": "-04:00" },
+    "timezone": { "type": "string", "example": "America/New_York" },
+    "loyaltyVersion": { "type": "string", "example": "AmcStubs" },
+    "isClosed": { "type": "boolean", "example": false },
+    "brand": { "type": "string", "example": "AMC" },
+    "westWorldMediaTheatreNumber": { "type": "integer", "example": 4001 },
+    "concessionsDeliveryOptions": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["DeliveryToSeat", "ExpressPickup"] },
+      "example": ["DeliveryToSeat", "ExpressPickup"]
+    },
+    "onlineConcessions": { "type": "boolean", "example": true },
+    "redemptionMethods": {
+      "type": "array",
+      "items": { "type": "string" },
+      "example": ["Print", "ETicket", "MobilePass"]
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "addressLine1": { "type": "string", "example": "234 West 42nd Street" },
+        "city": { "type": "string", "example": "New York" },
+        "state": { "type": "string", "example": "NY" },
+        "stateName": { "type": "string", "example": "New York" },
+        "postalCode": { "type": "string", "example": "10036" },
+        "country": { "type": "string", "example": "USA" },
+        "latitude": { "type": "number", "example": 40.7567 },
+        "longitude": { "type": "number", "example": -73.9881 },
+        "marketName": { "type": "string", "example": "New York" },
+        "marketId": { "type": "integer", "example": 1 }
+      }
+    }
+  }
+}

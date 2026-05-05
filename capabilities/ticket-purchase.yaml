@@ -1,0 +1,111 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "AMC Ticket Purchase"
+  description: >-
+    Workflow capability for end-to-end AMC ticket and concessions purchasing.
+    Coordinates show selection, order creation, ticket and concession line
+    items, payment, optional AMC Stubs loyalty rewards application, and order
+    fulfillment via the AMC Theatres API. Suitable for partner ticketing
+    apps, concierge services, and integrated guest experiences.
+  tags:
+    - AMC Theatres
+    - Tickets
+    - Orders
+    - Concessions
+    - Loyalty
+    - Payments
+  created: "2026-05-05"
+  modified: "2026-05-05"
+
+binds:
+  - namespace: env
+    keys:
+      AMC_VENDOR_KEY: AMC_VENDOR_KEY
+
+capability:
+  consumes:
+    - import: amc-theatres-api
+      location: ./shared/amc-theatres-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8093
+      namespace: amc-ticketing-api
+      description: "Unified REST API for AMC ticket and concession ordering."
+      resources:
+        - path: /orders
+          name: orders
+          operations:
+            - method: POST
+              name: create-order
+              description: Create a new AMC order.
+              call: "amc-theatres-api.create-order"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /orders/{order-id}
+          name: order
+          operations:
+            - method: GET
+              name: get-order
+              call: "amc-theatres-api.get-order"
+              with:
+                order-id: "rest.order-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: cancel-order
+              call: "amc-theatres-api.delete-order"
+              with:
+                order-id: "rest.order-id"
+        - path: /orders/{order-id}/products
+          name: order-products
+          operations:
+            - method: POST
+              name: add-product
+              call: "amc-theatres-api.add-order-product"
+              with:
+                order-id: "rest.order-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /orders/{order-id}/payments
+          name: order-payments
+          operations:
+            - method: POST
+              name: add-payment
+              call: "amc-theatres-api.add-order-payment"
+              with:
+                order-id: "rest.order-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /orders/{order-id}/loyalty
+          name: order-loyalty
+          operations:
+            - method: POST
+              name: apply-loyalty-rewards
+              description: Apply AMC Stubs rewards to an order.
+              call: "amc-theatres-api.apply-loyalty-rewards"
+              with:
+                order-id: "rest.order-id"
+
+    - type: mcp
+      port: 9093
+      namespace: amc-ticketing-mcp
+      transport: http
+      tools:
+        - name: create-amc-order
+          description: Create a new AMC order against a theatre.
+          call: "amc-theatres-api.create-order"
+        - name: add-amc-order-product
+          description: Add a ticket or concession SKU to an AMC order.
+          call: "amc-theatres-api.add-order-product"
+        - name: add-amc-order-payment
+          description: Add payment to an AMC order.
+          call: "amc-theatres-api.add-order-payment"
+        - name: apply-amc-loyalty-rewards
+          description: Apply AMC Stubs loyalty rewards to an order.
+          call: "amc-theatres-api.apply-loyalty-rewards"

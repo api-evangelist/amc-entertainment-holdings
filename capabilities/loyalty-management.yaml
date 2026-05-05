@@ -1,0 +1,79 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "AMC Stubs Loyalty Management"
+  description: >-
+    Workflow capability for AMC Stubs loyalty operations: looking up loyalty
+    accounts by id, email, card, or phone; registering members for campaigns;
+    redeeming points; and unlinking loyalty from AMC accounts. Targeted at
+    customer-care apps, loyalty integrations, and AMC Stubs co-marketing
+    partners.
+  tags:
+    - AMC Theatres
+    - AMC Stubs
+    - Loyalty
+    - Rewards
+  created: "2026-05-05"
+  modified: "2026-05-05"
+
+binds:
+  - namespace: env
+    keys:
+      AMC_VENDOR_KEY: AMC_VENDOR_KEY
+
+capability:
+  consumes:
+    - import: amc-theatres-api
+      location: ./shared/amc-theatres-api.yaml
+
+  exposes:
+    - type: rest
+      port: 8094
+      namespace: amc-loyalty-api
+      description: "Unified REST API for AMC Stubs loyalty operations."
+      resources:
+        - path: /loyalty/accounts/{loyalty-account-id}
+          name: loyalty-account
+          operations:
+            - method: GET
+              name: get-account
+              call: "amc-theatres-api.get-loyalty-account"
+              with:
+                loyalty-account-id: "rest.loyalty-account-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /loyalty/accounts/by-email/{email-address}
+          name: loyalty-account-by-email
+          operations:
+            - method: GET
+              name: get-account-by-email
+              call: "amc-theatres-api.get-loyalty-account-by-email"
+              with:
+                email-address: "rest.email-address"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /loyalty/accounts/{loyalty-account-id}/redemptions
+          name: loyalty-redemptions
+          operations:
+            - method: POST
+              name: create-redemption
+              call: "amc-theatres-api.create-loyalty-redemption"
+              with:
+                loyalty-account-id: "rest.loyalty-account-id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9094
+      namespace: amc-loyalty-mcp
+      transport: http
+      tools:
+        - name: get-amc-loyalty-account
+          description: Get an AMC Stubs loyalty account by id, email, card, or phone.
+          call: "amc-theatres-api.get-loyalty-account"
+        - name: redeem-amc-loyalty-points
+          description: Create a points redemption against an AMC Stubs loyalty account.
+          call: "amc-theatres-api.create-loyalty-redemption"

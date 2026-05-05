@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amc-entertainment-holdings/refs/heads/main/json-structure/amc-theatres-showtime-structure.json",
+  "name": "Showtime",
+  "description": "Structure for an AMC Showtime as returned by the AMC Theatres API v2.",
+  "type": "object",
+  "properties": {
+    "id": { "type": "integer", "example": 21349872 },
+    "movieId": { "type": "integer", "example": 73482 },
+    "movieName": { "type": "string", "example": "Mission: Impossible - The Final Reckoning" },
+    "showDateTimeUtc": { "type": "datetime", "example": "2026-05-22T23:30:00Z" },
+    "showDateTimeLocal": { "type": "string", "example": "2026-05-22T19:30:00" },
+    "utcOffset": { "type": "string", "example": "-04:00" },
+    "theatreId": { "type": "integer", "example": 4001 },
+    "auditorium": { "type": "integer", "example": 12 },
+    "layoutId": { "type": "integer", "example": 412 },
+    "runTime": { "type": "integer", "example": 169 },
+    "mpaaRating": { "type": "string", "example": "PG-13" },
+    "isSoldOut": { "type": "boolean", "example": false },
+    "isAlmostSoldOut": { "type": "boolean", "example": false },
+    "isCanceled": { "type": "boolean", "example": false },
+    "isPrivateRental": { "type": "boolean", "example": false },
+    "purchaseUrl": { "type": "string", "example": "https://www.amctheatres.com/showtimes/21349872/seats" }
+  }
+}

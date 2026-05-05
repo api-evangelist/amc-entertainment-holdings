@@ -1,0 +1,312 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "AMC Theatres API"
+  description: >-
+    Shared per-API consumed definition for the AMC Theatres API. Provides
+    discovery, transactional, loyalty, and concessions capabilities for AMC
+    movie theatres including theatres, movies, showtimes, locations, markets,
+    states, seating layouts, orders, payments, concessions, AMC Stubs loyalty,
+    refunds, fee waivers, barcodes, and webhooks.
+  tags:
+    - AMC Theatres
+    - Movies
+    - Theatres
+    - Showtimes
+    - Ticketing
+    - Loyalty
+    - Concessions
+  dates:
+    created: "2026-05-05"
+    updated: "2026-05-05"
+
+binds:
+  - AMC_VENDOR_KEY
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: amc-theatres-api
+      baseUri: "https://api.amctheatres.com"
+      auth:
+        type: apiKey
+        in: header
+        name: X-AMC-Vendor-Key
+        value: "{{AMC_VENDOR_KEY}}"
+
+      resources:
+
+        # -------------------------------------------------------
+        # Theatres
+        # -------------------------------------------------------
+        - name: theatres
+          path: /v2
+          operations:
+            - id: list-theatres
+              method: GET
+              path: /theatres
+              description: List all active AMC theatres.
+              inputParameters:
+                - { name: name, in: query, type: string }
+                - { name: state, in: query, type: string }
+                - { name: city, in: query, type: string }
+                - { name: market, in: query, type: string }
+                - { name: brand, in: query, type: string }
+                - { name: page-size, in: query, type: integer }
+                - { name: page-number, in: query, type: integer }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: get-theatre
+              method: GET
+              path: /theatres/{idOrSlug}
+              description: Get a single theatre by id or slug.
+              inputParameters:
+                - { name: idOrSlug, in: path, type: string }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: list-theatre-seating-layouts
+              method: GET
+              path: /theatres/{theatre-number}/seating-layouts
+              description: List seating layouts for an auditorium.
+              inputParameters:
+                - { name: theatre-number, in: path, type: integer }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+
+        # -------------------------------------------------------
+        # Movies
+        # -------------------------------------------------------
+        - name: movies
+          path: /v2
+          operations:
+            - id: list-movies
+              method: GET
+              path: /movies
+              description: List all movies.
+              inputParameters:
+                - { name: name, in: query, type: string }
+                - { name: page-size, in: query, type: integer }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: list-movies-now-playing
+              method: GET
+              path: /movies/views/now-playing
+              description: List now-playing movies.
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: list-movies-coming-soon
+              method: GET
+              path: /movies/views/coming-soon
+              description: List coming-soon movies.
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: list-movies-advance
+              method: GET
+              path: /movies/views/advance
+              description: List advance ticket movies.
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: get-movie
+              method: GET
+              path: /movies/{idOrSlug}
+              description: Get a movie by id or slug.
+              inputParameters:
+                - { name: idOrSlug, in: path, type: string }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+
+        # -------------------------------------------------------
+        # Showtimes
+        # -------------------------------------------------------
+        - name: showtimes
+          path: /v2
+          operations:
+            - id: list-theatre-showtimes
+              method: GET
+              path: /theatres/{theatre-number}/showtimes
+              description: List future showtimes for a theatre.
+              inputParameters:
+                - { name: theatre-number, in: path, type: integer }
+                - { name: movie-id, in: query, type: integer }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: list-theatre-showtimes-by-date
+              method: GET
+              path: /theatres/{theatre-number}/showtimes/{date}
+              description: List showtimes for a theatre on a date.
+              inputParameters:
+                - { name: theatre-number, in: path, type: integer }
+                - { name: date, in: path, type: string }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: get-showtime
+              method: GET
+              path: /showtimes/{id}
+              description: Get a showtime by id.
+              inputParameters:
+                - { name: id, in: path, type: integer }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: list-showtimes-by-location
+              method: GET
+              path: /showtimes/views/current-location/{date}/{latitude}/{longitude}
+              description: List showtimes near a latitude/longitude on a date.
+              inputParameters:
+                - { name: date, in: path, type: string }
+                - { name: latitude, in: path, type: number }
+                - { name: longitude, in: path, type: number }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+
+        # -------------------------------------------------------
+        # Locations / Markets / States
+        # -------------------------------------------------------
+        - name: locations
+          path: /v2
+          operations:
+            - id: list-location-suggestions
+              method: GET
+              path: /location-suggestions
+              description: Suggest locations by zip / city / state / theatre name.
+              inputParameters:
+                - { name: query, in: query, type: string }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+
+        - name: markets
+          path: /v1
+          operations:
+            - id: list-markets
+              method: GET
+              path: /markets
+              description: List all AMC markets.
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+
+        - name: states
+          path: /v1
+          operations:
+            - id: list-states
+              method: GET
+              path: /states
+              description: List all states.
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+
+        # -------------------------------------------------------
+        # Orders
+        # -------------------------------------------------------
+        - name: orders
+          path: /v3
+          operations:
+            - id: create-order
+              method: POST
+              path: /orders
+              description: Create a new order.
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: get-order
+              method: GET
+              path: /orders/{order-id}
+              inputParameters:
+                - { name: order-id, in: path, type: string }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: add-order-product
+              method: POST
+              path: /orders/{order-id}/products
+              inputParameters:
+                - { name: order-id, in: path, type: string }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: add-order-payment
+              method: POST
+              path: /orders/{order-id}/payments
+              inputParameters:
+                - { name: order-id, in: path, type: string }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: delete-order
+              method: DELETE
+              path: /orders/{order-id}
+              inputParameters:
+                - { name: order-id, in: path, type: string }
+            - id: apply-loyalty-rewards
+              method: POST
+              path: /orders/{order-id}/loyalty-rewards-application
+              inputParameters:
+                - { name: order-id, in: path, type: string }
+
+        # -------------------------------------------------------
+        # Concessions
+        # -------------------------------------------------------
+        - name: concessions
+          path: /v1
+          operations:
+            - id: list-theatre-concessions
+              method: GET
+              path: /theatres/{theatre-id}/concessions
+              inputParameters:
+                - { name: theatre-id, in: path, type: integer }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: list-concession-categories
+              method: GET
+              path: /theatres/{theatre-id}/concessions/categories
+              inputParameters:
+                - { name: theatre-id, in: path, type: integer }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+
+        # -------------------------------------------------------
+        # Loyalty
+        # -------------------------------------------------------
+        - name: loyalty
+          path: /v4
+          operations:
+            - id: get-loyalty-account
+              method: GET
+              path: /loyalty-accounts/{loyalty-account-id}
+              inputParameters:
+                - { name: loyalty-account-id, in: path, type: string }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: get-loyalty-account-by-email
+              method: GET
+              path: /loyalty-accounts/email-{email-address}
+              inputParameters:
+                - { name: email-address, in: path, type: string }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: create-loyalty-redemption
+              method: POST
+              path: /loyalty-accounts/{loyalty-account-id}/redemptions
+              inputParameters:
+                - { name: loyalty-account-id, in: path, type: string }
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+
+        # -------------------------------------------------------
+        # Webhooks
+        # -------------------------------------------------------
+        - name: webhooks
+          path: /v1
+          operations:
+            - id: list-webhook-events
+              method: GET
+              path: /webhook-events
+              description: List available webhook events.
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: subscribe-webhook
+              method: POST
+              path: /webhooks
+              description: Subscribe to a webhook event.
+              outputParameters:
+                - { name: result, type: object, value: "$." }
+            - id: unsubscribe-webhook
+              method: DELETE
+              path: /webhooks/{webhook-token-id}
+              inputParameters:
+                - { name: webhook-token-id, in: path, type: string }

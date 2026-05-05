@@ -1,0 +1,16 @@
+{
+  "id": "loyalty-9c4aabf3",
+  "amcAccountId": "abc-123-account",
+  "cardNumber": "611700123456789",
+  "email": "jane.doe@example.com",
+  "firstName": "Jane",
+  "lastName": "Doe",
+  "loyaltyTier": "A-List",
+  "pointsBalance": 4250,
+  "rewards": [
+    { "sku": "RWD-FREE-LARGE-POPCORN", "description": "Free Large Popcorn", "expiresUtc": "2026-12-31T05:00:00Z" }
+  ],
+  "registrations": [
+    { "campaign": "spring2026", "registeredUtc": "2026-04-01T12:00:00Z" }
+  ]
+}

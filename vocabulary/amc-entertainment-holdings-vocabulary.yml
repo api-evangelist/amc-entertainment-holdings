@@ -1,0 +1,180 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: AMC Entertainment Holdings
+  description: >-
+    Vocabulary and taxonomy for the AMC Theatres API ecosystem, capturing the
+    operational dimension (OpenAPI resources, actions, schemas) and capability
+    dimension (Naftiko workflows, tools, personas) that surface from the AMC
+    Theatres developer portal.
+  created: "2026-05-05"
+  modified: "2026-05-05"
+
+# ============================================================
+# OPERATIONAL DIMENSION (from OpenAPI)
+# ============================================================
+operational:
+
+  apis:
+    - name: AMC Theatres API
+      namespace: amc-theatres-api
+      version: "v2"
+      baseUrl: https://api.amctheatres.com
+      status: active
+      auth:
+        type: apiKey
+        in: header
+        name: X-AMC-Vendor-Key
+
+  resources:
+    - name: theatres
+      description: AMC theatre locations, attributes, and metadata.
+      apis: [amc-theatres-api]
+      actions: [list, get, list-by-wwm-release]
+    - name: movies
+      description: AMC movies including now-playing, advance, coming-soon, on-demand.
+      apis: [amc-theatres-api]
+      actions: [list, get, list-now-playing, list-advance, list-coming-soon, list-on-demand, list-active, list-similar-on-demand]
+    - name: showtimes
+      description: Theatre showtimes for movies, including embargoed and proximity-based.
+      apis: [amc-theatres-api]
+      actions: [list-by-theatre, list-by-theatre-and-date, list-by-location, list-embargoed, get, get-earliest-for-movie]
+    - name: locations
+      description: Geographic helpers for finding theatres by state, city, or name.
+      apis: [amc-theatres-api]
+      actions: [list-by-state, list-by-name, list-suggestions]
+    - name: markets
+      description: AMC market areas grouping theatres by region.
+      apis: [amc-theatres-api]
+      actions: [list]
+    - name: states
+      description: U.S. states served by AMC.
+      apis: [amc-theatres-api]
+      actions: [list, get-by-slug]
+    - name: media
+      description: Images and videos for movies, theatres, and attributes.
+      apis: [amc-theatres-api]
+      actions: [list, get, list-content-types, list-sizes]
+    - name: attributes
+      description: Movie, showtime, and theatre attributes (IMAX, Atmos, Reserved Seating, etc.).
+      apis: [amc-theatres-api]
+      actions: [list, get, list-by-group]
+    - name: seating-layouts
+      description: Seating layouts and seats for performances and auditoriums.
+      apis: [amc-theatres-api]
+      actions: [get-for-performance, list-for-theatre]
+    - name: orders
+      description: Order creation, payment, fulfillment, and management.
+      apis: [amc-theatres-api]
+      actions: [create, get, get-by-token, get-by-email, update-contact, delete, add-product, update-product, patch-product, delete-product, add-payment, delete-payment, refresh-expiration, send-sms-confirmation, list-by-account, apply-loyalty-rewards, remove-loyalty-rewards, record, record-failed-payment-auth]
+    - name: concessions
+      description: Concessions ordering, categories, delivery, and pickup logistics.
+      apis: [amc-theatres-api]
+      actions: [list-by-theatre, get, list-categories, list-delivery-locations, list-pickup-times, list-delivery-times]
+    - name: loyalty-accounts
+      description: AMC Stubs loyalty accounts and registrations.
+      apis: [amc-theatres-api]
+      actions: [get, get-by-email, get-by-card, get-by-phone, register-by-email, register-by-card, unlink, create-redemption]
+    - name: loyalty-cards
+      description: AMC Stubs loyalty cards.
+      apis: [amc-theatres-api]
+      actions: [get]
+    - name: barcodes
+      description: Ticket and loyalty QR codes and Code 128 barcodes.
+      apis: [amc-theatres-api]
+      actions: [get-ticket-qr, get-ticket-code128, get-loyalty-qr]
+    - name: refunds
+      description: Order refunds, refund reasons, and fee waivers.
+      apis: [amc-theatres-api]
+      actions: [list-reasons, request-fee-waiver, refund-order]
+    - name: webhooks
+      description: Vendor webhook subscriptions and management.
+      apis: [amc-theatres-api]
+      actions: [list-events, list-subscriptions, subscribe, test, unsubscribe]
+    - name: wallet
+      description: AMC account wallets for external billers.
+      apis: [amc-theatres-api]
+      actions: [get-on-demand]
+    - name: movie-confirmations
+      description: Movie ticket confirmation lookups.
+      apis: [amc-theatres-api]
+      actions: [check-confirmation]
+
+  actions:
+    - { name: list, verb: GET, pattern: collection-read, description: Return a paged list of resources. }
+    - { name: get, verb: GET, pattern: item-read, description: Return a single resource. }
+    - { name: create, verb: POST, pattern: collection-write, description: Create a new resource. }
+    - { name: update, verb: PUT, pattern: item-write, description: Replace a resource. }
+    - { name: patch, verb: PATCH, pattern: item-write, description: Partially update a resource. }
+    - { name: delete, verb: DELETE, pattern: item-write, description: Remove a resource. }
+
+  schemas:
+    - { name: Theatre, file: json-schema/amc-theatres-theatre-schema.json }
+    - { name: Movie, file: json-schema/amc-theatres-movie-schema.json }
+    - { name: Showtime, file: json-schema/amc-theatres-showtime-schema.json }
+    - { name: Attribute, file: json-schema/amc-theatres-attribute-schema.json }
+    - { name: Order, file: json-schema/amc-theatres-order-schema.json }
+    - { name: LoyaltyAccount, file: json-schema/amc-theatres-loyalty-account-schema.json }
+
+# ============================================================
+# CAPABILITY DIMENSION (from Naftiko)
+# ============================================================
+capability:
+
+  workflows:
+    - name: Movie Discovery
+      file: capabilities/movie-discovery.yaml
+      description: Movie discovery, theatre search, and showtime lookups for entertainment listings and discovery apps.
+      personas: [Consumer App, Movie Listing Site, Voice Assistant, AI Concierge]
+      tools: [list-movies-now-playing, search-amc-theatres, get-amc-theatre-showtimes, get-nearby-amc-showtimes, get-amc-movie]
+    - name: Ticket Purchase
+      file: capabilities/ticket-purchase.yaml
+      description: End-to-end ticket and concessions ordering, payment, and fulfillment.
+      personas: [Partner Ticketing App, Concierge, Affiliate]
+      tools: [create-amc-order, add-amc-order-product, add-amc-order-payment, apply-amc-loyalty-rewards]
+    - name: AMC Stubs Loyalty Management
+      file: capabilities/loyalty-management.yaml
+      description: AMC Stubs loyalty account lookup, registration, and points redemption.
+      personas: [Customer Care, Loyalty Partner, Co-Marketer]
+      tools: [get-amc-loyalty-account, redeem-amc-loyalty-points]
+
+  shared:
+    - name: amc-theatres-api
+      file: capabilities/shared/amc-theatres-api.yaml
+      description: Shared per-API definition for the AMC Theatres API.
+
+# ============================================================
+# DOMAIN VOCABULARY
+# ============================================================
+domain:
+  industry: Entertainment
+  subdomain: Movie Exhibition
+  business-objects:
+    - { term: Theatre, synonyms: [Cinema, Movie Theater, Movie House], definition: A physical AMC location with one or more auditoriums showing movies. }
+    - { term: Movie, synonyms: [Film, Title, Feature], definition: A movie that may be currently playing, on advance ticket, coming soon, or available on-demand at AMC. }
+    - { term: Showtime, synonyms: [Performance, Screening, Show], definition: A scheduled screening of a movie at a specific theatre and auditorium. }
+    - { term: Auditorium, synonyms: [Screen, House], definition: A specific room within a theatre where films are shown. }
+    - { term: Attribute, synonyms: [Feature, Tag, Amenity], definition: A descriptive property applied to a movie, showtime, or theatre (IMAX, Atmos, RealD 3D, Reserved Seating, etc.). }
+    - { term: Order, synonyms: [Booking, Reservation, Cart], definition: A transactional record of ticket and/or concession purchases. }
+    - { term: Concession, synonyms: [Snack, Food, Beverage], definition: A food or beverage item available at a theatre. }
+    - { term: Loyalty Account, synonyms: [AMC Stubs Account, Member Profile], definition: An AMC Stubs membership tied to an email, card, or phone number. }
+    - { term: Loyalty Tier, synonyms: [Membership Level], definition: 'AMC Stubs membership level: Insider, Premiere, or A-List.' }
+    - { term: Market, synonyms: [Region, Metro], definition: A regional grouping of AMC theatres for marketing and search. }
+    - { term: Vendor Key, synonyms: [API Key, X-AMC-Vendor-Key], definition: The AMC-issued credential sent in the X-AMC-Vendor-Key header to authenticate API requests. }
+
+  enumerations:
+    LoyaltyTier: [Insider, Premiere, A-List]
+    OrderStatus: [Pending, Submitted, Fulfilled, Cancelled, Refunded, Failed]
+    ProductType: [Ticket, Concession, GiftCard, Other]
+    PaymentType: [CreditCard, GiftCard, ApplePay, GooglePay, Loyalty]
+    DeliveryOption: [DeliveryToSeat, ExpressPickup]
+    MpaaRating: [G, PG, PG-13, R, NC-17, NR]
+    RedemptionMethod: [Print, ETicket, MobilePass]
+    AttributeAppliesTo: [Movie, Showtime, Theatre]
+    Brand: [AMC, DIT, Classic]
+
+  conventions:
+    path-versioning: Resource families are versioned independently using /v1, /v2, /v3, /v4 path prefixes.
+    parameter-case: Query and path parameter names use kebab-case (e.g., page-size, theatre-number, movie-id).
+    response-envelope: Collections return HAL-style envelopes with pageSize, pageNumber, count, _embedded, and _links.
+    authentication: All requests must include the vendor key in the X-AMC-Vendor-Key header.

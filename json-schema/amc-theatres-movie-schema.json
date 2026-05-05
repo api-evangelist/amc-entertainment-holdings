@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/amc-entertainment-holdings/json-schema/amc-theatres-movie-schema.json",
+  "title": "AMC Movie",
+  "description": "Schema for an AMC movie as returned by the AMC Theatres API.",
+  "type": "object",
+  "required": ["id", "name", "slug"],
+  "properties": {
+    "id": { "type": "integer" },
+    "name": { "type": "string" },
+    "sortableName": { "type": "string" },
+    "slug": { "type": "string" },
+    "synopsis": { "type": "string" },
+    "synopsisTagLine": { "type": "string" },
+    "productionCompany": { "type": "string" },
+    "directors": { "type": "string" },
+    "starringActors": { "type": "string" },
+    "genre": { "type": "string" },
+    "mpaaRating": { "type": "string", "enum": ["G", "PG", "PG-13", "R", "NC-17", "NR", "Not Rated"] },
+    "runTime": { "type": "integer", "description": "Run time in minutes." },
+    "releaseDateUtc": { "type": "string", "format": "date-time" },
+    "earliestShowingUtc": { "type": "string", "format": "date-time" },
+    "hasScheduledShowtimes": { "type": "boolean" },
+    "websiteUrl": { "type": "string", "format": "uri" },
+    "showtimesUrl": { "type": "string", "format": "uri" },
+    "media": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "format": "uri" }
+    },
+    "attributes": {
+      "type": "array",
+      "items": { "$ref": "amc-theatres-attribute-schema.json" }
+    }
+  }
+}

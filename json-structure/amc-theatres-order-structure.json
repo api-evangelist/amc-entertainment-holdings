@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amc-entertainment-holdings/refs/heads/main/json-structure/amc-theatres-order-structure.json",
+  "name": "Order",
+  "description": "Structure for an AMC Order as returned by the AMC Theatres API v3.",
+  "type": "object",
+  "properties": {
+    "orderId": { "type": "string", "example": "ord_01HZX7R12K9P0Z" },
+    "token": { "type": "string", "example": "tok_d6f0b1e8c4a4" },
+    "amcAccountId": { "type": "string", "example": "abc-123-account" },
+    "status": {
+      "type": "string",
+      "enum": ["Pending", "Submitted", "Fulfilled", "Cancelled", "Refunded", "Failed"],
+      "example": "Pending"
+    },
+    "createdUtc": { "type": "datetime", "example": "2026-05-22T15:42:11Z" },
+    "expirationUtc": { "type": "datetime", "example": "2026-05-22T16:02:11Z" },
+    "totalAmount": { "type": "number", "example": 39.98 },
+    "totalTax": { "type": "number", "example": 3.30 },
+    "totalConvenienceFees": { "type": "number", "example": 1.50 }
+  }
+}
