@@ -1,111 +1,466 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "AMC Ticket Purchase"
-  description: >-
-    Workflow capability for end-to-end AMC ticket and concessions purchasing.
-    Coordinates show selection, order creation, ticket and concession line
-    items, payment, optional AMC Stubs loyalty rewards application, and order
-    fulfillment via the AMC Theatres API. Suitable for partner ticketing
-    apps, concierge services, and integrated guest experiences.
+  label: AMC Ticket Purchase
+  description: Workflow capability for end-to-end AMC ticket and concessions purchasing. Coordinates show selection, order
+    creation, ticket and concession line items, payment, optional AMC Stubs loyalty rewards application, and order fulfillment
+    via the AMC Theatres API. Suitable for partner ticketing apps, concierge services, and integrated guest experiences.
   tags:
-    - AMC Theatres
-    - Tickets
-    - Orders
-    - Concessions
-    - Loyalty
-    - Payments
-  created: "2026-05-05"
-  modified: "2026-05-05"
-
+  - AMC Theatres
+  - Tickets
+  - Orders
+  - Concessions
+  - Loyalty
+  - Payments
+  created: '2026-05-05'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      AMC_VENDOR_KEY: AMC_VENDOR_KEY
-
+- namespace: env
+  keys:
+    AMC_VENDOR_KEY: AMC_VENDOR_KEY
 capability:
   consumes:
-    - import: amc-theatres-api
-      location: ./shared/amc-theatres-api.yaml
-
+  - type: http
+    namespace: amc-theatres-api
+    baseUri: https://api.amctheatres.com
+    auth:
+      type: apiKey
+      in: header
+      name: X-AMC-Vendor-Key
+      value: '{{AMC_VENDOR_KEY}}'
+    resources:
+    - name: theatres
+      path: /v2
+      operations:
+      - id: list-theatres
+        method: GET
+        path: /theatres
+        description: List all active AMC theatres.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+        - name: state
+          in: query
+          type: string
+        - name: city
+          in: query
+          type: string
+        - name: market
+          in: query
+          type: string
+        - name: brand
+          in: query
+          type: string
+        - name: page-size
+          in: query
+          type: integer
+        - name: page-number
+          in: query
+          type: integer
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: get-theatre
+        method: GET
+        path: /theatres/{idOrSlug}
+        description: Get a single theatre by id or slug.
+        inputParameters:
+        - name: idOrSlug
+          in: path
+          type: string
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: list-theatre-seating-layouts
+        method: GET
+        path: /theatres/{theatre-number}/seating-layouts
+        description: List seating layouts for an auditorium.
+        inputParameters:
+        - name: theatre-number
+          in: path
+          type: integer
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: movies
+      path: /v2
+      operations:
+      - id: list-movies
+        method: GET
+        path: /movies
+        description: List all movies.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+        - name: page-size
+          in: query
+          type: integer
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: list-movies-now-playing
+        method: GET
+        path: /movies/views/now-playing
+        description: List now-playing movies.
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: list-movies-coming-soon
+        method: GET
+        path: /movies/views/coming-soon
+        description: List coming-soon movies.
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: list-movies-advance
+        method: GET
+        path: /movies/views/advance
+        description: List advance ticket movies.
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: get-movie
+        method: GET
+        path: /movies/{idOrSlug}
+        description: Get a movie by id or slug.
+        inputParameters:
+        - name: idOrSlug
+          in: path
+          type: string
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: showtimes
+      path: /v2
+      operations:
+      - id: list-theatre-showtimes
+        method: GET
+        path: /theatres/{theatre-number}/showtimes
+        description: List future showtimes for a theatre.
+        inputParameters:
+        - name: theatre-number
+          in: path
+          type: integer
+        - name: movie-id
+          in: query
+          type: integer
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: list-theatre-showtimes-by-date
+        method: GET
+        path: /theatres/{theatre-number}/showtimes/{date}
+        description: List showtimes for a theatre on a date.
+        inputParameters:
+        - name: theatre-number
+          in: path
+          type: integer
+        - name: date
+          in: path
+          type: string
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: get-showtime
+        method: GET
+        path: /showtimes/{id}
+        description: Get a showtime by id.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: list-showtimes-by-location
+        method: GET
+        path: /showtimes/views/current-location/{date}/{latitude}/{longitude}
+        description: List showtimes near a latitude/longitude on a date.
+        inputParameters:
+        - name: date
+          in: path
+          type: string
+        - name: latitude
+          in: path
+          type: number
+        - name: longitude
+          in: path
+          type: number
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: locations
+      path: /v2
+      operations:
+      - id: list-location-suggestions
+        method: GET
+        path: /location-suggestions
+        description: Suggest locations by zip / city / state / theatre name.
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: markets
+      path: /v1
+      operations:
+      - id: list-markets
+        method: GET
+        path: /markets
+        description: List all AMC markets.
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: states
+      path: /v1
+      operations:
+      - id: list-states
+        method: GET
+        path: /states
+        description: List all states.
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: orders
+      path: /v3
+      operations:
+      - id: create-order
+        method: POST
+        path: /orders
+        description: Create a new order.
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: get-order
+        method: GET
+        path: /orders/{order-id}
+        inputParameters:
+        - name: order-id
+          in: path
+          type: string
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: add-order-product
+        method: POST
+        path: /orders/{order-id}/products
+        inputParameters:
+        - name: order-id
+          in: path
+          type: string
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: add-order-payment
+        method: POST
+        path: /orders/{order-id}/payments
+        inputParameters:
+        - name: order-id
+          in: path
+          type: string
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: delete-order
+        method: DELETE
+        path: /orders/{order-id}
+        inputParameters:
+        - name: order-id
+          in: path
+          type: string
+      - id: apply-loyalty-rewards
+        method: POST
+        path: /orders/{order-id}/loyalty-rewards-application
+        inputParameters:
+        - name: order-id
+          in: path
+          type: string
+    - name: concessions
+      path: /v1
+      operations:
+      - id: list-theatre-concessions
+        method: GET
+        path: /theatres/{theatre-id}/concessions
+        inputParameters:
+        - name: theatre-id
+          in: path
+          type: integer
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: list-concession-categories
+        method: GET
+        path: /theatres/{theatre-id}/concessions/categories
+        inputParameters:
+        - name: theatre-id
+          in: path
+          type: integer
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: loyalty
+      path: /v4
+      operations:
+      - id: get-loyalty-account
+        method: GET
+        path: /loyalty-accounts/{loyalty-account-id}
+        inputParameters:
+        - name: loyalty-account-id
+          in: path
+          type: string
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: get-loyalty-account-by-email
+        method: GET
+        path: /loyalty-accounts/email-{email-address}
+        inputParameters:
+        - name: email-address
+          in: path
+          type: string
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: create-loyalty-redemption
+        method: POST
+        path: /loyalty-accounts/{loyalty-account-id}/redemptions
+        inputParameters:
+        - name: loyalty-account-id
+          in: path
+          type: string
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: webhooks
+      path: /v1
+      operations:
+      - id: list-webhook-events
+        method: GET
+        path: /webhook-events
+        description: List available webhook events.
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: subscribe-webhook
+        method: POST
+        path: /webhooks
+        description: Subscribe to a webhook event.
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - id: unsubscribe-webhook
+        method: DELETE
+        path: /webhooks/{webhook-token-id}
+        inputParameters:
+        - name: webhook-token-id
+          in: path
+          type: string
   exposes:
-    - type: rest
-      port: 8093
-      namespace: amc-ticketing-api
-      description: "Unified REST API for AMC ticket and concession ordering."
-      resources:
-        - path: /orders
-          name: orders
-          operations:
-            - method: POST
-              name: create-order
-              description: Create a new AMC order.
-              call: "amc-theatres-api.create-order"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /orders/{order-id}
-          name: order
-          operations:
-            - method: GET
-              name: get-order
-              call: "amc-theatres-api.get-order"
-              with:
-                order-id: "rest.order-id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: DELETE
-              name: cancel-order
-              call: "amc-theatres-api.delete-order"
-              with:
-                order-id: "rest.order-id"
-        - path: /orders/{order-id}/products
-          name: order-products
-          operations:
-            - method: POST
-              name: add-product
-              call: "amc-theatres-api.add-order-product"
-              with:
-                order-id: "rest.order-id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /orders/{order-id}/payments
-          name: order-payments
-          operations:
-            - method: POST
-              name: add-payment
-              call: "amc-theatres-api.add-order-payment"
-              with:
-                order-id: "rest.order-id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /orders/{order-id}/loyalty
-          name: order-loyalty
-          operations:
-            - method: POST
-              name: apply-loyalty-rewards
-              description: Apply AMC Stubs rewards to an order.
-              call: "amc-theatres-api.apply-loyalty-rewards"
-              with:
-                order-id: "rest.order-id"
-
-    - type: mcp
-      port: 9093
-      namespace: amc-ticketing-mcp
-      transport: http
-      tools:
-        - name: create-amc-order
-          description: Create a new AMC order against a theatre.
-          call: "amc-theatres-api.create-order"
-        - name: add-amc-order-product
-          description: Add a ticket or concession SKU to an AMC order.
-          call: "amc-theatres-api.add-order-product"
-        - name: add-amc-order-payment
-          description: Add payment to an AMC order.
-          call: "amc-theatres-api.add-order-payment"
-        - name: apply-amc-loyalty-rewards
-          description: Apply AMC Stubs loyalty rewards to an order.
-          call: "amc-theatres-api.apply-loyalty-rewards"
+  - type: rest
+    port: 8093
+    namespace: amc-ticketing-api
+    description: Unified REST API for AMC ticket and concession ordering.
+    resources:
+    - path: /orders
+      name: orders
+      operations:
+      - method: POST
+        name: create-order
+        description: Create a new AMC order.
+        call: amc-theatres-api.create-order
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /orders/{order-id}
+      name: order
+      operations:
+      - method: GET
+        name: get-order
+        call: amc-theatres-api.get-order
+        with:
+          order-id: rest.order-id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: cancel-order
+        call: amc-theatres-api.delete-order
+        with:
+          order-id: rest.order-id
+    - path: /orders/{order-id}/products
+      name: order-products
+      operations:
+      - method: POST
+        name: add-product
+        call: amc-theatres-api.add-order-product
+        with:
+          order-id: rest.order-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /orders/{order-id}/payments
+      name: order-payments
+      operations:
+      - method: POST
+        name: add-payment
+        call: amc-theatres-api.add-order-payment
+        with:
+          order-id: rest.order-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /orders/{order-id}/loyalty
+      name: order-loyalty
+      operations:
+      - method: POST
+        name: apply-loyalty-rewards
+        description: Apply AMC Stubs rewards to an order.
+        call: amc-theatres-api.apply-loyalty-rewards
+        with:
+          order-id: rest.order-id
+  - type: mcp
+    port: 9093
+    namespace: amc-ticketing-mcp
+    transport: http
+    tools:
+    - name: create-amc-order
+      description: Create a new AMC order against a theatre.
+      call: amc-theatres-api.create-order
+    - name: add-amc-order-product
+      description: Add a ticket or concession SKU to an AMC order.
+      call: amc-theatres-api.add-order-product
+    - name: add-amc-order-payment
+      description: Add payment to an AMC order.
+      call: amc-theatres-api.add-order-payment
+    - name: apply-amc-loyalty-rewards
+      description: Apply AMC Stubs loyalty rewards to an order.
+      call: amc-theatres-api.apply-loyalty-rewards
