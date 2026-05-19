@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AMC Theatres API — MovieConfirmations
+  description: 'AMC Theatres API — MovieConfirmations. 1 operations. Lead operation: Get Movie Confirmation Check. Self-contained
+    Naftiko capability covering one Amc Entertainment Holdings business surface.'
+  tags:
+  - Amc Entertainment Holdings
+  - MovieConfirmations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMC_ENTERTAINMENT_HOLDINGS_API_KEY: AMC_ENTERTAINMENT_HOLDINGS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amc-theatres-movieconfirmations
+    baseUri: https://api.amctheatres.com
+    description: AMC Theatres API — MovieConfirmations business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-movies-movie-id-confirmation-check-confirmation-code
+      path: /v1/movies/{movie-id}/confirmation-check/{confirmation-code}
+      operations:
+      - name: getmovieconfirmationcheck
+        method: GET
+        description: Get Movie Confirmation Check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: movie-id
+          in: path
+          type: integer
+          required: true
+        - name: confirmation-code
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: X-AMC-Vendor-Key
+      value: '{{env.AMC_ENTERTAINMENT_HOLDINGS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amc-theatres-movieconfirmations-rest
+    port: 8080
+    description: REST adapter for AMC Theatres API — MovieConfirmations. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/v1/movies/{movie-id}/confirmation-check/{confirmation-code}
+      name: v1-movies-movie-id-confirmation-check-confirmation-code
+      description: REST surface for v1-movies-movie-id-confirmation-check-confirmation-code.
+      operations:
+      - method: GET
+        name: getmovieconfirmationcheck
+        description: Get Movie Confirmation Check
+        call: amc-theatres-movieconfirmations.getmovieconfirmationcheck
+        with:
+          movie-id: rest.movie-id
+          confirmation-code: rest.confirmation-code
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amc-theatres-movieconfirmations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AMC Theatres API — MovieConfirmations. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-movie-confirmation-check
+      description: Get Movie Confirmation Check
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movieconfirmations.getmovieconfirmationcheck
+      with:
+        movie-id: tools.movie-id
+        confirmation-code: tools.confirmation-code
+      outputParameters:
+      - type: object
+        mapping: $.

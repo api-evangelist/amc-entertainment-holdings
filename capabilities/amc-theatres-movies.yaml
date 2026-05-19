@@ -1,0 +1,396 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AMC Theatres API — Movies
+  description: 'AMC Theatres API — Movies. 10 operations. Lead operation: List All Movies. Self-contained Naftiko capability
+    covering one Amc Entertainment Holdings business surface.'
+  tags:
+  - Amc Entertainment Holdings
+  - Movies
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMC_ENTERTAINMENT_HOLDINGS_API_KEY: AMC_ENTERTAINMENT_HOLDINGS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amc-theatres-movies
+    baseUri: https://api.amctheatres.com
+    description: AMC Theatres API — Movies business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-movies
+      path: /v2/movies
+      operations:
+      - name: listmovies
+        method: GET
+        description: List All Movies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: name
+          in: query
+          type: string
+          description: Filter movies whose name contains the supplied text.
+    - name: v2-movies-internal-release-id
+      path: /v2/movies/internal-release/{id}
+      operations:
+      - name: getmoviebyinternalrelease
+        method: GET
+        description: Get a Movie by Internal Release Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+    - name: v2-movies-views-active
+      path: /v2/movies/views/active
+      operations:
+      - name: listmoviesactive
+        method: GET
+        description: List Active Movies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-movies-views-advance
+      path: /v2/movies/views/advance
+      operations:
+      - name: listmoviesadvance
+        method: GET
+        description: List Advance Ticket Movies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-movies-views-all-active
+      path: /v2/movies/views/all/active
+      operations:
+      - name: listmoviesallactive
+        method: GET
+        description: List All Active and On-Demand Movies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-movies-views-coming-soon
+      path: /v2/movies/views/coming-soon
+      operations:
+      - name: listmoviescomingsoon
+        method: GET
+        description: List Coming Soon Movies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-movies-views-now-playing
+      path: /v2/movies/views/now-playing
+      operations:
+      - name: listmoviesnowplaying
+        method: GET
+        description: List Now Playing Movies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-movies-views-on-demand
+      path: /v2/movies/views/on-demand
+      operations:
+      - name: listmoviesondemand
+        method: GET
+        description: List Digital On-Demand Movies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v2-movies-idOrSlug
+      path: /v2/movies/{idOrSlug}
+      operations:
+      - name: getmovie
+        method: GET
+        description: Get a Movie by Id or Slug
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: idOrSlug
+          in: path
+          type: string
+          required: true
+    - name: v2-movies-id-on-demand-similar
+      path: /v2/movies/{id}/on-demand/similar
+      operations:
+      - name: listsimilarondemandmovies
+        method: GET
+        description: List Similar On-Demand Movies
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+    authentication:
+      type: apikey
+      key: X-AMC-Vendor-Key
+      value: '{{env.AMC_ENTERTAINMENT_HOLDINGS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amc-theatres-movies-rest
+    port: 8080
+    description: REST adapter for AMC Theatres API — Movies. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v2/movies
+      name: v2-movies
+      description: REST surface for v2-movies.
+      operations:
+      - method: GET
+        name: listmovies
+        description: List All Movies
+        call: amc-theatres-movies.listmovies
+        with:
+          name: rest.name
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/movies/internal-release/{id}
+      name: v2-movies-internal-release-id
+      description: REST surface for v2-movies-internal-release-id.
+      operations:
+      - method: GET
+        name: getmoviebyinternalrelease
+        description: Get a Movie by Internal Release Id
+        call: amc-theatres-movies.getmoviebyinternalrelease
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/movies/views/active
+      name: v2-movies-views-active
+      description: REST surface for v2-movies-views-active.
+      operations:
+      - method: GET
+        name: listmoviesactive
+        description: List Active Movies
+        call: amc-theatres-movies.listmoviesactive
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/movies/views/advance
+      name: v2-movies-views-advance
+      description: REST surface for v2-movies-views-advance.
+      operations:
+      - method: GET
+        name: listmoviesadvance
+        description: List Advance Ticket Movies
+        call: amc-theatres-movies.listmoviesadvance
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/movies/views/all/active
+      name: v2-movies-views-all-active
+      description: REST surface for v2-movies-views-all-active.
+      operations:
+      - method: GET
+        name: listmoviesallactive
+        description: List All Active and On-Demand Movies
+        call: amc-theatres-movies.listmoviesallactive
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/movies/views/coming-soon
+      name: v2-movies-views-coming-soon
+      description: REST surface for v2-movies-views-coming-soon.
+      operations:
+      - method: GET
+        name: listmoviescomingsoon
+        description: List Coming Soon Movies
+        call: amc-theatres-movies.listmoviescomingsoon
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/movies/views/now-playing
+      name: v2-movies-views-now-playing
+      description: REST surface for v2-movies-views-now-playing.
+      operations:
+      - method: GET
+        name: listmoviesnowplaying
+        description: List Now Playing Movies
+        call: amc-theatres-movies.listmoviesnowplaying
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/movies/views/on-demand
+      name: v2-movies-views-on-demand
+      description: REST surface for v2-movies-views-on-demand.
+      operations:
+      - method: GET
+        name: listmoviesondemand
+        description: List Digital On-Demand Movies
+        call: amc-theatres-movies.listmoviesondemand
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/movies/{idorslug}
+      name: v2-movies-idorslug
+      description: REST surface for v2-movies-idOrSlug.
+      operations:
+      - method: GET
+        name: getmovie
+        description: Get a Movie by Id or Slug
+        call: amc-theatres-movies.getmovie
+        with:
+          idOrSlug: rest.idOrSlug
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/movies/{id}/on-demand/similar
+      name: v2-movies-id-on-demand-similar
+      description: REST surface for v2-movies-id-on-demand-similar.
+      operations:
+      - method: GET
+        name: listsimilarondemandmovies
+        description: List Similar On-Demand Movies
+        call: amc-theatres-movies.listsimilarondemandmovies
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amc-theatres-movies-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AMC Theatres API — Movies. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-all-movies
+      description: List All Movies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movies.listmovies
+      with:
+        name: tools.name
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-movie-internal-release-id
+      description: Get a Movie by Internal Release Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movies.getmoviebyinternalrelease
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-active-movies
+      description: List Active Movies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movies.listmoviesactive
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-advance-ticket-movies
+      description: List Advance Ticket Movies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movies.listmoviesadvance
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-all-active-and-demand
+      description: List All Active and On-Demand Movies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movies.listmoviesallactive
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-coming-soon-movies
+      description: List Coming Soon Movies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movies.listmoviescomingsoon
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-now-playing-movies
+      description: List Now Playing Movies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movies.listmoviesnowplaying
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-digital-demand-movies
+      description: List Digital On-Demand Movies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movies.listmoviesondemand
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-movie-id-slug
+      description: Get a Movie by Id or Slug
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movies.getmovie
+      with:
+        idOrSlug: tools.idOrSlug
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-similar-demand-movies
+      description: List Similar On-Demand Movies
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-movies.listsimilarondemandmovies
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,82 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AMC Theatres API — Refunds
+  description: 'AMC Theatres API — Refunds. 1 operations. Lead operation: Get Fee Waiver For Order. Self-contained Naftiko
+    capability covering one Amc Entertainment Holdings business surface.'
+  tags:
+  - Amc Entertainment Holdings
+  - Refunds
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMC_ENTERTAINMENT_HOLDINGS_API_KEY: AMC_ENTERTAINMENT_HOLDINGS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amc-theatres-refunds
+    baseUri: https://api.amctheatres.com
+    description: AMC Theatres API — Refunds business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-fee-waiver
+      path: /v1/fee-waiver
+      operations:
+      - name: getfeewaiver
+        method: POST
+        description: Get Fee Waiver For Order
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: X-AMC-Vendor-Key
+      value: '{{env.AMC_ENTERTAINMENT_HOLDINGS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amc-theatres-refunds-rest
+    port: 8080
+    description: REST adapter for AMC Theatres API — Refunds. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/fee-waiver
+      name: v1-fee-waiver
+      description: REST surface for v1-fee-waiver.
+      operations:
+      - method: POST
+        name: getfeewaiver
+        description: Get Fee Waiver For Order
+        call: amc-theatres-refunds.getfeewaiver
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amc-theatres-refunds-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AMC Theatres API — Refunds. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: get-fee-waiver-order
+      description: Get Fee Waiver For Order
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amc-theatres-refunds.getfeewaiver
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

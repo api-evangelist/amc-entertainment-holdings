@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AMC Theatres API — Markets
+  description: 'AMC Theatres API — Markets. 1 operations. Lead operation: List All Markets. Self-contained Naftiko capability
+    covering one Amc Entertainment Holdings business surface.'
+  tags:
+  - Amc Entertainment Holdings
+  - Markets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMC_ENTERTAINMENT_HOLDINGS_API_KEY: AMC_ENTERTAINMENT_HOLDINGS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amc-theatres-markets
+    baseUri: https://api.amctheatres.com
+    description: AMC Theatres API — Markets business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-markets
+      path: /v1/markets
+      operations:
+      - name: listmarkets
+        method: GET
+        description: List All Markets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-AMC-Vendor-Key
+      value: '{{env.AMC_ENTERTAINMENT_HOLDINGS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amc-theatres-markets-rest
+    port: 8080
+    description: REST adapter for AMC Theatres API — Markets. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/markets
+      name: v1-markets
+      description: REST surface for v1-markets.
+      operations:
+      - method: GET
+        name: listmarkets
+        description: List All Markets
+        call: amc-theatres-markets.listmarkets
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amc-theatres-markets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AMC Theatres API — Markets. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: list-all-markets
+      description: List All Markets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-markets.listmarkets
+      outputParameters:
+      - type: object
+        mapping: $.

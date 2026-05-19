@@ -1,0 +1,221 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AMC Theatres API — Webhooks
+  description: 'AMC Theatres API — Webhooks. 5 operations. Lead operation: List Available Webhook Events. Self-contained Naftiko
+    capability covering one Amc Entertainment Holdings business surface.'
+  tags:
+  - Amc Entertainment Holdings
+  - Webhooks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMC_ENTERTAINMENT_HOLDINGS_API_KEY: AMC_ENTERTAINMENT_HOLDINGS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amc-theatres-webhooks
+    baseUri: https://api.amctheatres.com
+    description: AMC Theatres API — Webhooks business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-webhook-events
+      path: /v1/webhook-events
+      operations:
+      - name: listwebhookevents
+        method: GET
+        description: List Available Webhook Events
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-webhooks
+      path: /v1/webhooks
+      operations:
+      - name: listwebhooks
+        method: GET
+        description: List Subscribed Webhooks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: subscribewebhook
+        method: POST
+        description: Subscribe To Webhook Event
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: v1-webhooks-webhook-token-id
+      path: /v1/webhooks/{webhook-token-id}
+      operations:
+      - name: unsubscribewebhook
+        method: DELETE
+        description: Unsubscribe From Webhook
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: webhook-token-id
+          in: path
+          type: string
+          required: true
+    - name: v1-webhooks-webhook-token-id-test
+      path: /v1/webhooks/{webhook-token-id}/test
+      operations:
+      - name: testwebhook
+        method: POST
+        description: Test Webhook Subscription
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: webhook-token-id
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: X-AMC-Vendor-Key
+      value: '{{env.AMC_ENTERTAINMENT_HOLDINGS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amc-theatres-webhooks-rest
+    port: 8080
+    description: REST adapter for AMC Theatres API — Webhooks. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v1/webhook-events
+      name: v1-webhook-events
+      description: REST surface for v1-webhook-events.
+      operations:
+      - method: GET
+        name: listwebhookevents
+        description: List Available Webhook Events
+        call: amc-theatres-webhooks.listwebhookevents
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/webhooks
+      name: v1-webhooks
+      description: REST surface for v1-webhooks.
+      operations:
+      - method: GET
+        name: listwebhooks
+        description: List Subscribed Webhooks
+        call: amc-theatres-webhooks.listwebhooks
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: subscribewebhook
+        description: Subscribe To Webhook Event
+        call: amc-theatres-webhooks.subscribewebhook
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/webhooks/{webhook-token-id}
+      name: v1-webhooks-webhook-token-id
+      description: REST surface for v1-webhooks-webhook-token-id.
+      operations:
+      - method: DELETE
+        name: unsubscribewebhook
+        description: Unsubscribe From Webhook
+        call: amc-theatres-webhooks.unsubscribewebhook
+        with:
+          webhook-token-id: rest.webhook-token-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v1/webhooks/{webhook-token-id}/test
+      name: v1-webhooks-webhook-token-id-test
+      description: REST surface for v1-webhooks-webhook-token-id-test.
+      operations:
+      - method: POST
+        name: testwebhook
+        description: Test Webhook Subscription
+        call: amc-theatres-webhooks.testwebhook
+        with:
+          webhook-token-id: rest.webhook-token-id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amc-theatres-webhooks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AMC Theatres API — Webhooks. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-available-webhook-events
+      description: List Available Webhook Events
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-webhooks.listwebhookevents
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-subscribed-webhooks
+      description: List Subscribed Webhooks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-webhooks.listwebhooks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: subscribe-webhook-event
+      description: Subscribe To Webhook Event
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amc-theatres-webhooks.subscribewebhook
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unsubscribe-webhook
+      description: Unsubscribe From Webhook
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amc-theatres-webhooks.unsubscribewebhook
+      with:
+        webhook-token-id: tools.webhook-token-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: test-webhook-subscription
+      description: Test Webhook Subscription
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: amc-theatres-webhooks.testwebhook
+      with:
+        webhook-token-id: tools.webhook-token-id
+      outputParameters:
+      - type: object
+        mapping: $.

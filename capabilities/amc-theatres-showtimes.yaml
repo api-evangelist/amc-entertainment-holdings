@@ -1,0 +1,299 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: AMC Theatres API — Showtimes
+  description: 'AMC Theatres API — Showtimes. 6 operations. Lead operation: List Showtimes Near a Location. Self-contained
+    Naftiko capability covering one Amc Entertainment Holdings business surface.'
+  tags:
+  - Amc Entertainment Holdings
+  - Showtimes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMC_ENTERTAINMENT_HOLDINGS_API_KEY: AMC_ENTERTAINMENT_HOLDINGS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amc-theatres-showtimes
+    baseUri: https://api.amctheatres.com
+    description: AMC Theatres API — Showtimes business capability. Self-contained, no shared references.
+    resources:
+    - name: v2-showtimes-views-current-location-date-latitude-longitude
+      path: /v2/showtimes/views/current-location/{date}/{latitude}/{longitude}
+      operations:
+      - name: listshowtimesbylocation
+        method: GET
+        description: List Showtimes Near a Location
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: date
+          in: path
+          type: string
+          required: true
+        - name: latitude
+          in: path
+          type: number
+          required: true
+        - name: longitude
+          in: path
+          type: number
+          required: true
+    - name: v2-showtimes-id
+      path: /v2/showtimes/{id}
+      operations:
+      - name: getshowtime
+        method: GET
+        description: Get Showtime By Id
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: integer
+          required: true
+    - name: v2-theatres-theatre-number-movies-movie-id-earliest-showtime
+      path: /v2/theatres/{theatre-number}/movies/{movie-id}/earliest-showtime
+      operations:
+      - name: getearliestshowtime
+        method: GET
+        description: Get Earliest Showtime For Movie at Theatre
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: movie-id
+          in: path
+          type: integer
+          required: true
+    - name: v2-theatres-theatre-number-showtimes
+      path: /v2/theatres/{theatre-number}/showtimes
+      operations:
+      - name: listtheatreshowtimes
+        method: GET
+        description: List Showtimes for a Theatre
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: movie-id
+          in: query
+          type: integer
+          description: Filter to showtimes for a specific movie id.
+    - name: v2-theatres-theatre-number-showtimes-date
+      path: /v2/theatres/{theatre-number}/showtimes/{date}
+      operations:
+      - name: listtheatreshowtimesbydate
+        method: GET
+        description: List Showtimes for a Theatre on a Date
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: date
+          in: path
+          type: string
+          description: Date in ISO-8601 (YYYY-MM-DD) format.
+          required: true
+    - name: v2-theatres-theatre-number-showtimes-date-views-embargoed
+      path: /v2/theatres/{theatre-number}/showtimes/{date}/views/embargoed
+      operations:
+      - name: listembargoedshowtimes
+        method: GET
+        description: List Embargoed Showtimes for a Theatre on a Date
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: date
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: X-AMC-Vendor-Key
+      value: '{{env.AMC_ENTERTAINMENT_HOLDINGS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amc-theatres-showtimes-rest
+    port: 8080
+    description: REST adapter for AMC Theatres API — Showtimes. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/v2/showtimes/views/current-location/{date}/{latitude}/{longitude}
+      name: v2-showtimes-views-current-location-date-latitude-longitude
+      description: REST surface for v2-showtimes-views-current-location-date-latitude-longitude.
+      operations:
+      - method: GET
+        name: listshowtimesbylocation
+        description: List Showtimes Near a Location
+        call: amc-theatres-showtimes.listshowtimesbylocation
+        with:
+          date: rest.date
+          latitude: rest.latitude
+          longitude: rest.longitude
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/showtimes/{id}
+      name: v2-showtimes-id
+      description: REST surface for v2-showtimes-id.
+      operations:
+      - method: GET
+        name: getshowtime
+        description: Get Showtime By Id
+        call: amc-theatres-showtimes.getshowtime
+        with:
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/theatres/{theatre-number}/movies/{movie-id}/earliest-showtime
+      name: v2-theatres-theatre-number-movies-movie-id-earliest-showtime
+      description: REST surface for v2-theatres-theatre-number-movies-movie-id-earliest-showtime.
+      operations:
+      - method: GET
+        name: getearliestshowtime
+        description: Get Earliest Showtime For Movie at Theatre
+        call: amc-theatres-showtimes.getearliestshowtime
+        with:
+          movie-id: rest.movie-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/theatres/{theatre-number}/showtimes
+      name: v2-theatres-theatre-number-showtimes
+      description: REST surface for v2-theatres-theatre-number-showtimes.
+      operations:
+      - method: GET
+        name: listtheatreshowtimes
+        description: List Showtimes for a Theatre
+        call: amc-theatres-showtimes.listtheatreshowtimes
+        with:
+          movie-id: rest.movie-id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/theatres/{theatre-number}/showtimes/{date}
+      name: v2-theatres-theatre-number-showtimes-date
+      description: REST surface for v2-theatres-theatre-number-showtimes-date.
+      operations:
+      - method: GET
+        name: listtheatreshowtimesbydate
+        description: List Showtimes for a Theatre on a Date
+        call: amc-theatres-showtimes.listtheatreshowtimesbydate
+        with:
+          date: rest.date
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/v2/theatres/{theatre-number}/showtimes/{date}/views/embargoed
+      name: v2-theatres-theatre-number-showtimes-date-views-embargoed
+      description: REST surface for v2-theatres-theatre-number-showtimes-date-views-embargoed.
+      operations:
+      - method: GET
+        name: listembargoedshowtimes
+        description: List Embargoed Showtimes for a Theatre on a Date
+        call: amc-theatres-showtimes.listembargoedshowtimes
+        with:
+          date: rest.date
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amc-theatres-showtimes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for AMC Theatres API — Showtimes. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-showtimes-near-location
+      description: List Showtimes Near a Location
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-showtimes.listshowtimesbylocation
+      with:
+        date: tools.date
+        latitude: tools.latitude
+        longitude: tools.longitude
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-showtime-id
+      description: Get Showtime By Id
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-showtimes.getshowtime
+      with:
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-earliest-showtime-movie-theatre
+      description: Get Earliest Showtime For Movie at Theatre
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-showtimes.getearliestshowtime
+      with:
+        movie-id: tools.movie-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-showtimes-theatre
+      description: List Showtimes for a Theatre
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-showtimes.listtheatreshowtimes
+      with:
+        movie-id: tools.movie-id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-showtimes-theatre-date
+      description: List Showtimes for a Theatre on a Date
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-showtimes.listtheatreshowtimesbydate
+      with:
+        date: tools.date
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-embargoed-showtimes-theatre-date
+      description: List Embargoed Showtimes for a Theatre on a Date
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amc-theatres-showtimes.listembargoedshowtimes
+      with:
+        date: tools.date
+      outputParameters:
+      - type: object
+        mapping: $.
