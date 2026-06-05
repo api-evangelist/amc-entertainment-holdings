@@ -1,114 +1,89 @@
-# amc-entertainment-holdings
+# AMC Entertainment Holdings (amc-entertainment-holdings)
 
-Profile for **AMC Entertainment Holdings** in the API Evangelist network. Fortune 2024 (rank 659).
+AMC Entertainment Holdings is the largest movie exhibition company in the United States and the world, operating AMC Theatres, AMC Stubs loyalty programs, and related entertainment brands. AMC publishes a public developer portal at developers.amctheatres.com that exposes a REST API for movies, showtimes, theatres, locations, seating, ticketing, concessions, AMC Stubs loyalty, refunds, fee waivers, barcodes, and webhooks. The API is the primary integration surface for distributors, partners, and third-party developers building movie discovery, ticket sales, and AMC Stubs co-marketing experiences.
 
-AMC Entertainment Holdings is the largest movie exhibition company in the United States and the world,
-operating AMC Theatres, AMC Stubs loyalty programs, and related entertainment brands. AMC publishes a
-public developer portal at [developers.amctheatres.com](https://developers.amctheatres.com) that exposes
-a REST API for movies, showtimes, theatres, locations, seating, ticketing, concessions, AMC Stubs
-loyalty, refunds, fee waivers, barcodes, and webhooks.
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/amc-entertainment-holdings/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/amc-entertainment-holdings/refs/heads/main/apis.yml)
 
-## Quick Facts
+## Scope
 
-- **Developer Portal:** https://developers.amctheatres.com (the live portal blocks scrapers).
+- **Type:** Index
+
+## Tags
+
+- Entertainment
+- Movies
+- Theatres
+- Showtimes
+- Ticketing
+- Concessions
+- Loyalty
+- Fortune 500
+
+## Timestamps
+
+- **Created:** 2026-05-04
+- **Modified:** 2026-05-19
+
+## APIs
+
+### AMC Theatres API
+
+The AMC Theatres API is a public REST API providing programmatic access to AMC Theatres data including theatres, locations, showtimes, movies, seating, ticketing, concessions, and AMC Stubs loyalty. The API is intended for partner integrations such as movie discovery, ticketing, and entertainment listings. Authentication is performed via a vendor API key issued through the AMC developer portal and supplied in the X-AMC-Vendor-Key header. Resource families are versioned independently under /v1, /v2, /v3, and /v4 path prefixes, and collection responses use a HAL-style envelope.
+
+- **Human URL:** [https://developers.amctheatres.com](https://developers.amctheatres.com)
 - **Base URL:** `https://api.amctheatres.com`
-- **Authentication:** API key sent in the `X-AMC-Vendor-Key` header.
-- **Versioning:** Resource families are independently versioned under `/v1`, `/v2`, `/v3`, `/v4`.
-- **Response envelope:** HAL-style with `pageSize`, `pageNumber`, `count`, `_embedded`, `_links`.
-- **GitHub:** [github.com/amctheatres](https://github.com/amctheatres) (organization exists; no public repos).
 
-## APIs Profiled
+#### Tags
 
-| API | Description |
-| --- | --- |
-| [AMC Theatres API](openapi/amc-theatres-api-openapi.yml) | REST API for theatres, movies, showtimes, locations, markets, seating, orders, payments, concessions, AMC Stubs loyalty, refunds, fee waivers, barcodes, and webhooks. |
+- Theatres
+- Showtimes
+- Movies
+- Ticketing
+- Concessions
+- Loyalty
+- Webhooks
 
-## Repository Layout
+#### Properties
 
-```
-amc-entertainment-holdings/
-├── apis.yml                                  Provider profile (apis.json 0.19)
-├── README.md
-├── openapi/
-│   └── amc-theatres-api-openapi.yml          Reconstructed OpenAPI 3.0.3 spec (73 paths, 45 schemas)
-├── rules/
-│   └── amc-theatres-rules.yml                Spectral ruleset for AMC API conventions
-├── capabilities/
-│   ├── shared/
-│   │   └── amc-theatres-api.yaml             Naftiko shared per-API consumed definition
-│   ├── movie-discovery.yaml                  Movie/theatre/showtime discovery workflow
-│   ├── ticket-purchase.yaml                  End-to-end ticket and concessions ordering workflow
-│   └── loyalty-management.yaml               AMC Stubs loyalty management workflow
-├── json-schema/
-│   ├── amc-theatres-theatre-schema.json
-│   ├── amc-theatres-movie-schema.json
-│   ├── amc-theatres-showtime-schema.json
-│   ├── amc-theatres-order-schema.json
-│   ├── amc-theatres-loyalty-account-schema.json
-│   └── amc-theatres-attribute-schema.json
-├── json-structure/
-│   ├── amc-theatres-theatre-structure.json
-│   ├── amc-theatres-movie-structure.json
-│   ├── amc-theatres-showtime-structure.json
-│   ├── amc-theatres-order-structure.json
-│   └── amc-theatres-loyalty-account-structure.json
-├── json-ld/
-│   └── amc-entertainment-holdings-context.jsonld
-├── examples/
-│   ├── amc-theatres-list-theatres-example.json
-│   ├── amc-theatres-list-movies-now-playing-example.json
-│   ├── amc-theatres-list-theatre-showtimes-example.json
-│   ├── amc-theatres-create-order-example.json
-│   └── amc-theatres-get-loyalty-account-example.json
-└── vocabulary/
-    └── amc-entertainment-holdings-vocabulary.yml
-```
+- [Developer Portal](https://developers.amctheatres.com)
+- [Documentation](https://developers.amctheatres.com)
+- [Authentication](https://developers.amctheatres.com/GettingStarted/Authentication)
+- [Sandbox](https://developers.amctheatres.com/GettingStarted/Sandbox)
+- [OpenAPI](openapi/amc-theatres-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/amc-theatres-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/amc-theatres-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Spectral Rules](rules/amc-theatres-rules.yml)
+- [Naftiko Shared Capability](capabilities/shared/amc-theatres-api.yaml)
+- [JSON Schema](json-schema/amc-theatres-theatre-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/amc-theatres-movie-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/amc-theatres-showtime-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/amc-theatres-order-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/amc-theatres-loyalty-account-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/amc-theatres-attribute-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Structure](json-structure/amc-theatres-theatre-structure.json)
+- [JSON Structure](json-structure/amc-theatres-movie-structure.json)
+- [JSON Structure](json-structure/amc-theatres-showtime-structure.json)
+- [JSON Structure](json-structure/amc-theatres-order-structure.json)
+- [JSON Structure](json-structure/amc-theatres-loyalty-account-structure.json)
+- [JSON-LD](json-ld/amc-entertainment-holdings-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+- [Vocabulary](vocabulary/amc-entertainment-holdings-vocabulary.yml)
+- [Example](examples/amc-theatres-list-theatres-example.json)
+- [Example](examples/amc-theatres-list-movies-now-playing-example.json)
+- [Example](examples/amc-theatres-list-theatre-showtimes-example.json)
+- [Example](examples/amc-theatres-create-order-example.json)
+- [Example](examples/amc-theatres-get-loyalty-account-example.json)
 
-## Resource Families
+## Common Properties
 
-The AMC Theatres API exposes the following resource families. Versions reflect the path prefix used in
-the public developer documentation.
+- [Website](https://www.amctheatres.com)
+- [Developer Portal](https://developers.amctheatres.com)
+- [Customers](https://www.amctheatres.com/amcstubs)
+- [Terms of Service](https://www.amctheatres.com/legal/terms-of-use)
+- [Privacy Policy](https://www.amctheatres.com/legal/privacy-policy)
+- [LinkedIn](https://www.linkedin.com/company/amc-theatres)
+- [Git Hub](https://github.com/amctheatres)
 
-| Resource | Version | Description |
-| --- | --- | --- |
-| Theatres | v2 | Theatre locations, attributes, brands, and metadata. |
-| Movies | v2 | Movies and views (`now-playing`, `advance`, `coming-soon`, `on-demand`). |
-| Showtimes | v2 | Showtimes by theatre, date, embargo status, and proximity to a coordinate. |
-| Locations | v2 | Locations by state, theatre name, and location-suggestion search. |
-| Markets | v1 | AMC market areas. |
-| States | v1 | U.S. states served. |
-| Media | v2 | Movie, theatre, and attribute imagery and video. |
-| Attributes | v1/v2 | Movie/showtime/theatre attribute taxonomy (IMAX, Atmos, Reserved Seating, etc.). |
-| Seating Layouts | v2 | Seating layouts for performances and auditoriums. |
-| Orders | v3 | Order creation, products, payments, fulfillment, and recording. |
-| Concessions | v1 | Concessions, categories, delivery locations, pickup/delivery times. |
-| Loyalty | v4 | AMC Stubs loyalty accounts, cards, redemptions, and registrations. |
-| Refunds | v1 | Refund reasons, fee waivers, and refunds. |
-| Barcodes | v3 | Ticket and loyalty QR codes and Code 128 barcodes. |
-| Webhooks | v1 | Webhook event subscriptions and management. |
-| Wallet | v4 | External wallet for use by external billers. |
+## Maintainers
 
-## Naftiko Capabilities
-
-Three workflow-oriented capabilities compose the AMC Theatres API into reusable building blocks:
-
-- **[Movie Discovery](capabilities/movie-discovery.yaml)** — Surface movies, theatres, and showtimes for entertainment listings, voice assistants, and AI concierges.
-- **[Ticket Purchase](capabilities/ticket-purchase.yaml)** — End-to-end orders: create order, add products, add payment, apply AMC Stubs rewards.
-- **[AMC Stubs Loyalty Management](capabilities/loyalty-management.yaml)** — Look up loyalty accounts and redeem points for customer-care and loyalty partners.
-
-Each workflow consumes the shared [`capabilities/shared/amc-theatres-api.yaml`](capabilities/shared/amc-theatres-api.yaml) definition, which binds the `AMC_VENDOR_KEY` environment variable to the `X-AMC-Vendor-Key` header.
-
-## Notes on Source Material
-
-The AMC developer portal at developers.amctheatres.com aggressively blocks automated retrieval, so the
-OpenAPI spec, JSON Schemas, and examples in this repository were reconstructed from a combination of:
-
-1. A community-maintained snapshot of the AMC Developer Portal HTML documentation captured by the
-   open-source [ialexryan/amc-showtime-monitor](https://github.com/ialexryan/amc-showtime-monitor)
-   project.
-2. The [StateMachineJunkie/AMCAPI](https://github.com/StateMachineJunkie/AMCAPI) Swift client for
-   schema cross-referencing.
-3. Live request signatures observed in the open-source `amc-showtime-monitor` TypeScript client
-   (auth header, base URL, HAL envelope conventions).
-
-This is a best-effort reconstruction; consult the official developer portal for the canonical contract.
+**FN:** API Evangelist
+**URL:** https://apievangelist.com
