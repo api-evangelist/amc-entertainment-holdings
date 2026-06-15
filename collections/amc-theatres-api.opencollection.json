@@ -1,0 +1,1868 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Theatres",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Active Theatres",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres",
+            "params": [
+              {
+                "name": "include-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must have."
+              },
+              {
+                "name": "exclude-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must not have."
+              },
+              {
+                "name": "attribute-operator",
+                "value": "",
+                "type": "query",
+                "description": "Whether the include/exclude attribute filter is `and` (all) or `or` (any)."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of theatre ids to filter by."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter theatres whose name contains the specified text."
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query",
+                "description": "Filter theatres in the specified market."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter theatres in the specified state (required when `city` is given)."
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "Filter theatres in the specified city (requires `state`)."
+              },
+              {
+                "name": "brand",
+                "value": "",
+                "type": "query",
+                "description": "Filter theatres by brand abbreviation."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Set to `closed` to include closed theatres."
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of active AMC theatres, optionally filtered by attributes, market, state/city, brand, or name."
+        },
+        {
+          "info": {
+            "name": "Get a Theatre by Id or Slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:idOrSlug",
+            "params": [
+              {
+                "name": "idOrSlug",
+                "value": "",
+                "type": "path",
+                "description": "The theatre id (integer) or theatre slug."
+              }
+            ]
+          },
+          "docs": "Returns a single theatre matched by numeric id or url-friendly slug."
+        },
+        {
+          "info": {
+            "name": "List Theatres Now Playing a WWM Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/views/now-playing/wwm-release-number/:wwm-release-number",
+            "params": [
+              {
+                "name": "wwm-release-number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns theatres now playing the specified West World Media release number."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Showtimes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Showtimes for a Theatre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:theatre-number/showtimes",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              },
+              {
+                "name": "movie-id",
+                "value": "",
+                "type": "query",
+                "description": "Filter to showtimes for a specific movie id."
+              },
+              {
+                "name": "include-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must have."
+              },
+              {
+                "name": "exclude-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must not have."
+              },
+              {
+                "name": "attribute-operator",
+                "value": "",
+                "type": "query",
+                "description": "Whether the include/exclude attribute filter is `and` (all) or `or` (any)."
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns all future showtimes for the specified theatre."
+        },
+        {
+          "info": {
+            "name": "List Showtimes for a Theatre on a Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:theatre-number/showtimes/:date",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "Date in ISO-8601 (YYYY-MM-DD) format."
+              },
+              {
+                "name": "include-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must have."
+              },
+              {
+                "name": "exclude-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must not have."
+              },
+              {
+                "name": "attribute-operator",
+                "value": "",
+                "type": "query",
+                "description": "Whether the include/exclude attribute filter is `and` (all) or `or` (any)."
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns all showtimes for the specified theatre on the specified date that meet the supplied search criteria."
+        },
+        {
+          "info": {
+            "name": "List Embargoed Showtimes for a Theatre on a Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:theatre-number/showtimes/:date/views/embargoed",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns all embargoed showtimes for the specified theatre and date."
+        },
+        {
+          "info": {
+            "name": "Get Earliest Showtime For Movie at Theatre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:theatre-number/movies/:movie-id/earliest-showtime",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              },
+              {
+                "name": "movie-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the earliest showtime for a specific movie id at the specified theatre."
+        },
+        {
+          "info": {
+            "name": "Get Showtime By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/showtimes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the showtime with the specified id."
+        },
+        {
+          "info": {
+            "name": "List Showtimes Near a Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/showtimes/views/current-location/:date/:latitude/:longitude",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns all showtimes in proximity to the supplied latitude and longitude on the specified date."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Seating",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Seating Layouts For an Auditorium",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:theatre-number/seating-layouts",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              }
+            ]
+          },
+          "docs": "Returns the seating layouts available at the specified theatre auditorium."
+        },
+        {
+          "info": {
+            "name": "Get Seating Layout For Performance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/seating-layouts/:theatre-number/:performance-number",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              },
+              {
+                "name": "performance-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Seating Layout For Performance"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Movies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter movies whose name contains the supplied text."
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of AMC movies."
+        },
+        {
+          "info": {
+            "name": "List Now Playing Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/now-playing",
+            "params": [
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "List Now Playing Movies"
+        },
+        {
+          "info": {
+            "name": "List Advance Ticket Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/advance",
+            "params": [
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "List Advance Ticket Movies"
+        },
+        {
+          "info": {
+            "name": "List Coming Soon Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/coming-soon",
+            "params": [
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "List Coming Soon Movies"
+        },
+        {
+          "info": {
+            "name": "List Active Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/active"
+          },
+          "docs": "List Active Movies"
+        },
+        {
+          "info": {
+            "name": "List All Active and On-Demand Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/all/active"
+          },
+          "docs": "List All Active and On-Demand Movies"
+        },
+        {
+          "info": {
+            "name": "List Digital On-Demand Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/on-demand"
+          },
+          "docs": "List Digital On-Demand Movies"
+        },
+        {
+          "info": {
+            "name": "Get a Movie by Id or Slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/:idOrSlug",
+            "params": [
+              {
+                "name": "idOrSlug",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a Movie by Id or Slug"
+        },
+        {
+          "info": {
+            "name": "List Similar On-Demand Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/:id/on-demand/similar",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Similar On-Demand Movies"
+        },
+        {
+          "info": {
+            "name": "Get a Movie by Internal Release Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/internal-release/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a Movie by Internal Release Id"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Locations in a State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/locations/states/:state-name",
+            "params": [
+              {
+                "name": "state-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Locations in a State"
+        },
+        {
+          "info": {
+            "name": "Get Locations Matching Theatre Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/locations/theatres/:theatre-name",
+            "params": [
+              {
+                "name": "theatre-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Locations Matching Theatre Name"
+        },
+        {
+          "info": {
+            "name": "List Location Suggestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/location-suggestions",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The user-entered text to suggest locations for."
+              }
+            ]
+          },
+          "docs": "Suggest locations by zip code, city, state, theatre name, etc."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Markets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/markets"
+          },
+          "docs": "List All Markets"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "States",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All States",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/states"
+          },
+          "docs": "List All States"
+        },
+        {
+          "info": {
+            "name": "Get State By Slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/states/:state-slug",
+            "params": [
+              {
+                "name": "state-slug",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get State By Slug"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Media By Type and Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/media/:media-type/:media-id",
+            "params": [
+              {
+                "name": "media-type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "media-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Media By Type and Id"
+        },
+        {
+          "info": {
+            "name": "List Media for a Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/media/:resource-type/:resource-id/:media-type",
+            "params": [
+              {
+                "name": "resource-type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "media-type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Media for a Resource"
+        },
+        {
+          "info": {
+            "name": "List Image Content Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/media/images/content-types"
+          },
+          "docs": "List Image Content Types"
+        },
+        {
+          "info": {
+            "name": "List Video Content Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/media/videos/content-types"
+          },
+          "docs": "List Video Content Types"
+        },
+        {
+          "info": {
+            "name": "List Image Sizes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/images/sizes"
+          },
+          "docs": "List Image Sizes"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Order"
+        },
+        {
+          "info": {
+            "name": "Record Completed Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/record",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Record Completed Order"
+        },
+        {
+          "info": {
+            "name": "Get Order By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Order By Id"
+        },
+        {
+          "info": {
+            "name": "Update Order Contact Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Order Contact Info"
+        },
+        {
+          "info": {
+            "name": "Delete Order By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Order By Id"
+        },
+        {
+          "info": {
+            "name": "Get Order By Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/orders/token-:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Order By Token"
+        },
+        {
+          "info": {
+            "name": "Lookup Order By Id and Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/email-:email/",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lookup Order By Id and Email"
+        },
+        {
+          "info": {
+            "name": "Add Product To Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/products",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Product To Order"
+        },
+        {
+          "info": {
+            "name": "Update Product in Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/products/:line-number",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "line-number",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Product in Order"
+        },
+        {
+          "info": {
+            "name": "Patch Product Delivery Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/products/:line-number",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "line-number",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update delivery information for concessions and gift card products."
+        },
+        {
+          "info": {
+            "name": "Delete Product From Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/products/:line-number",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "line-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Product From Order"
+        },
+        {
+          "info": {
+            "name": "Send Ticket Confirmation SMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/products/:line-number/sms-ticket-confirmation/:phone-number",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "line-number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "phone-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Send Ticket Confirmation SMS"
+        },
+        {
+          "info": {
+            "name": "Add Payment To Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/payments",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Payment To Order"
+        },
+        {
+          "info": {
+            "name": "Delete Payment From Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/payments/:line-number",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "line-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Payment From Order"
+        },
+        {
+          "info": {
+            "name": "Refresh Order Expiration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/refresh-expiration",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Refresh Order Expiration"
+        },
+        {
+          "info": {
+            "name": "Apply Loyalty Rewards To Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/loyalty-rewards-application",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Apply Loyalty Rewards To Order"
+        },
+        {
+          "info": {
+            "name": "Remove Loyalty Rewards From Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/loyalty-rewards-application",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Loyalty Rewards From Order"
+        },
+        {
+          "info": {
+            "name": "Record Failed Payment Authorization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/failed-payment-auths",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Record Failed Payment Authorization"
+        },
+        {
+          "info": {
+            "name": "List Orders For AMC Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/amc-accounts/:account-id/orders/",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "List Orders For AMC Account"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Concessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Concessions For a Theatre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/theatres/:theatre-id/concessions",
+            "params": [
+              {
+                "name": "theatre-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concessions For a Theatre"
+        },
+        {
+          "info": {
+            "name": "Get Concession By Theatre and Concession Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/theatres/:theatre-id/concessions/:concession-id",
+            "params": [
+              {
+                "name": "theatre-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "concession-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Concession By Theatre and Concession Id"
+        },
+        {
+          "info": {
+            "name": "Get Concession By Theatre Product Assignment Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/concessions/:theatre-product-assignment-id",
+            "params": [
+              {
+                "name": "theatre-product-assignment-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Concession By Theatre Product Assignment Id"
+        },
+        {
+          "info": {
+            "name": "List Concession Categories For a Theatre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/theatres/:theatre-id/concessions/categories",
+            "params": [
+              {
+                "name": "theatre-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concession Categories For a Theatre"
+        },
+        {
+          "info": {
+            "name": "List Concession Delivery Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/theatres/:theatre-id/concessions/delivery-locations/:year/:month/:day",
+            "params": [
+              {
+                "name": "theatre-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concession Delivery Locations"
+        },
+        {
+          "info": {
+            "name": "List Concession Pickup Times",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/theatres/:theatre-id/concessions/pickup-times/:year/:month/:day",
+            "params": [
+              {
+                "name": "theatre-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concession Pickup Times"
+        },
+        {
+          "info": {
+            "name": "List Concession Delivery Times For Showtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/showtimes/:id/concession-delivery-times",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concession Delivery Times For Showtime"
+        },
+        {
+          "info": {
+            "name": "List Concession Pickup Times For Showtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/showtimes/:showtime-id/concession-pickup-times",
+            "params": [
+              {
+                "name": "showtime-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concession Pickup Times For Showtime"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Loyalty",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Loyalty Account By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/:loyalty-account-id",
+            "params": [
+              {
+                "name": "loyalty-account-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Account By Id"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Account By Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/email-:email-address",
+            "params": [
+              {
+                "name": "email-address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Account By Email"
+        },
+        {
+          "info": {
+            "name": "Register For Loyalty Campaign By Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/email-:email-address/:campaign/registration",
+            "params": [
+              {
+                "name": "email-address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "campaign",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Register For Loyalty Campaign By Email"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Account By Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/card-:card-number",
+            "params": [
+              {
+                "name": "card-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Account By Card"
+        },
+        {
+          "info": {
+            "name": "Register For Loyalty Campaign By Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/card-:card-number/:campaign/registration",
+            "params": [
+              {
+                "name": "card-number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "campaign",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Register For Loyalty Campaign By Card"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Account By Phone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/phone-:phone",
+            "params": [
+              {
+                "name": "phone",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Account By Phone"
+        },
+        {
+          "info": {
+            "name": "Unlink Loyalty Account From AMC Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v4/amc-accounts/:amc-account-id/loyalty",
+            "params": [
+              {
+                "name": "amc-account-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unlink Loyalty Account From AMC Account"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/loyalty-cards/:card-number",
+            "params": [
+              {
+                "name": "card-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Card"
+        },
+        {
+          "info": {
+            "name": "Create Loyalty Points Redemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/:loyalty-account-id/redemptions",
+            "params": [
+              {
+                "name": "loyalty-account-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Loyalty Points Redemption"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get External Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/amc-accounts/:account-id/wallet/views/on-demand",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a version of the external wallet for use by external billers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Barcodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Ticket QR Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/qr-codes/:encrypted-reference-id",
+            "params": [
+              {
+                "name": "encrypted-reference-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the referenceId as a QR Code for the given encrypted product/reference id combination."
+        },
+        {
+          "info": {
+            "name": "Get Ticket Code 128 Barcode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/code128/:encrypted-reference-id",
+            "params": [
+              {
+                "name": "encrypted-reference-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Ticket Code 128 Barcode"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Card QR Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/amc-accounts/:account-id/loyalty/qr-code",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Card QR Code"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "MovieConfirmations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Movie Confirmation Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/movies/:movie-id/confirmation-check/:confirmation-code",
+            "params": [
+              {
+                "name": "movie-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "confirmation-code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the number of tickets associated with a given confirmation code for a particular movie."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Refunds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Fee Waiver For Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v1/fee-waiver",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get Fee Waiver For Order"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Available Webhook Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/webhook-events"
+          },
+          "docs": "List Available Webhook Events"
+        },
+        {
+          "info": {
+            "name": "List Subscribed Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/webhooks"
+          },
+          "docs": "List Subscribed Webhooks"
+        },
+        {
+          "info": {
+            "name": "Subscribe To Webhook Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribe To Webhook Event"
+        },
+        {
+          "info": {
+            "name": "Unsubscribe From Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v1/webhooks/:webhook-token-id",
+            "params": [
+              {
+                "name": "webhook-token-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unsubscribe From Webhook"
+        },
+        {
+          "info": {
+            "name": "Test Webhook Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v1/webhooks/:webhook-token-id/test",
+            "params": [
+              {
+                "name": "webhook-token-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Test Webhook Subscription"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
