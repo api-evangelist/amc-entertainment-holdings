@@ -55,7 +55,7 @@ apis:
         url: openapi/amc-theatres-api-openapi.yml
       - type: SpectralRules
         url: rules/amc-theatres-rules.yml
-      - type: NaftikoSharedCapability
+      - type: X-NaftikoSharedCapability
         url: capabilities/shared/amc-theatres-api.yaml
       - type: JSONSchema
         url: json-schema/amc-theatres-theatre-schema.json
@@ -83,15 +83,15 @@ apis:
         url: json-ld/amc-entertainment-holdings-context.jsonld
       - type: Vocabulary
         url: vocabulary/amc-entertainment-holdings-vocabulary.yml
-      - type: Example
+      - type: Examples
         url: examples/amc-theatres-list-theatres-example.json
-      - type: Example
+      - type: Examples
         url: examples/amc-theatres-list-movies-now-playing-example.json
-      - type: Example
+      - type: Examples
         url: examples/amc-theatres-list-theatre-showtimes-example.json
-      - type: Example
+      - type: Examples
         url: examples/amc-theatres-create-order-example.json
-      - type: Example
+      - type: Examples
         url: examples/amc-theatres-get-loyalty-account-example.json
     overlays: []
 common:
