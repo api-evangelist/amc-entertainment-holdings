@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/amc-theatres-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: VendorKey
+  type: apiKey
+  in: header
+  parameter: X-AMC-Vendor-Key
+  description: AMC vendor API key issued via the AMC Theatres developer portal.
+  sources:
+  - openapi/amc-theatres-api-openapi.yml
