@@ -95,6 +95,8 @@ apis:
         url: examples/amc-theatres-get-loyalty-account-example.json
     overlays: []
 common:
+  - type: AgenticAccess
+    url: agentic-access/amc-entertainment-holdings-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/amc-entertainment-holdings-vulnerability-disclosure.yml
   - type: DomainSecurity
