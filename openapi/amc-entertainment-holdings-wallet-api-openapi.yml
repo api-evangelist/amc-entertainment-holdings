@@ -1,0 +1,76 @@
+openapi: 3.0.3
+info:
+  title: AMC Theatres Barcodes Wallet API
+  description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
+
+    that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
+
+    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
+
+    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
+
+    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
+
+    third-party sites and apps.
+
+
+    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
+
+    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
+
+    `count`, `_embedded`, `_links`) for collections.
+
+
+    This OpenAPI definition was reconstructed from the public AMC Developer Portal
+
+    documentation (developers.amctheatres.com) and known integrations. The dev portal
+
+    blocks automated retrieval, so this spec was assembled from third-party mirrors
+
+    of the AMC documentation and verified against open-source AMC API clients.'
+  version: v2
+  contact:
+    name: AMC Theatres Developer Portal
+    url: https://developers.amctheatres.com
+  termsOfService: https://www.amctheatres.com/legal/terms-of-use
+  license:
+    name: AMC Theatres API Terms of Use
+    url: https://www.amctheatres.com/legal/terms-of-use
+servers:
+- url: https://api.amctheatres.com
+  description: AMC Theatres production API
+security:
+- VendorKey: []
+tags:
+- name: Wallet
+  description: AMC account wallets for external billers.
+paths:
+  /v4/amc-accounts/{account-id}/wallet/views/on-demand:
+    get:
+      summary: Get External Wallet
+      description: Get a version of the external wallet for use by external billers.
+      operationId: getExternalWallet
+      tags:
+      - Wallet
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: Wallet representation.
+components:
+  parameters:
+    AccountId:
+      name: account-id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    VendorKey:
+      type: apiKey
+      in: header
+      name: X-AMC-Vendor-Key
+      description: AMC vendor API key issued via the AMC Theatres developer portal.
+externalDocs:
+  description: AMC Theatres Developer Portal
+  url: https://developers.amctheatres.com

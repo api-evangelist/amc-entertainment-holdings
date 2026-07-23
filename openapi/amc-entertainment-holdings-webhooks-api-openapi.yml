@@ -1,0 +1,162 @@
+openapi: 3.0.3
+info:
+  title: AMC Theatres Barcodes Webhooks API
+  description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
+
+    that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
+
+    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
+
+    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
+
+    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
+
+    third-party sites and apps.
+
+
+    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
+
+    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
+
+    `count`, `_embedded`, `_links`) for collections.
+
+
+    This OpenAPI definition was reconstructed from the public AMC Developer Portal
+
+    documentation (developers.amctheatres.com) and known integrations. The dev portal
+
+    blocks automated retrieval, so this spec was assembled from third-party mirrors
+
+    of the AMC documentation and verified against open-source AMC API clients.'
+  version: v2
+  contact:
+    name: AMC Theatres Developer Portal
+    url: https://developers.amctheatres.com
+  termsOfService: https://www.amctheatres.com/legal/terms-of-use
+  license:
+    name: AMC Theatres API Terms of Use
+    url: https://www.amctheatres.com/legal/terms-of-use
+servers:
+- url: https://api.amctheatres.com
+  description: AMC Theatres production API
+security:
+- VendorKey: []
+tags:
+- name: Webhooks
+  description: Vendor webhook subscription and management.
+paths:
+  /v1/webhook-events:
+    get:
+      summary: List Available Webhook Events
+      operationId: listWebhookEvents
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: Available events.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebhookEvent'
+  /v1/webhooks:
+    get:
+      summary: List Subscribed Webhooks
+      operationId: listWebhooks
+      tags:
+      - Webhooks
+      responses:
+        '200':
+          description: Subscriptions.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebhookSubscription'
+    post:
+      summary: Subscribe To Webhook Event
+      operationId: subscribeWebhook
+      tags:
+      - Webhooks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookSubscriptionCreate'
+      responses:
+        '201':
+          description: Subscribed.
+  /v1/webhooks/{webhook-token-id}:
+    delete:
+      summary: Unsubscribe From Webhook
+      operationId: unsubscribeWebhook
+      tags:
+      - Webhooks
+      parameters:
+      - name: webhook-token-id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Unsubscribed.
+  /v1/webhooks/{webhook-token-id}/test:
+    post:
+      summary: Test Webhook Subscription
+      operationId: testWebhook
+      tags:
+      - Webhooks
+      parameters:
+      - name: webhook-token-id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Test sent.
+components:
+  schemas:
+    WebhookSubscriptionCreate:
+      type: object
+      required:
+      - eventName
+      - url
+      properties:
+        eventName:
+          type: string
+        url:
+          type: string
+          format: uri
+    WebhookSubscription:
+      type: object
+      properties:
+        webhookTokenId:
+          type: string
+        eventName:
+          type: string
+        url:
+          type: string
+          format: uri
+        active:
+          type: boolean
+    WebhookEvent:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+  securitySchemes:
+    VendorKey:
+      type: apiKey
+      in: header
+      name: X-AMC-Vendor-Key
+      description: AMC vendor API key issued via the AMC Theatres developer portal.
+externalDocs:
+  description: AMC Theatres Developer Portal
+  url: https://developers.amctheatres.com

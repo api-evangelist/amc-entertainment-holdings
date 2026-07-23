@@ -1,0 +1,374 @@
+openapi: 3.0.3
+info:
+  title: AMC Theatres Barcodes Movies API
+  description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
+
+    that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
+
+    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
+
+    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
+
+    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
+
+    third-party sites and apps.
+
+
+    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
+
+    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
+
+    `count`, `_embedded`, `_links`) for collections.
+
+
+    This OpenAPI definition was reconstructed from the public AMC Developer Portal
+
+    documentation (developers.amctheatres.com) and known integrations. The dev portal
+
+    blocks automated retrieval, so this spec was assembled from third-party mirrors
+
+    of the AMC documentation and verified against open-source AMC API clients.'
+  version: v2
+  contact:
+    name: AMC Theatres Developer Portal
+    url: https://developers.amctheatres.com
+  termsOfService: https://www.amctheatres.com/legal/terms-of-use
+  license:
+    name: AMC Theatres API Terms of Use
+    url: https://www.amctheatres.com/legal/terms-of-use
+servers:
+- url: https://api.amctheatres.com
+  description: AMC Theatres production API
+security:
+- VendorKey: []
+tags:
+- name: Movies
+  description: AMC movies, including now-playing, advance, coming-soon, and on-demand.
+paths:
+  /v2/movies:
+    get:
+      summary: List All Movies
+      description: Returns a paginated list of AMC movies.
+      operationId: listMovies
+      tags:
+      - Movies
+      parameters:
+      - name: name
+        in: query
+        schema:
+          type: string
+        description: Filter movies whose name contains the supplied text.
+      - $ref: '#/components/parameters/PageNumber'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Movies collection.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieCollection'
+  /v2/movies/views/now-playing:
+    get:
+      summary: List Now Playing Movies
+      operationId: listMoviesNowPlaying
+      tags:
+      - Movies
+      parameters:
+      - $ref: '#/components/parameters/PageNumber'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Now playing movies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieCollection'
+  /v2/movies/views/advance:
+    get:
+      summary: List Advance Ticket Movies
+      operationId: listMoviesAdvance
+      tags:
+      - Movies
+      parameters:
+      - $ref: '#/components/parameters/PageNumber'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Advance ticket movies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieCollection'
+  /v2/movies/views/coming-soon:
+    get:
+      summary: List Coming Soon Movies
+      operationId: listMoviesComingSoon
+      tags:
+      - Movies
+      parameters:
+      - $ref: '#/components/parameters/PageNumber'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Coming soon movies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieCollection'
+  /v2/movies/views/active:
+    get:
+      summary: List Active Movies
+      operationId: listMoviesActive
+      tags:
+      - Movies
+      responses:
+        '200':
+          description: Active movies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieCollection'
+  /v2/movies/views/all/active:
+    get:
+      summary: List All Active and On-Demand Movies
+      operationId: listMoviesAllActive
+      tags:
+      - Movies
+      responses:
+        '200':
+          description: All active and digital on-demand movies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieCollection'
+  /v2/movies/views/on-demand:
+    get:
+      summary: List Digital On-Demand Movies
+      operationId: listMoviesOnDemand
+      tags:
+      - Movies
+      responses:
+        '200':
+          description: On-demand movies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieCollection'
+  /v2/movies/{idOrSlug}:
+    get:
+      summary: Get a Movie by Id or Slug
+      operationId: getMovie
+      tags:
+      - Movies
+      parameters:
+      - name: idOrSlug
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Movie representation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /v2/movies/{id}/on-demand/similar:
+    get:
+      summary: List Similar On-Demand Movies
+      operationId: listSimilarOnDemandMovies
+      tags:
+      - Movies
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Similar movies.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MovieCollection'
+  /v2/movies/internal-release/{id}:
+    get:
+      summary: Get a Movie by Internal Release Id
+      operationId: getMovieByInternalRelease
+      tags:
+      - Movies
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Movie representation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+components:
+  schemas:
+    MovieCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              movies:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+    ApiError:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+        errorCode:
+          type: string
+        moreInfo:
+          type: string
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    Attribute:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        url:
+          type: string
+          format: uri
+        sort:
+          type: integer
+        appliesToMovie:
+          type: boolean
+        appliesToShowtime:
+          type: boolean
+        appliesToTheatre:
+          type: boolean
+        media:
+          type: object
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    Movie:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        sortableName:
+          type: string
+        slug:
+          type: string
+        synopsis:
+          type: string
+        synopsisTagLine:
+          type: string
+        productionCompany:
+          type: string
+        starringActors:
+          type: string
+        directors:
+          type: string
+        genre:
+          type: string
+        mpaaRating:
+          type: string
+        runTime:
+          type: integer
+        releaseDateUtc:
+          type: string
+          format: date-time
+        earliestShowingUtc:
+          type: string
+          format: date-time
+        hasScheduledShowtimes:
+          type: boolean
+        websiteUrl:
+          type: string
+          format: uri
+        showtimesUrl:
+          type: string
+          format: uri
+        media:
+          type: object
+          additionalProperties:
+            type: string
+            format: uri
+        attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attribute'
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+  parameters:
+    PageSize:
+      name: page-size
+      in: query
+      description: Results per page (max 100). Defaults to 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    PageNumber:
+      name: page-number
+      in: query
+      description: Page number to retrieve. Defaults to 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+  responses:
+    NotFound:
+      description: Resource not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ApiError'
+  securitySchemes:
+    VendorKey:
+      type: apiKey
+      in: header
+      name: X-AMC-Vendor-Key
+      description: AMC vendor API key issued via the AMC Theatres developer portal.
+externalDocs:
+  description: AMC Theatres Developer Portal
+  url: https://developers.amctheatres.com

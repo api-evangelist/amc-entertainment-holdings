@@ -1,0 +1,583 @@
+openapi: 3.0.3
+info:
+  title: AMC Theatres Barcodes Orders API
+  description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
+
+    that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
+
+    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
+
+    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
+
+    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
+
+    third-party sites and apps.
+
+
+    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
+
+    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
+
+    `count`, `_embedded`, `_links`) for collections.
+
+
+    This OpenAPI definition was reconstructed from the public AMC Developer Portal
+
+    documentation (developers.amctheatres.com) and known integrations. The dev portal
+
+    blocks automated retrieval, so this spec was assembled from third-party mirrors
+
+    of the AMC documentation and verified against open-source AMC API clients.'
+  version: v2
+  contact:
+    name: AMC Theatres Developer Portal
+    url: https://developers.amctheatres.com
+  termsOfService: https://www.amctheatres.com/legal/terms-of-use
+  license:
+    name: AMC Theatres API Terms of Use
+    url: https://www.amctheatres.com/legal/terms-of-use
+servers:
+- url: https://api.amctheatres.com
+  description: AMC Theatres production API
+security:
+- VendorKey: []
+tags:
+- name: Orders
+  description: Order creation, payment, fulfillment, and management.
+paths:
+  /v3/orders:
+    post:
+      summary: Create Order
+      operationId: createOrder
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreate'
+      responses:
+        '201':
+          description: Order created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /v3/orders/record:
+    post:
+      summary: Record Completed Order
+      operationId: recordOrder
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderRecord'
+      responses:
+        '201':
+          description: Order recorded.
+  /v3/orders/{order-id}:
+    parameters:
+    - $ref: '#/components/parameters/OrderId'
+    get:
+      summary: Get Order By Id
+      operationId: getOrder
+      tags:
+      - Orders
+      responses:
+        '200':
+          description: Order representation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+    put:
+      summary: Update Order Contact Info
+      operationId: updateOrderContact
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderContact'
+      responses:
+        '200':
+          description: Order updated.
+    delete:
+      summary: Delete Order By Id
+      operationId: deleteOrder
+      tags:
+      - Orders
+      responses:
+        '204':
+          description: Order deleted.
+  /v3/orders/token-{token}:
+    get:
+      summary: Get Order By Token
+      operationId: getOrderByToken
+      tags:
+      - Orders
+      parameters:
+      - name: token
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Order representation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /v3/orders/{order-id}/email-{email}/:
+    get:
+      summary: Lookup Order By Id and Email
+      operationId: getOrderByIdAndEmail
+      tags:
+      - Orders
+      parameters:
+      - $ref: '#/components/parameters/OrderId'
+      - name: email
+        in: path
+        required: true
+        schema:
+          type: string
+          format: email
+      responses:
+        '200':
+          description: Order representation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+  /v3/orders/{order-id}/products:
+    parameters:
+    - $ref: '#/components/parameters/OrderId'
+    post:
+      summary: Add Product To Order
+      operationId: addOrderProduct
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderProductAdd'
+      responses:
+        '201':
+          description: Product added.
+  /v3/orders/{order-id}/products/{line-number}:
+    parameters:
+    - $ref: '#/components/parameters/OrderId'
+    - name: line-number
+      in: path
+      required: true
+      schema:
+        type: integer
+    put:
+      summary: Update Product in Order
+      operationId: updateOrderProduct
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderProductUpdate'
+      responses:
+        '200':
+          description: Product updated.
+    patch:
+      summary: Patch Product Delivery Info
+      description: Update delivery information for concessions and gift card products.
+      operationId: patchOrderProduct
+      tags:
+      - Orders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderProductPatch'
+      responses:
+        '200':
+          description: Product patched.
+    delete:
+      summary: Delete Product From Order
+      operationId: deleteOrderProduct
+      tags:
+      - Orders
+      responses:
+        '204':
+          description: Product removed.
+  /v3/orders/{order-id}/products/{line-number}/sms-ticket-confirmation/{phone-number}:
+    post:
+      summary: Send Ticket Confirmation SMS
+      operationId: sendTicketConfirmationSms
+      tags:
+      - Orders
+      parameters:
+      - $ref: '#/components/parameters/OrderId'
+      - name: line-number
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: phone-number
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '202':
+          description: SMS queued.
+  /v3/orders/{order-id}/payments:
+    post:
+      summary: Add Payment To Order
+      operationId: addOrderPayment
+      tags:
+      - Orders
+      parameters:
+      - $ref: '#/components/parameters/OrderId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Payment'
+      responses:
+        '201':
+          description: Payment added.
+  /v3/orders/{order-id}/payments/{line-number}:
+    delete:
+      summary: Delete Payment From Order
+      operationId: deleteOrderPayment
+      tags:
+      - Orders
+      parameters:
+      - $ref: '#/components/parameters/OrderId'
+      - name: line-number
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Payment removed.
+  /v3/orders/{order-id}/refresh-expiration:
+    post:
+      summary: Refresh Order Expiration
+      operationId: refreshOrderExpiration
+      tags:
+      - Orders
+      parameters:
+      - $ref: '#/components/parameters/OrderId'
+      responses:
+        '200':
+          description: Expiration refreshed.
+  /v3/orders/{order-id}/loyalty-rewards-application:
+    parameters:
+    - $ref: '#/components/parameters/OrderId'
+    post:
+      summary: Apply Loyalty Rewards To Order
+      operationId: applyLoyaltyRewards
+      tags:
+      - Orders
+      responses:
+        '200':
+          description: Rewards applied.
+    delete:
+      summary: Remove Loyalty Rewards From Order
+      operationId: removeLoyaltyRewards
+      tags:
+      - Orders
+      responses:
+        '204':
+          description: Rewards removed.
+  /v3/orders/{order-id}/failed-payment-auths:
+    post:
+      summary: Record Failed Payment Authorization
+      operationId: recordFailedPaymentAuth
+      tags:
+      - Orders
+      parameters:
+      - $ref: '#/components/parameters/OrderId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FailedPaymentAuth'
+      responses:
+        '201':
+          description: Failure recorded.
+  /v3/amc-accounts/{account-id}/orders/:
+    get:
+      summary: List Orders For AMC Account
+      operationId: listAccountOrders
+      tags:
+      - Orders
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - $ref: '#/components/parameters/PageNumber'
+      - $ref: '#/components/parameters/PageSize'
+      responses:
+        '200':
+          description: Orders for account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderCollection'
+components:
+  schemas:
+    OrderProduct:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+        sku:
+          type: string
+        productType:
+          type: string
+          enum:
+          - Ticket
+          - Concession
+          - GiftCard
+          - Other
+        quantity:
+          type: integer
+        unitPrice:
+          type: number
+          format: double
+        totalPrice:
+          type: number
+          format: double
+        showtimeId:
+          type: integer
+        seatIds:
+          type: array
+          items:
+            type: string
+        deliveryLocationId:
+          type: integer
+        pickupTime:
+          type: string
+          format: date-time
+        deliveryTime:
+          type: string
+          format: date-time
+    FailedPaymentAuth:
+      type: object
+      properties:
+        gateway:
+          type: string
+        responseCode:
+          type: string
+        message:
+          type: string
+    OrderProductPatch:
+      type: object
+      properties:
+        deliveryLocationId:
+          type: integer
+        pickupTime:
+          type: string
+          format: date-time
+        deliveryTime:
+          type: string
+          format: date-time
+    OrderProductAdd:
+      type: object
+      required:
+      - sku
+      - quantity
+      properties:
+        sku:
+          type: string
+        quantity:
+          type: integer
+        showtimeId:
+          type: integer
+        seatIds:
+          type: array
+          items:
+            type: string
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    OrderCreate:
+      type: object
+      required:
+      - theatreId
+      properties:
+        theatreId:
+          type: integer
+        contact:
+          $ref: '#/components/schemas/OrderContact'
+        amcAccountId:
+          type: string
+    OrderContact:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        zipCode:
+          type: string
+    OrderProductUpdate:
+      allOf:
+      - $ref: '#/components/schemas/OrderProductAdd'
+    Order:
+      type: object
+      properties:
+        orderId:
+          type: string
+        token:
+          type: string
+        amcAccountId:
+          type: string
+        status:
+          type: string
+        createdUtc:
+          type: string
+          format: date-time
+        expirationUtc:
+          type: string
+          format: date-time
+        totalAmount:
+          type: number
+          format: double
+        totalTax:
+          type: number
+          format: double
+        totalConvenienceFees:
+          type: number
+          format: double
+        contact:
+          $ref: '#/components/schemas/OrderContact'
+        products:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderProduct'
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Payment'
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    OrderCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              orders:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+    Payment:
+      type: object
+      properties:
+        lineNumber:
+          type: integer
+        type:
+          type: string
+          enum:
+          - CreditCard
+          - GiftCard
+          - AppleyPay
+          - GooglePay
+          - Loyalty
+        amount:
+          type: number
+          format: double
+        creditCard:
+          type: object
+          properties:
+            tokenizedNumber:
+              type: string
+            expiration:
+              type: string
+            cardType:
+              type: string
+            zipCode:
+              type: string
+    OrderRecord:
+      type: object
+      properties:
+        orderId:
+          type: string
+        externalOrderId:
+          type: string
+  parameters:
+    PageSize:
+      name: page-size
+      in: query
+      description: Results per page (max 100). Defaults to 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    PageNumber:
+      name: page-number
+      in: query
+      description: Page number to retrieve. Defaults to 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    OrderId:
+      name: order-id
+      in: path
+      required: true
+      schema:
+        type: string
+    AccountId:
+      name: account-id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    VendorKey:
+      type: apiKey
+      in: header
+      name: X-AMC-Vendor-Key
+      description: AMC vendor API key issued via the AMC Theatres developer portal.
+externalDocs:
+  description: AMC Theatres Developer Portal
+  url: https://developers.amctheatres.com

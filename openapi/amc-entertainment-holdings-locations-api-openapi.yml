@@ -1,0 +1,194 @@
+openapi: 3.0.3
+info:
+  title: AMC Theatres Barcodes Locations API
+  description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
+
+    that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
+
+    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
+
+    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
+
+    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
+
+    third-party sites and apps.
+
+
+    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
+
+    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
+
+    `count`, `_embedded`, `_links`) for collections.
+
+
+    This OpenAPI definition was reconstructed from the public AMC Developer Portal
+
+    documentation (developers.amctheatres.com) and known integrations. The dev portal
+
+    blocks automated retrieval, so this spec was assembled from third-party mirrors
+
+    of the AMC documentation and verified against open-source AMC API clients.'
+  version: v2
+  contact:
+    name: AMC Theatres Developer Portal
+    url: https://developers.amctheatres.com
+  termsOfService: https://www.amctheatres.com/legal/terms-of-use
+  license:
+    name: AMC Theatres API Terms of Use
+    url: https://www.amctheatres.com/legal/terms-of-use
+servers:
+- url: https://api.amctheatres.com
+  description: AMC Theatres production API
+security:
+- VendorKey: []
+tags:
+- name: Locations
+  description: Geographic helpers for finding theatres by state, city, name, or coordinates.
+paths:
+  /v2/locations/states/{state-name}:
+    get:
+      summary: Get Locations in a State
+      operationId: listLocationsByState
+      tags:
+      - Locations
+      parameters:
+      - name: state-name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Locations in the state.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationCollection'
+  /v2/locations/theatres/{theatre-name}:
+    get:
+      summary: Get Locations Matching Theatre Name
+      operationId: listLocationsByTheatreName
+      tags:
+      - Locations
+      parameters:
+      - name: theatre-name
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Matching locations.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationCollection'
+  /v2/location-suggestions:
+    get:
+      summary: List Location Suggestions
+      description: Suggest locations by zip code, city, state, theatre name, etc.
+      operationId: listLocationSuggestions
+      tags:
+      - Locations
+      parameters:
+      - name: query
+        in: query
+        schema:
+          type: string
+        description: The user-entered text to suggest locations for.
+      responses:
+        '200':
+          description: Location suggestions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LocationSuggestionCollection'
+components:
+  schemas:
+    Location:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        slug:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        addressLine1:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        postalCode:
+          type: string
+    LocationSuggestionCollection:
+      type: object
+      properties:
+        suggestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationSuggestion'
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    LocationSuggestion:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - Theatre
+          - City
+          - State
+          - Postal
+          - Market
+        text:
+          type: string
+        url:
+          type: string
+          format: uri
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    LocationCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              locations:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+  securitySchemes:
+    VendorKey:
+      type: apiKey
+      in: header
+      name: X-AMC-Vendor-Key
+      description: AMC vendor API key issued via the AMC Theatres developer portal.
+externalDocs:
+  description: AMC Theatres Developer Portal
+  url: https://developers.amctheatres.com

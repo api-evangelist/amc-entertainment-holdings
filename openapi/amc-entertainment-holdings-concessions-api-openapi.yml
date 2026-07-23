@@ -1,0 +1,301 @@
+openapi: 3.0.3
+info:
+  title: AMC Theatres Barcodes Concessions API
+  description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
+
+    that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
+
+    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
+
+    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
+
+    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
+
+    third-party sites and apps.
+
+
+    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
+
+    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
+
+    `count`, `_embedded`, `_links`) for collections.
+
+
+    This OpenAPI definition was reconstructed from the public AMC Developer Portal
+
+    documentation (developers.amctheatres.com) and known integrations. The dev portal
+
+    blocks automated retrieval, so this spec was assembled from third-party mirrors
+
+    of the AMC documentation and verified against open-source AMC API clients.'
+  version: v2
+  contact:
+    name: AMC Theatres Developer Portal
+    url: https://developers.amctheatres.com
+  termsOfService: https://www.amctheatres.com/legal/terms-of-use
+  license:
+    name: AMC Theatres API Terms of Use
+    url: https://www.amctheatres.com/legal/terms-of-use
+servers:
+- url: https://api.amctheatres.com
+  description: AMC Theatres production API
+security:
+- VendorKey: []
+tags:
+- name: Concessions
+  description: Concessions ordering, categories, delivery and pickup logistics.
+paths:
+  /v1/theatres/{theatre-id}/concessions:
+    get:
+      summary: List Concessions For a Theatre
+      operationId: listTheatreConcessions
+      tags:
+      - Concessions
+      parameters:
+      - name: theatre-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Concessions for theatre.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConcessionCollection'
+  /v1/theatres/{theatre-id}/concessions/{concession-id}:
+    get:
+      summary: Get Concession By Theatre and Concession Id
+      operationId: getConcession
+      tags:
+      - Concessions
+      parameters:
+      - name: theatre-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: concession-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Concession representation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Concession'
+  /v1/concessions/{theatre-product-assignment-id}:
+    get:
+      summary: Get Concession By Theatre Product Assignment Id
+      operationId: getConcessionByAssignment
+      tags:
+      - Concessions
+      parameters:
+      - name: theatre-product-assignment-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Concession representation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Concession'
+  /v1/theatres/{theatre-id}/concessions/categories:
+    get:
+      summary: List Concession Categories For a Theatre
+      operationId: listConcessionCategories
+      tags:
+      - Concessions
+      parameters:
+      - name: theatre-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Categories list.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ConcessionCategory'
+  /v1/theatres/{theatre-id}/concessions/delivery-locations/{year}/{month}/{day}:
+    get:
+      summary: List Concession Delivery Locations
+      operationId: listConcessionDeliveryLocations
+      tags:
+      - Concessions
+      parameters:
+      - name: theatre-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: year
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: month
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: day
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Delivery locations.
+  /v1/theatres/{theatre-id}/concessions/pickup-times/{year}/{month}/{day}:
+    get:
+      summary: List Concession Pickup Times
+      operationId: listConcessionPickupTimes
+      tags:
+      - Concessions
+      parameters:
+      - name: theatre-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: year
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: month
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: day
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Pickup times.
+  /v1/showtimes/{id}/concession-delivery-times:
+    get:
+      summary: List Concession Delivery Times For Showtime
+      operationId: listShowtimeConcessionDeliveryTimes
+      tags:
+      - Concessions
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Delivery times for the showtime.
+  /v1/showtimes/{showtime-id}/concession-pickup-times:
+    get:
+      summary: List Concession Pickup Times For Showtime
+      operationId: listShowtimeConcessionPickupTimes
+      tags:
+      - Concessions
+      parameters:
+      - name: showtime-id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Pickup times for the showtime.
+components:
+  schemas:
+    ConcessionCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              concessions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Concession'
+    Concession:
+      type: object
+      properties:
+        id:
+          type: integer
+        theatreProductAssignmentId:
+          type: integer
+        sku:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        price:
+          type: number
+          format: double
+        categoryId:
+          type: integer
+        category:
+          type: string
+        isAvailable:
+          type: boolean
+        deliveryOptions:
+          type: array
+          items:
+            type: string
+            enum:
+            - DeliveryToSeat
+            - ExpressPickup
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    ConcessionCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        sort:
+          type: integer
+  securitySchemes:
+    VendorKey:
+      type: apiKey
+      in: header
+      name: X-AMC-Vendor-Key
+      description: AMC vendor API key issued via the AMC Theatres developer portal.
+externalDocs:
+  description: AMC Theatres Developer Portal
+  url: https://developers.amctheatres.com

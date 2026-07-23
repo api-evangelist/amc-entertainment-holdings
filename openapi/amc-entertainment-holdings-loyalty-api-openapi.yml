@@ -1,0 +1,334 @@
+openapi: 3.0.3
+info:
+  title: AMC Theatres Barcodes Loyalty API
+  description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
+
+    that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
+
+    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
+
+    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
+
+    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
+
+    third-party sites and apps.
+
+
+    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
+
+    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
+
+    `count`, `_embedded`, `_links`) for collections.
+
+
+    This OpenAPI definition was reconstructed from the public AMC Developer Portal
+
+    documentation (developers.amctheatres.com) and known integrations. The dev portal
+
+    blocks automated retrieval, so this spec was assembled from third-party mirrors
+
+    of the AMC documentation and verified against open-source AMC API clients.'
+  version: v2
+  contact:
+    name: AMC Theatres Developer Portal
+    url: https://developers.amctheatres.com
+  termsOfService: https://www.amctheatres.com/legal/terms-of-use
+  license:
+    name: AMC Theatres API Terms of Use
+    url: https://www.amctheatres.com/legal/terms-of-use
+servers:
+- url: https://api.amctheatres.com
+  description: AMC Theatres production API
+security:
+- VendorKey: []
+tags:
+- name: Loyalty
+  description: AMC Stubs loyalty accounts, cards, redemptions, and registrations.
+paths:
+  /v3/orders/{order-id}/loyalty-rewards-application:
+    parameters:
+    - $ref: '#/components/parameters/OrderId'
+    post:
+      summary: Apply Loyalty Rewards To Order
+      operationId: applyLoyaltyRewards
+      tags:
+      - Loyalty
+      responses:
+        '200':
+          description: Rewards applied.
+    delete:
+      summary: Remove Loyalty Rewards From Order
+      operationId: removeLoyaltyRewards
+      tags:
+      - Loyalty
+      responses:
+        '204':
+          description: Rewards removed.
+  /v4/loyalty-accounts/{loyalty-account-id}:
+    get:
+      summary: Get Loyalty Account By Id
+      operationId: getLoyaltyAccount
+      tags:
+      - Loyalty
+      parameters:
+      - name: loyalty-account-id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Loyalty account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyAccount'
+  /v4/loyalty-accounts/email-{email-address}:
+    get:
+      summary: Get Loyalty Account By Email
+      operationId: getLoyaltyAccountByEmail
+      tags:
+      - Loyalty
+      parameters:
+      - name: email-address
+        in: path
+        required: true
+        schema:
+          type: string
+          format: email
+      responses:
+        '200':
+          description: Loyalty account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyAccount'
+  /v4/loyalty-accounts/email-{email-address}/{campaign}/registration:
+    post:
+      summary: Register For Loyalty Campaign By Email
+      operationId: registerLoyaltyByEmail
+      tags:
+      - Loyalty
+      parameters:
+      - name: email-address
+        in: path
+        required: true
+        schema:
+          type: string
+          format: email
+      - name: campaign
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Registered.
+  /v4/loyalty-accounts/card-{card-number}:
+    get:
+      summary: Get Loyalty Account By Card
+      operationId: getLoyaltyAccountByCard
+      tags:
+      - Loyalty
+      parameters:
+      - name: card-number
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Loyalty account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyAccount'
+  /v4/loyalty-accounts/card-{card-number}/{campaign}/registration:
+    post:
+      summary: Register For Loyalty Campaign By Card
+      operationId: registerLoyaltyByCard
+      tags:
+      - Loyalty
+      parameters:
+      - name: card-number
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: campaign
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Registered.
+  /v4/loyalty-accounts/phone-{phone}:
+    get:
+      summary: Get Loyalty Account By Phone
+      operationId: getLoyaltyAccountByPhone
+      tags:
+      - Loyalty
+      parameters:
+      - name: phone
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Loyalty account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyAccount'
+  /v4/amc-accounts/{amc-account-id}/loyalty:
+    delete:
+      summary: Unlink Loyalty Account From AMC Account
+      operationId: unlinkLoyaltyAccount
+      tags:
+      - Loyalty
+      parameters:
+      - name: amc-account-id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Unlinked.
+  /v4/loyalty-cards/{card-number}:
+    get:
+      summary: Get Loyalty Card
+      operationId: getLoyaltyCard
+      tags:
+      - Loyalty
+      parameters:
+      - name: card-number
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Loyalty card.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoyaltyCard'
+  /v4/loyalty-accounts/{loyalty-account-id}/redemptions:
+    post:
+      summary: Create Loyalty Points Redemption
+      operationId: createLoyaltyRedemption
+      tags:
+      - Loyalty
+      parameters:
+      - name: loyalty-account-id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RedemptionCreate'
+      responses:
+        '201':
+          description: Redemption created.
+  /v3/amc-accounts/{account-id}/loyalty/qr-code:
+    get:
+      summary: Get Loyalty Card QR Code
+      operationId: getLoyaltyQrCode
+      tags:
+      - Loyalty
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: QR code image.
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+components:
+  schemas:
+    LoyaltyAccount:
+      type: object
+      properties:
+        id:
+          type: string
+        amcAccountId:
+          type: string
+        cardNumber:
+          type: string
+        email:
+          type: string
+          format: email
+        firstName:
+          type: string
+        lastName:
+          type: string
+        loyaltyTier:
+          type: string
+          enum:
+          - Insider
+          - Premiere
+          - A-List
+        pointsBalance:
+          type: integer
+        rewards:
+          type: array
+          items:
+            type: object
+        registrations:
+          type: array
+          items:
+            type: object
+    LoyaltyCard:
+      type: object
+      properties:
+        cardNumber:
+          type: string
+        accountId:
+          type: string
+        loyaltyTier:
+          type: string
+        memberSince:
+          type: string
+          format: date
+    RedemptionCreate:
+      type: object
+      required:
+      - points
+      properties:
+        points:
+          type: integer
+        rewardSku:
+          type: string
+        orderId:
+          type: string
+  parameters:
+    OrderId:
+      name: order-id
+      in: path
+      required: true
+      schema:
+        type: string
+    AccountId:
+      name: account-id
+      in: path
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    VendorKey:
+      type: apiKey
+      in: header
+      name: X-AMC-Vendor-Key
+      description: AMC vendor API key issued via the AMC Theatres developer portal.
+externalDocs:
+  description: AMC Theatres Developer Portal
+  url: https://developers.amctheatres.com
