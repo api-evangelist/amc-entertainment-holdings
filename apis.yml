@@ -8,7 +8,20 @@ description: >-
   surface for distributors, partners, and third-party developers building movie discovery, ticket sales, and AMC Stubs
   co-marketing experiences.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amc-entertainment-holdings.png
 tags:
   - Entertainment
   - Movies
@@ -23,77 +36,934 @@ created: '2026-05-04'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: amc-entertainment-holdings:amc-theatres-api
-    name: AMC Theatres API
-    description: >-
-      The AMC Theatres API is a public REST API providing programmatic access to AMC Theatres data including theatres,
-      locations, showtimes, movies, seating, ticketing, concessions, and AMC Stubs loyalty. The API is intended for
-      partner integrations such as movie discovery, ticketing, and entertainment listings. Authentication is performed
-      via a vendor API key issued through the AMC developer portal and supplied in the X-AMC-Vendor-Key header. Resource
-      families are versioned independently under /v1, /v2, /v3, and /v4 path prefixes, and collection responses use a
-      HAL-style envelope.
-    humanURL: https://developers.amctheatres.com
-    baseURL: https://api.amctheatres.com
-    tags:
-      - Theatres
-      - Showtimes
-      - Movies
-      - Ticketing
-      - Concessions
-      - Loyalty
-      - Webhooks
-    properties:
-      - type: DeveloperPortal
-        url: https://developers.amctheatres.com
-      - type: Documentation
-        url: https://developers.amctheatres.com
-      - type: Authentication
-        url: https://developers.amctheatres.com/GettingStarted/Authentication
-      - type: Sandbox
-        url: https://developers.amctheatres.com/GettingStarted/Sandbox
-      - type: OpenAPI
-        url: openapi/amc-theatres-api-openapi.yml
-      - type: SpectralRules
-        url: rules/amc-theatres-rules.yml
-      - type: X-NaftikoSharedCapability
-        url: capabilities/shared/amc-theatres-api.yaml
-      - type: JSONSchema
-        url: json-schema/amc-theatres-theatre-schema.json
-      - type: JSONSchema
-        url: json-schema/amc-theatres-movie-schema.json
-      - type: JSONSchema
-        url: json-schema/amc-theatres-showtime-schema.json
-      - type: JSONSchema
-        url: json-schema/amc-theatres-order-schema.json
-      - type: JSONSchema
-        url: json-schema/amc-theatres-loyalty-account-schema.json
-      - type: JSONSchema
-        url: json-schema/amc-theatres-attribute-schema.json
-      - type: JSONStructure
-        url: json-structure/amc-theatres-theatre-structure.json
-      - type: JSONStructure
-        url: json-structure/amc-theatres-movie-structure.json
-      - type: JSONStructure
-        url: json-structure/amc-theatres-showtime-structure.json
-      - type: JSONStructure
-        url: json-structure/amc-theatres-order-structure.json
-      - type: JSONStructure
-        url: json-structure/amc-theatres-loyalty-account-structure.json
-      - type: JSONLD
-        url: json-ld/amc-entertainment-holdings-context.jsonld
-      - type: Vocabulary
-        url: vocabulary/amc-entertainment-holdings-vocabulary.yml
-      - type: Examples
-        url: examples/amc-theatres-list-theatres-example.json
-      - type: Examples
-        url: examples/amc-theatres-list-movies-now-playing-example.json
-      - type: Examples
-        url: examples/amc-theatres-list-theatre-showtimes-example.json
-      - type: Examples
-        url: examples/amc-theatres-create-order-example.json
-      - type: Examples
-        url: examples/amc-theatres-get-loyalty-account-example.json
-    overlays: []
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-barcodes-api
+  name: AMC Entertainment Holdings Barcodes API
+  description: Ticket and loyalty QR codes and Code 128 barcodes.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Barcodes
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-barcodes-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-concessions-api
+  name: AMC Entertainment Holdings Concessions API
+  description: Concessions ordering, categories, delivery and pickup logistics.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Concessions
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-concessions-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-locations-api
+  name: AMC Entertainment Holdings Locations API
+  description: Geographic helpers for finding theatres by state, city, name, or coordinates.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Locations
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-locations-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-loyalty-api
+  name: AMC Entertainment Holdings Loyalty API
+  description: AMC Stubs loyalty accounts, cards, redemptions, and registrations.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Loyalty
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-loyalty-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-markets-api
+  name: AMC Entertainment Holdings Markets API
+  description: AMC market areas grouping theatres by region.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Markets
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-markets-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-media-api
+  name: AMC Entertainment Holdings Media API
+  description: Images and videos for movies, theatres, and attributes.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Media
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-media-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-movieconfirmations-api
+  name: AMC Entertainment Holdings MovieConfirmations API
+  description: Movie ticket confirmation lookups.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - MovieConfirmations
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-movieconfirmations-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-movies-api
+  name: AMC Entertainment Holdings Movies API
+  description: AMC movies, including now-playing, advance, coming-soon, and on-demand.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Movies
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-movies-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-orders-api
+  name: AMC Entertainment Holdings Orders API
+  description: Order creation, payment, fulfillment, and management.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-orders-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-refunds-api
+  name: AMC Entertainment Holdings Refunds API
+  description: Order refunds, refund reasons, and fee waivers.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Refunds
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-refunds-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-seating-api
+  name: AMC Entertainment Holdings Seating API
+  description: Seating layouts and seat selection.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Seating
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-seating-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-showtimes-api
+  name: AMC Entertainment Holdings Showtimes API
+  description: Theatre showtimes for movies, including embargoed and proximity-based searches.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Showtimes
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-showtimes-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-states-api
+  name: AMC Entertainment Holdings States API
+  description: U.S. states served by AMC.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - States
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-states-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-theatres-api
+  name: AMC Entertainment Holdings Theatres API
+  description: AMC theatre locations, attributes, and metadata.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Theatres
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-theatres-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-wallet-api
+  name: AMC Entertainment Holdings Wallet API
+  description: AMC account wallets for external billers.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Wallet
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-wallet-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
+- aid: amc-entertainment-holdings:amc-entertainment-holdings-webhooks-api
+  name: AMC Entertainment Holdings Webhooks API
+  description: Vendor webhook subscription and management.
+  humanURL: https://developers.amctheatres.com
+  baseURL: https://api.amctheatres.com
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/amc-entertainment-holdings-webhooks-api-openapi.yml
+  - type: DeveloperPortal
+    url: https://developers.amctheatres.com
+  - type: Documentation
+    url: https://developers.amctheatres.com
+  - type: Authentication
+    url: https://developers.amctheatres.com/GettingStarted/Authentication
+  - type: Sandbox
+    url: https://developers.amctheatres.com/GettingStarted/Sandbox
+  - type: SpectralRules
+    url: rules/amc-theatres-rules.yml
+  - type: X-NaftikoSharedCapability
+    url: capabilities/shared/amc-theatres-api.yaml
+  - type: JSONSchema
+    url: json-schema/amc-theatres-theatre-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-movie-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-showtime-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-order-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-loyalty-account-schema.json
+  - type: JSONSchema
+    url: json-schema/amc-theatres-attribute-schema.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-theatre-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-movie-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-showtime-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-order-structure.json
+  - type: JSONStructure
+    url: json-structure/amc-theatres-loyalty-account-structure.json
+  - type: JSONLD
+    url: json-ld/amc-entertainment-holdings-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/amc-entertainment-holdings-vocabulary.yml
+  - type: Examples
+    url: examples/amc-theatres-list-theatres-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-movies-now-playing-example.json
+  - type: Examples
+    url: examples/amc-theatres-list-theatre-showtimes-example.json
+  - type: Examples
+    url: examples/amc-theatres-create-order-example.json
+  - type: Examples
+    url: examples/amc-theatres-get-loyalty-account-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/amc-entertainment-holdings-agentic-access.yml
