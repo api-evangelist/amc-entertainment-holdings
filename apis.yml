@@ -56,8 +56,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -114,8 +112,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -172,8 +168,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -230,8 +224,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -288,8 +280,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -346,8 +336,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -404,8 +392,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -462,8 +448,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -520,8 +504,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -578,8 +560,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -636,8 +616,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -694,8 +672,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -752,8 +728,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -810,8 +784,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -868,8 +840,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
@@ -926,8 +896,6 @@ apis:
     url: https://developers.amctheatres.com/GettingStarted/Sandbox
   - type: SpectralRules
     url: rules/amc-theatres-rules.yml
-  - type: X-NaftikoSharedCapability
-    url: capabilities/shared/amc-theatres-api.yaml
   - type: JSONSchema
     url: json-schema/amc-theatres-theatre-schema.json
   - type: JSONSchema
