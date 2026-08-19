@@ -1,0 +1,433 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Orders API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Orders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Order"
+        },
+        {
+          "info": {
+            "name": "Record Completed Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/record",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Record Completed Order"
+        },
+        {
+          "info": {
+            "name": "Get Order By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Order By Id"
+        },
+        {
+          "info": {
+            "name": "Update Order Contact Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Order Contact Info"
+        },
+        {
+          "info": {
+            "name": "Delete Order By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Order By Id"
+        },
+        {
+          "info": {
+            "name": "Get Order By Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/orders/token-:token",
+            "params": [
+              {
+                "name": "token",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Order By Token"
+        },
+        {
+          "info": {
+            "name": "Lookup Order By Id and Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/email-:email/",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "email",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Lookup Order By Id and Email"
+        },
+        {
+          "info": {
+            "name": "Add Product To Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/products",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Product To Order"
+        },
+        {
+          "info": {
+            "name": "Update Product in Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/products/:line-number",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "line-number",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Product in Order"
+        },
+        {
+          "info": {
+            "name": "Patch Product Delivery Info",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/products/:line-number",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "line-number",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update delivery information for concessions and gift card products."
+        },
+        {
+          "info": {
+            "name": "Delete Product From Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/products/:line-number",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "line-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Product From Order"
+        },
+        {
+          "info": {
+            "name": "Send Ticket Confirmation SMS",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/products/:line-number/sms-ticket-confirmation/:phone-number",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "line-number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "phone-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Send Ticket Confirmation SMS"
+        },
+        {
+          "info": {
+            "name": "Add Payment To Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/payments",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add Payment To Order"
+        },
+        {
+          "info": {
+            "name": "Delete Payment From Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/payments/:line-number",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "line-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Payment From Order"
+        },
+        {
+          "info": {
+            "name": "Refresh Order Expiration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/refresh-expiration",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Refresh Order Expiration"
+        },
+        {
+          "info": {
+            "name": "Apply Loyalty Rewards To Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/loyalty-rewards-application",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Apply Loyalty Rewards To Order"
+        },
+        {
+          "info": {
+            "name": "Remove Loyalty Rewards From Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/loyalty-rewards-application",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Loyalty Rewards From Order"
+        },
+        {
+          "info": {
+            "name": "Record Failed Payment Authorization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/failed-payment-auths",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Record Failed Payment Authorization"
+        },
+        {
+          "info": {
+            "name": "List Orders For AMC Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/amc-accounts/:account-id/orders/",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "List Orders For AMC Account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

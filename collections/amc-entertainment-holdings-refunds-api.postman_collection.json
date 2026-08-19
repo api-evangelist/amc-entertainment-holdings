@@ -1,0 +1,139 @@
+{
+  "item": [
+    {
+      "id": "9cb80864-be14-46bc-89e8-b3448f6f9f2d",
+      "name": "Refunds",
+      "description": {
+        "content": "Order refunds, refund reasons, and fee waivers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "931e976f-ddd6-4b2d-bb8b-d433b54f8a40",
+          "name": "Get Fee Waiver For Order",
+          "request": {
+            "name": "Get Fee Waiver For Order",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "fee-waiver"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"orderId\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "91d58004-23bc-4274-ba90-713569da9b3e",
+              "name": "Fee waiver result.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "fee-waiver"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"orderId\": \"<string>\",\n  \"reason\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.amctheatres.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AMC-Vendor-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "eba2f5c5-95e3-40d2-a685-6d672a8fe7b1",
+    "name": "AMC Theatres Barcodes Refunds API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AMC Theatres API is a public REST API published by AMC Entertainment Holdings\nthat exposes data and transactional capabilities for AMC theatres, movies, showtimes,\nlocations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended\nfor partner integrations such as movie discovery, ticket sales, dine-in / express pickup\nconcession ordering, AMC Stubs loyalty integrations, and entertainment listings on\nthird-party sites and apps.\n\nAuthentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`\nrequest header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,\n`count`, `_embedded`, `_links`) for collections.\n\nThis OpenAPI definition was reconstructed from the public AMC Developer Portal\ndocumentation (developers.amctheatres.com) and known integrations. The dev portal\nblocks automated retrieval, so this spec was assembled from third-party mirrors\nof the AMC documentation and verified against open-source AMC API clients.\n\nContact Support:\n Name: AMC Theatres Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

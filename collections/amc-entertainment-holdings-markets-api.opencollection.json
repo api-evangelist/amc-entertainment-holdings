@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Markets API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Markets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Markets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/markets"
+          },
+          "docs": "List All Markets"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

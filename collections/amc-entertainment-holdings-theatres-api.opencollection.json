@@ -1,0 +1,160 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Barcodes Theatres API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Theatres",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Active Theatres",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres",
+            "params": [
+              {
+                "name": "include-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must have."
+              },
+              {
+                "name": "exclude-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must not have."
+              },
+              {
+                "name": "attribute-operator",
+                "value": "",
+                "type": "query",
+                "description": "Whether the include/exclude attribute filter is `and` (all) or `or` (any)."
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of theatre ids to filter by."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter theatres whose name contains the specified text."
+              },
+              {
+                "name": "market",
+                "value": "",
+                "type": "query",
+                "description": "Filter theatres in the specified market."
+              },
+              {
+                "name": "state",
+                "value": "",
+                "type": "query",
+                "description": "Filter theatres in the specified state (required when `city` is given)."
+              },
+              {
+                "name": "city",
+                "value": "",
+                "type": "query",
+                "description": "Filter theatres in the specified city (requires `state`)."
+              },
+              {
+                "name": "brand",
+                "value": "",
+                "type": "query",
+                "description": "Filter theatres by brand abbreviation."
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query",
+                "description": "Set to `closed` to include closed theatres."
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of active AMC theatres, optionally filtered by attributes, market, state/city, brand, or name."
+        },
+        {
+          "info": {
+            "name": "Get a Theatre by Id or Slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:idOrSlug",
+            "params": [
+              {
+                "name": "idOrSlug",
+                "value": "",
+                "type": "path",
+                "description": "The theatre id (integer) or theatre slug."
+              }
+            ]
+          },
+          "docs": "Returns a single theatre matched by numeric id or url-friendly slug."
+        },
+        {
+          "info": {
+            "name": "List Theatres Now Playing a WWM Release",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/views/now-playing/wwm-release-number/:wwm-release-number",
+            "params": [
+              {
+                "name": "wwm-release-number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns theatres now playing the specified West World Media release number."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

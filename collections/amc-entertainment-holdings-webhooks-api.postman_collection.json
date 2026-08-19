@@ -1,0 +1,465 @@
+{
+  "item": [
+    {
+      "id": "8cfaea36-e3a7-4b4c-88b9-5c54cbee1ac5",
+      "name": "Webhooks",
+      "description": {
+        "content": "Vendor webhook subscription and management.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f51016fb-da15-40da-b2c8-e40f34a26426",
+          "name": "List Available Webhook Events",
+          "request": {
+            "name": "List Available Webhook Events",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "webhook-events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "223038ec-cdd8-44a0-b2a7-621ba4b1b580",
+              "name": "Available events.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "webhook-events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"description\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "13bb79c1-55ed-4476-bd4d-bd622f307c4b",
+          "name": "List Subscribed Webhooks",
+          "request": {
+            "name": "List Subscribed Webhooks",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60e354a8-fafb-4730-baf1-30d8308aa12b",
+              "name": "Subscriptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"webhookTokenId\": \"string\",\n    \"eventName\": \"string\",\n    \"url\": \"http://tqxZNgSxhCXcoYDMmoKMhzFfxgxH.inMWFDrtPETzK3HzzorLd,fXBFz1Fopii+ok.kFD7cB7h6BgfgVCr3xEnRCFNAJfbjeCMRsj3NTB\",\n    \"active\": false\n  },\n  {\n    \"webhookTokenId\": \"string\",\n    \"eventName\": \"string\",\n    \"url\": \"https://SdXIyysyiWawTXCaadABTyCTNhTac.qonlBx5Bljd.u,B54fWyoSkZB+.KKZwPu.4+QgGM2e53jE35gfglQTvn1\",\n    \"active\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fad9905-2dcd-4856-a997-6ead8ea6bdc1",
+          "name": "Subscribe To Webhook Event",
+          "request": {
+            "name": "Subscribe To Webhook Event",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "webhooks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventName\": \"<string>\",\n  \"url\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "32b324e5-331d-4a46-b9ff-8d2f9e8f7f72",
+              "name": "Subscribed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "webhooks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"eventName\": \"<string>\",\n  \"url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f89ca49-d39c-4381-b693-a44337d14fa5",
+          "name": "Unsubscribe From Webhook",
+          "request": {
+            "name": "Unsubscribe From Webhook",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "webhooks",
+                ":webhook-token-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhook-token-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5998d59f-3792-4712-9f9c-cd647c452516",
+              "name": "Unsubscribed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "webhooks",
+                    ":webhook-token-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhook-token-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16f16194-d8bf-4b8a-b86e-205e4ad7697a",
+          "name": "Test Webhook Subscription",
+          "request": {
+            "name": "Test Webhook Subscription",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "webhooks",
+                ":webhook-token-id",
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "webhook-token-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fcbaec23-3889-4f70-949a-6ab825bc7fe5",
+              "name": "Test sent.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "webhooks",
+                    ":webhook-token-id",
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "webhook-token-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.amctheatres.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AMC-Vendor-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "679ae9d9-4256-470a-90e5-f406f6b2d16b",
+    "name": "AMC Theatres Barcodes Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AMC Theatres API is a public REST API published by AMC Entertainment Holdings\nthat exposes data and transactional capabilities for AMC theatres, movies, showtimes,\nlocations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended\nfor partner integrations such as movie discovery, ticket sales, dine-in / express pickup\nconcession ordering, AMC Stubs loyalty integrations, and entertainment listings on\nthird-party sites and apps.\n\nAuthentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`\nrequest header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,\n`count`, `_embedded`, `_links`) for collections.\n\nThis OpenAPI definition was reconstructed from the public AMC Developer Portal\ndocumentation (developers.amctheatres.com) and known integrations. The dev portal\nblocks automated retrieval, so this spec was assembled from third-party mirrors\nof the AMC documentation and verified against open-source AMC API clients.\n\nContact Support:\n Name: AMC Theatres Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

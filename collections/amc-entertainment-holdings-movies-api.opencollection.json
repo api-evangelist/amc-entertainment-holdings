@@ -1,0 +1,219 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Movies API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Movies",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter movies whose name contains the supplied text."
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of AMC movies."
+        },
+        {
+          "info": {
+            "name": "List Now Playing Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/now-playing",
+            "params": [
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "List Now Playing Movies"
+        },
+        {
+          "info": {
+            "name": "List Advance Ticket Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/advance",
+            "params": [
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "List Advance Ticket Movies"
+        },
+        {
+          "info": {
+            "name": "List Coming Soon Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/coming-soon",
+            "params": [
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "List Coming Soon Movies"
+        },
+        {
+          "info": {
+            "name": "List Active Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/active"
+          },
+          "docs": "List Active Movies"
+        },
+        {
+          "info": {
+            "name": "List All Active and On-Demand Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/all/active"
+          },
+          "docs": "List All Active and On-Demand Movies"
+        },
+        {
+          "info": {
+            "name": "List Digital On-Demand Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/views/on-demand"
+          },
+          "docs": "List Digital On-Demand Movies"
+        },
+        {
+          "info": {
+            "name": "Get a Movie by Id or Slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/:idOrSlug",
+            "params": [
+              {
+                "name": "idOrSlug",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a Movie by Id or Slug"
+        },
+        {
+          "info": {
+            "name": "List Similar On-Demand Movies",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/:id/on-demand/similar",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Similar On-Demand Movies"
+        },
+        {
+          "info": {
+            "name": "Get a Movie by Internal Release Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/movies/internal-release/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a Movie by Internal Release Id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

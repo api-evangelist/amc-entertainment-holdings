@@ -1,0 +1,205 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Concessions API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Concessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Concessions For a Theatre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/theatres/:theatre-id/concessions",
+            "params": [
+              {
+                "name": "theatre-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concessions For a Theatre"
+        },
+        {
+          "info": {
+            "name": "Get Concession By Theatre and Concession Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/theatres/:theatre-id/concessions/:concession-id",
+            "params": [
+              {
+                "name": "theatre-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "concession-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Concession By Theatre and Concession Id"
+        },
+        {
+          "info": {
+            "name": "Get Concession By Theatre Product Assignment Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/concessions/:theatre-product-assignment-id",
+            "params": [
+              {
+                "name": "theatre-product-assignment-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Concession By Theatre Product Assignment Id"
+        },
+        {
+          "info": {
+            "name": "List Concession Categories For a Theatre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/theatres/:theatre-id/concessions/categories",
+            "params": [
+              {
+                "name": "theatre-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concession Categories For a Theatre"
+        },
+        {
+          "info": {
+            "name": "List Concession Delivery Locations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/theatres/:theatre-id/concessions/delivery-locations/:year/:month/:day",
+            "params": [
+              {
+                "name": "theatre-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concession Delivery Locations"
+        },
+        {
+          "info": {
+            "name": "List Concession Pickup Times",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/theatres/:theatre-id/concessions/pickup-times/:year/:month/:day",
+            "params": [
+              {
+                "name": "theatre-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "month",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "day",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concession Pickup Times"
+        },
+        {
+          "info": {
+            "name": "List Concession Delivery Times For Showtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/showtimes/:id/concession-delivery-times",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concession Delivery Times For Showtime"
+        },
+        {
+          "info": {
+            "name": "List Concession Pickup Times For Showtime",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/showtimes/:showtime-id/concession-pickup-times",
+            "params": [
+              {
+                "name": "showtime-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Concession Pickup Times For Showtime"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

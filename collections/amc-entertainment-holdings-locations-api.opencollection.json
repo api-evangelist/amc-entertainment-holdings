@@ -1,0 +1,81 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Locations API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Locations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Locations in a State",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/locations/states/:state-name",
+            "params": [
+              {
+                "name": "state-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Locations in a State"
+        },
+        {
+          "info": {
+            "name": "Get Locations Matching Theatre Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/locations/theatres/:theatre-name",
+            "params": [
+              {
+                "name": "theatre-name",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Locations Matching Theatre Name"
+        },
+        {
+          "info": {
+            "name": "List Location Suggestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/location-suggestions",
+            "params": [
+              {
+                "name": "query",
+                "value": "",
+                "type": "query",
+                "description": "The user-entered text to suggest locations for."
+              }
+            ]
+          },
+          "docs": "Suggest locations by zip code, city, state, theatre name, etc."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,69 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Seating API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Seating",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Seating Layouts For an Auditorium",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:theatre-number/seating-layouts",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              }
+            ]
+          },
+          "docs": "Returns the seating layouts available at the specified theatre auditorium."
+        },
+        {
+          "info": {
+            "name": "Get Seating Layout For Performance",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/seating-layouts/:theatre-number/:performance-number",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              },
+              {
+                "name": "performance-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Seating Layout For Performance"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

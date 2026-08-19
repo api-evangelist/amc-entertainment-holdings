@@ -1,0 +1,260 @@
+{
+  "item": [
+    {
+      "id": "3a66be36-cc7f-4255-ba50-873e98b0d2c4",
+      "name": "Seating",
+      "description": {
+        "content": "Seating layouts and seat selection.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8d3f6cf7-3f5c-4baf-a7f6-43e65822f0db",
+          "name": "List Seating Layouts For an Auditorium",
+          "request": {
+            "name": "List Seating Layouts For an Auditorium",
+            "description": {
+              "content": "Returns the seating layouts available at the specified theatre auditorium.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "theatres",
+                ":theatre-number",
+                "seating-layouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-number",
+                  "description": "(Required) The theatre number / id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1a7d4ce-35a1-4297-9d92-b98f12766a7d",
+              "name": "Seating layouts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "theatres",
+                    ":theatre-number",
+                    "seating-layouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-number",
+                      "description": "(Required) The theatre number / id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 2001,\n  \"pageNumber\": 761,\n  \"count\": 9937,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    }\n  },\n  \"_embedded\": {\n    \"seatingLayouts\": [\n      {\n        \"layoutId\": 571,\n        \"name\": \"string\",\n        \"rows\": [\n          {\n            \"name\": \"string\",\n            \"seats\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"string\",\n            \"seats\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      },\n      {\n        \"layoutId\": 3341,\n        \"name\": \"string\",\n        \"rows\": [\n          {\n            \"name\": \"string\",\n            \"seats\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"name\": \"string\",\n            \"seats\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e5d850a6-f546-416e-a3f1-00bfb52f6100",
+          "name": "Get Seating Layout For Performance",
+          "request": {
+            "name": "Get Seating Layout For Performance",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "seating-layouts",
+                ":theatre-number",
+                ":performance-number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-number",
+                  "description": "(Required) The theatre number / id."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "performance-number",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d39c93d2-567f-4e60-b0ae-7ed960440dd1",
+              "name": "Seating layout.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "seating-layouts",
+                    ":theatre-number",
+                    ":performance-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-number",
+                      "description": "(Required) The theatre number / id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "performance-number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"layoutId\": 1450,\n  \"name\": \"string\",\n  \"rows\": [\n    {\n      \"name\": \"string\",\n      \"seats\": [\n        {\n          \"seatId\": \"string\",\n          \"seatType\": \"Standard\",\n          \"isAvailable\": true,\n          \"row\": \"string\",\n          \"column\": 7496\n        },\n        {\n          \"seatId\": \"string\",\n          \"seatType\": \"Recliner\",\n          \"isAvailable\": false,\n          \"row\": \"string\",\n          \"column\": 8643\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"seats\": [\n        {\n          \"seatId\": \"string\",\n          \"seatType\": \"Wheelchair\",\n          \"isAvailable\": true,\n          \"row\": \"string\",\n          \"column\": 3760\n        },\n        {\n          \"seatId\": \"string\",\n          \"seatType\": \"LoveSeat\",\n          \"isAvailable\": true,\n          \"row\": \"string\",\n          \"column\": 4901\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.amctheatres.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AMC-Vendor-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d91a47f8-739f-41b2-95f2-3a20020cee61",
+    "name": "AMC Theatres Barcodes Seating API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AMC Theatres API is a public REST API published by AMC Entertainment Holdings\nthat exposes data and transactional capabilities for AMC theatres, movies, showtimes,\nlocations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended\nfor partner integrations such as movie discovery, ticket sales, dine-in / express pickup\nconcession ordering, AMC Stubs loyalty integrations, and entertainment listings on\nthird-party sites and apps.\n\nAuthentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`\nrequest header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,\n`count`, `_embedded`, `_links`) for collections.\n\nThis OpenAPI definition was reconstructed from the public AMC Developer Portal\ndocumentation (developers.amctheatres.com) and known integrations. The dev portal\nblocks automated retrieval, so this spec was assembled from third-party mirrors\nof the AMC documentation and verified against open-source AMC API clients.\n\nContact Support:\n Name: AMC Theatres Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,254 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Showtimes API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Showtimes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Showtimes for a Theatre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:theatre-number/showtimes",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              },
+              {
+                "name": "movie-id",
+                "value": "",
+                "type": "query",
+                "description": "Filter to showtimes for a specific movie id."
+              },
+              {
+                "name": "include-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must have."
+              },
+              {
+                "name": "exclude-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must not have."
+              },
+              {
+                "name": "attribute-operator",
+                "value": "",
+                "type": "query",
+                "description": "Whether the include/exclude attribute filter is `and` (all) or `or` (any)."
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns all future showtimes for the specified theatre."
+        },
+        {
+          "info": {
+            "name": "List Showtimes for a Theatre on a Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:theatre-number/showtimes/:date",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path",
+                "description": "Date in ISO-8601 (YYYY-MM-DD) format."
+              },
+              {
+                "name": "include-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must have."
+              },
+              {
+                "name": "exclude-attributes",
+                "value": "",
+                "type": "query",
+                "description": "Comma-delimited list of attributes that results must not have."
+              },
+              {
+                "name": "attribute-operator",
+                "value": "",
+                "type": "query",
+                "description": "Whether the include/exclude attribute filter is `and` (all) or `or` (any)."
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns all showtimes for the specified theatre on the specified date that meet the supplied search criteria."
+        },
+        {
+          "info": {
+            "name": "List Embargoed Showtimes for a Theatre on a Date",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:theatre-number/showtimes/:date/views/embargoed",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns all embargoed showtimes for the specified theatre and date."
+        },
+        {
+          "info": {
+            "name": "Get Earliest Showtime For Movie at Theatre",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/theatres/:theatre-number/movies/:movie-id/earliest-showtime",
+            "params": [
+              {
+                "name": "theatre-number",
+                "value": "",
+                "type": "path",
+                "description": "The theatre number / id."
+              },
+              {
+                "name": "movie-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the earliest showtime for a specific movie id at the specified theatre."
+        },
+        {
+          "info": {
+            "name": "Get Showtime By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/showtimes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the showtime with the specified id."
+        },
+        {
+          "info": {
+            "name": "List Showtimes Near a Location",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/showtimes/views/current-location/:date/:latitude/:longitude",
+            "params": [
+              {
+                "name": "date",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "latitude",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "longitude",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "page-number",
+                "value": "",
+                "type": "query",
+                "description": "Page number to retrieve. Defaults to 1."
+              },
+              {
+                "name": "page-size",
+                "value": "",
+                "type": "query",
+                "description": "Results per page (max 100). Defaults to 10."
+              }
+            ]
+          },
+          "docs": "Returns all showtimes in proximity to the supplied latitude and longitude on the specified date."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

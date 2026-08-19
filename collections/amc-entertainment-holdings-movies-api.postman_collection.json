@@ -1,0 +1,1059 @@
+{
+  "item": [
+    {
+      "id": "a07e5a10-e4f5-429d-9f5a-dae3711e5175",
+      "name": "Movies",
+      "description": {
+        "content": "AMC movies, including now-playing, advance, coming-soon, and on-demand.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "aa01d193-bc2b-4e6b-96a4-afda07f4542a",
+          "name": "List All Movies",
+          "request": {
+            "name": "List All Movies",
+            "description": {
+              "content": "Returns a paginated list of AMC movies.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "movies"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter movies whose name contains the supplied text."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-number",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "10",
+                  "description": "Results per page (max 100). Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f9337331-039c-43f5-af02-c6141416900c",
+              "name": "Movies collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-number",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 271,\n  \"pageNumber\": 7173,\n  \"count\": 6169,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": false\n    }\n  },\n  \"_embedded\": {\n    \"movies\": [\n      {\n        \"id\": 7757,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 9140,\n        \"releaseDateUtc\": \"1964-10-09T23:51:05.763Z\",\n        \"earliestShowingUtc\": \"1988-06-20T07:01:01.427Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://CCJVQXVBvEqJ.qynPLQutNdKkD-WdpPiTkJiZVm0LBAUW1Js2ZnrqF2it\",\n        \"showtimesUrl\": \"https://jSqOx.vxxGEcosZEGK711dzR.p4E\",\n        \"media\": {\n          \"key_0\": \"http://iZsJoXKZedfvglGUP.zvpXiM+kRXBGp+VpyaqUAOgxX7+UEAw0Bz9L\",\n          \"key_1\": \"http://JQRujuHjy.bnhvcRzb80hLZEkcTlwMluLVvooj8-yKLak4K95tbG3F1AhxOjUc5jj3b8ax+kH-Tv-4eqXduJeYp\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 8701,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://gAGzgUBOeeJYMebzCqD.wmyavy7OJIt7FgaxyVzgaHDSADkZhMukNFebPdwdhZ4n.3-Kc6Q\",\n            \"sort\": 4880,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 1692,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://dDleGFlK.fjqhNjVxsxuWjxYOSaUz5Est4i9dWeFH.d8PnpCSFrFFo\",\n            \"sort\": 1328,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 7398,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 5795,\n        \"releaseDateUtc\": \"1969-03-13T05:59:04.913Z\",\n        \"earliestShowingUtc\": \"1985-02-19T14:26:45.616Z\",\n        \"hasScheduledShowtimes\": true,\n        \"websiteUrl\": \"http://eHnpOCTzsjSDNFPmHduAchhenOzWKmmxo.baX9wm,lwMTuHk+vgNCW\",\n        \"showtimesUrl\": \"http://m.euWf-BxJppdwujfEdztffM5+FVvZILQ4QQbz3si2kxgNPC7,IlcqlzesJmjf29N\",\n        \"media\": {\n          \"key_0\": \"https://NkZo.naHZAduVYaLcSmoFnV6\",\n          \"key_1\": \"http://EtVjeNWo.sxTSDXQKEd12mCmSubTXIqgH4mxAYWlJXce\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 2990,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://uMtMCztiXDCqWIm.tzfiYxEE1SdeloXengP7MR7B0qtkT4Ew9a49kqLQ27.hVCk\",\n            \"sort\": 5438,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 7610,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://bxtBnaWo.pqwxsxIwjD+5.m5ajOFP+gsatEOqA9\",\n            \"sort\": 6205,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1638ac47-bcdb-45b1-964f-870316e9ed6c",
+          "name": "List Now Playing Movies",
+          "request": {
+            "name": "List Now Playing Movies",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "movies",
+                "views",
+                "now-playing"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page-number",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "10",
+                  "description": "Results per page (max 100). Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e60f4727-662a-438c-942f-cfc99f6c697e",
+              "name": "Now playing movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies",
+                    "views",
+                    "now-playing"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page-number",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 5737,\n  \"pageNumber\": 9991,\n  \"count\": 8793,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"movies\": [\n      {\n        \"id\": 2531,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 5500,\n        \"releaseDateUtc\": \"1955-03-28T07:29:22.649Z\",\n        \"earliestShowingUtc\": \"1983-02-24T20:44:00.900Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://AWHdfbIQRVLeIbsyQoykpaiPUgHwAh.osgXSuwCKr+KAtDujRWqBodvd8pTk3\",\n        \"showtimesUrl\": \"https://XGDwVZVDUVqneWAcdCDaO.emkudAc-ajNl7RF90gO\",\n        \"media\": {\n          \"key_0\": \"https://PDtppbPmVbGgilpjPAjYqGiqS.ytfsVkwMfBsGE-pq,\",\n          \"key_1\": \"http://cZWpGyjJXLaBvDvBZtQHTCMSNeKA.bwbIBz9X8zWlF+bDnyA8fHhMcJQAf5QfYZ-3wnOeLdyv0A\",\n          \"key_2\": \"https://HAejMVKLdxfSWHEoUpQlCdvFUXRJuld.qjtdtov1dhaoaSCvCG5oZxFFSLaICf6ncYco+ufZWG4AA,\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 287,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://tYZCAdCPqAYQUa.axlrd4OZ15Io3vmxbpkiIQ0MBW4wmdIUbbDjnKjgIx4UmkbaF2OqVA3\",\n            \"sort\": 3988,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 5497,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://jbCK.grTzGvEjeFhN48LhiXtWSnS2sF6vuWnumrGo1L-bJqZAe2bpv\",\n            \"sort\": 78,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 5723,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 2936,\n        \"releaseDateUtc\": \"1994-12-27T03:35:14.463Z\",\n        \"earliestShowingUtc\": \"1997-05-25T13:54:02.266Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://hsLVjSkgBvPvjzQjMpGMrLzunEUswD.fosHXfcdtB2bLHdhz945q1kTxYuarm\",\n        \"showtimesUrl\": \"http://vfNflLlzvSDrvAOMapwS.ogtiHjeP9\",\n        \"media\": {\n          \"key_0\": \"http://rjPgrjNcnxOMAmUdef.uiiwP1-3m7t9ymPl9I1NqXe9eWYy6nF.KCPH47W-nHVZwWD\",\n          \"key_1\": \"http://LzNrOishdrnEkbxlokrSMgF.vgunpsNhialjK7sLWBFN0FXx15wQ1\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 4154,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://mVyXlpPvRQkQuXk.bjxzJiM2N4,-1IBLvSz4Qb+IZkkbtC08Vnv+6fx3p+bV-5\",\n            \"sort\": 9667,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 609,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://hbAIxwXOAqebmAbyLvatKswLrECzYn.xvtLoJw3hnQkvys7HZg1pEhTBa778pKdohR+lq07ktIQYJVt88.ipvcAUW75af\",\n            \"sort\": 4436,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5baa3b83-01d1-4ffb-aabb-b6b68f175740",
+          "name": "List Advance Ticket Movies",
+          "request": {
+            "name": "List Advance Ticket Movies",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "movies",
+                "views",
+                "advance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page-number",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "10",
+                  "description": "Results per page (max 100). Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "77f3d6a7-7690-45a0-985d-9bf167e507fa",
+              "name": "Advance ticket movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies",
+                    "views",
+                    "advance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page-number",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 5737,\n  \"pageNumber\": 9991,\n  \"count\": 8793,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"movies\": [\n      {\n        \"id\": 2531,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 5500,\n        \"releaseDateUtc\": \"1955-03-28T07:29:22.649Z\",\n        \"earliestShowingUtc\": \"1983-02-24T20:44:00.900Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://AWHdfbIQRVLeIbsyQoykpaiPUgHwAh.osgXSuwCKr+KAtDujRWqBodvd8pTk3\",\n        \"showtimesUrl\": \"https://XGDwVZVDUVqneWAcdCDaO.emkudAc-ajNl7RF90gO\",\n        \"media\": {\n          \"key_0\": \"https://PDtppbPmVbGgilpjPAjYqGiqS.ytfsVkwMfBsGE-pq,\",\n          \"key_1\": \"http://cZWpGyjJXLaBvDvBZtQHTCMSNeKA.bwbIBz9X8zWlF+bDnyA8fHhMcJQAf5QfYZ-3wnOeLdyv0A\",\n          \"key_2\": \"https://HAejMVKLdxfSWHEoUpQlCdvFUXRJuld.qjtdtov1dhaoaSCvCG5oZxFFSLaICf6ncYco+ufZWG4AA,\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 287,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://tYZCAdCPqAYQUa.axlrd4OZ15Io3vmxbpkiIQ0MBW4wmdIUbbDjnKjgIx4UmkbaF2OqVA3\",\n            \"sort\": 3988,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 5497,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://jbCK.grTzGvEjeFhN48LhiXtWSnS2sF6vuWnumrGo1L-bJqZAe2bpv\",\n            \"sort\": 78,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 5723,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 2936,\n        \"releaseDateUtc\": \"1994-12-27T03:35:14.463Z\",\n        \"earliestShowingUtc\": \"1997-05-25T13:54:02.266Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://hsLVjSkgBvPvjzQjMpGMrLzunEUswD.fosHXfcdtB2bLHdhz945q1kTxYuarm\",\n        \"showtimesUrl\": \"http://vfNflLlzvSDrvAOMapwS.ogtiHjeP9\",\n        \"media\": {\n          \"key_0\": \"http://rjPgrjNcnxOMAmUdef.uiiwP1-3m7t9ymPl9I1NqXe9eWYy6nF.KCPH47W-nHVZwWD\",\n          \"key_1\": \"http://LzNrOishdrnEkbxlokrSMgF.vgunpsNhialjK7sLWBFN0FXx15wQ1\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 4154,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://mVyXlpPvRQkQuXk.bjxzJiM2N4,-1IBLvSz4Qb+IZkkbtC08Vnv+6fx3p+bV-5\",\n            \"sort\": 9667,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 609,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://hbAIxwXOAqebmAbyLvatKswLrECzYn.xvtLoJw3hnQkvys7HZg1pEhTBa778pKdohR+lq07ktIQYJVt88.ipvcAUW75af\",\n            \"sort\": 4436,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f41a0a7f-436b-471d-a1ed-2a2fd653c696",
+          "name": "List Coming Soon Movies",
+          "request": {
+            "name": "List Coming Soon Movies",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "movies",
+                "views",
+                "coming-soon"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page-number",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "10",
+                  "description": "Results per page (max 100). Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d6ce5b2c-22e3-40c5-9857-b25203696c3f",
+              "name": "Coming soon movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies",
+                    "views",
+                    "coming-soon"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page-number",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 5737,\n  \"pageNumber\": 9991,\n  \"count\": 8793,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"movies\": [\n      {\n        \"id\": 2531,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 5500,\n        \"releaseDateUtc\": \"1955-03-28T07:29:22.649Z\",\n        \"earliestShowingUtc\": \"1983-02-24T20:44:00.900Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://AWHdfbIQRVLeIbsyQoykpaiPUgHwAh.osgXSuwCKr+KAtDujRWqBodvd8pTk3\",\n        \"showtimesUrl\": \"https://XGDwVZVDUVqneWAcdCDaO.emkudAc-ajNl7RF90gO\",\n        \"media\": {\n          \"key_0\": \"https://PDtppbPmVbGgilpjPAjYqGiqS.ytfsVkwMfBsGE-pq,\",\n          \"key_1\": \"http://cZWpGyjJXLaBvDvBZtQHTCMSNeKA.bwbIBz9X8zWlF+bDnyA8fHhMcJQAf5QfYZ-3wnOeLdyv0A\",\n          \"key_2\": \"https://HAejMVKLdxfSWHEoUpQlCdvFUXRJuld.qjtdtov1dhaoaSCvCG5oZxFFSLaICf6ncYco+ufZWG4AA,\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 287,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://tYZCAdCPqAYQUa.axlrd4OZ15Io3vmxbpkiIQ0MBW4wmdIUbbDjnKjgIx4UmkbaF2OqVA3\",\n            \"sort\": 3988,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 5497,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://jbCK.grTzGvEjeFhN48LhiXtWSnS2sF6vuWnumrGo1L-bJqZAe2bpv\",\n            \"sort\": 78,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 5723,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 2936,\n        \"releaseDateUtc\": \"1994-12-27T03:35:14.463Z\",\n        \"earliestShowingUtc\": \"1997-05-25T13:54:02.266Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://hsLVjSkgBvPvjzQjMpGMrLzunEUswD.fosHXfcdtB2bLHdhz945q1kTxYuarm\",\n        \"showtimesUrl\": \"http://vfNflLlzvSDrvAOMapwS.ogtiHjeP9\",\n        \"media\": {\n          \"key_0\": \"http://rjPgrjNcnxOMAmUdef.uiiwP1-3m7t9ymPl9I1NqXe9eWYy6nF.KCPH47W-nHVZwWD\",\n          \"key_1\": \"http://LzNrOishdrnEkbxlokrSMgF.vgunpsNhialjK7sLWBFN0FXx15wQ1\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 4154,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://mVyXlpPvRQkQuXk.bjxzJiM2N4,-1IBLvSz4Qb+IZkkbtC08Vnv+6fx3p+bV-5\",\n            \"sort\": 9667,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 609,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://hbAIxwXOAqebmAbyLvatKswLrECzYn.xvtLoJw3hnQkvys7HZg1pEhTBa778pKdohR+lq07ktIQYJVt88.ipvcAUW75af\",\n            \"sort\": 4436,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "856e5729-59bc-47e5-8201-7bbc879a091d",
+          "name": "List Active Movies",
+          "request": {
+            "name": "List Active Movies",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "movies",
+                "views",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b24f52ec-1baf-4530-a20b-37b3c298f706",
+              "name": "Active movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies",
+                    "views",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 5737,\n  \"pageNumber\": 9991,\n  \"count\": 8793,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"movies\": [\n      {\n        \"id\": 2531,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 5500,\n        \"releaseDateUtc\": \"1955-03-28T07:29:22.649Z\",\n        \"earliestShowingUtc\": \"1983-02-24T20:44:00.900Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://AWHdfbIQRVLeIbsyQoykpaiPUgHwAh.osgXSuwCKr+KAtDujRWqBodvd8pTk3\",\n        \"showtimesUrl\": \"https://XGDwVZVDUVqneWAcdCDaO.emkudAc-ajNl7RF90gO\",\n        \"media\": {\n          \"key_0\": \"https://PDtppbPmVbGgilpjPAjYqGiqS.ytfsVkwMfBsGE-pq,\",\n          \"key_1\": \"http://cZWpGyjJXLaBvDvBZtQHTCMSNeKA.bwbIBz9X8zWlF+bDnyA8fHhMcJQAf5QfYZ-3wnOeLdyv0A\",\n          \"key_2\": \"https://HAejMVKLdxfSWHEoUpQlCdvFUXRJuld.qjtdtov1dhaoaSCvCG5oZxFFSLaICf6ncYco+ufZWG4AA,\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 287,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://tYZCAdCPqAYQUa.axlrd4OZ15Io3vmxbpkiIQ0MBW4wmdIUbbDjnKjgIx4UmkbaF2OqVA3\",\n            \"sort\": 3988,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 5497,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://jbCK.grTzGvEjeFhN48LhiXtWSnS2sF6vuWnumrGo1L-bJqZAe2bpv\",\n            \"sort\": 78,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 5723,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 2936,\n        \"releaseDateUtc\": \"1994-12-27T03:35:14.463Z\",\n        \"earliestShowingUtc\": \"1997-05-25T13:54:02.266Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://hsLVjSkgBvPvjzQjMpGMrLzunEUswD.fosHXfcdtB2bLHdhz945q1kTxYuarm\",\n        \"showtimesUrl\": \"http://vfNflLlzvSDrvAOMapwS.ogtiHjeP9\",\n        \"media\": {\n          \"key_0\": \"http://rjPgrjNcnxOMAmUdef.uiiwP1-3m7t9ymPl9I1NqXe9eWYy6nF.KCPH47W-nHVZwWD\",\n          \"key_1\": \"http://LzNrOishdrnEkbxlokrSMgF.vgunpsNhialjK7sLWBFN0FXx15wQ1\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 4154,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://mVyXlpPvRQkQuXk.bjxzJiM2N4,-1IBLvSz4Qb+IZkkbtC08Vnv+6fx3p+bV-5\",\n            \"sort\": 9667,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 609,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://hbAIxwXOAqebmAbyLvatKswLrECzYn.xvtLoJw3hnQkvys7HZg1pEhTBa778pKdohR+lq07ktIQYJVt88.ipvcAUW75af\",\n            \"sort\": 4436,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc2d2173-a7fb-474e-b315-35493335ac82",
+          "name": "List All Active and On-Demand Movies",
+          "request": {
+            "name": "List All Active and On-Demand Movies",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "movies",
+                "views",
+                "all",
+                "active"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e8ec09d2-5c68-44ff-86b0-96fb0a6ea727",
+              "name": "All active and digital on-demand movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies",
+                    "views",
+                    "all",
+                    "active"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 5737,\n  \"pageNumber\": 9991,\n  \"count\": 8793,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"movies\": [\n      {\n        \"id\": 2531,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 5500,\n        \"releaseDateUtc\": \"1955-03-28T07:29:22.649Z\",\n        \"earliestShowingUtc\": \"1983-02-24T20:44:00.900Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://AWHdfbIQRVLeIbsyQoykpaiPUgHwAh.osgXSuwCKr+KAtDujRWqBodvd8pTk3\",\n        \"showtimesUrl\": \"https://XGDwVZVDUVqneWAcdCDaO.emkudAc-ajNl7RF90gO\",\n        \"media\": {\n          \"key_0\": \"https://PDtppbPmVbGgilpjPAjYqGiqS.ytfsVkwMfBsGE-pq,\",\n          \"key_1\": \"http://cZWpGyjJXLaBvDvBZtQHTCMSNeKA.bwbIBz9X8zWlF+bDnyA8fHhMcJQAf5QfYZ-3wnOeLdyv0A\",\n          \"key_2\": \"https://HAejMVKLdxfSWHEoUpQlCdvFUXRJuld.qjtdtov1dhaoaSCvCG5oZxFFSLaICf6ncYco+ufZWG4AA,\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 287,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://tYZCAdCPqAYQUa.axlrd4OZ15Io3vmxbpkiIQ0MBW4wmdIUbbDjnKjgIx4UmkbaF2OqVA3\",\n            \"sort\": 3988,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 5497,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://jbCK.grTzGvEjeFhN48LhiXtWSnS2sF6vuWnumrGo1L-bJqZAe2bpv\",\n            \"sort\": 78,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 5723,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 2936,\n        \"releaseDateUtc\": \"1994-12-27T03:35:14.463Z\",\n        \"earliestShowingUtc\": \"1997-05-25T13:54:02.266Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://hsLVjSkgBvPvjzQjMpGMrLzunEUswD.fosHXfcdtB2bLHdhz945q1kTxYuarm\",\n        \"showtimesUrl\": \"http://vfNflLlzvSDrvAOMapwS.ogtiHjeP9\",\n        \"media\": {\n          \"key_0\": \"http://rjPgrjNcnxOMAmUdef.uiiwP1-3m7t9ymPl9I1NqXe9eWYy6nF.KCPH47W-nHVZwWD\",\n          \"key_1\": \"http://LzNrOishdrnEkbxlokrSMgF.vgunpsNhialjK7sLWBFN0FXx15wQ1\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 4154,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://mVyXlpPvRQkQuXk.bjxzJiM2N4,-1IBLvSz4Qb+IZkkbtC08Vnv+6fx3p+bV-5\",\n            \"sort\": 9667,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 609,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://hbAIxwXOAqebmAbyLvatKswLrECzYn.xvtLoJw3hnQkvys7HZg1pEhTBa778pKdohR+lq07ktIQYJVt88.ipvcAUW75af\",\n            \"sort\": 4436,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af6b48d8-28a5-448c-a217-30cad5b1ae26",
+          "name": "List Digital On-Demand Movies",
+          "request": {
+            "name": "List Digital On-Demand Movies",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "movies",
+                "views",
+                "on-demand"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd02c32e-0167-4a85-b51f-ab8533b0d832",
+              "name": "On-demand movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies",
+                    "views",
+                    "on-demand"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 5737,\n  \"pageNumber\": 9991,\n  \"count\": 8793,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"movies\": [\n      {\n        \"id\": 2531,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 5500,\n        \"releaseDateUtc\": \"1955-03-28T07:29:22.649Z\",\n        \"earliestShowingUtc\": \"1983-02-24T20:44:00.900Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://AWHdfbIQRVLeIbsyQoykpaiPUgHwAh.osgXSuwCKr+KAtDujRWqBodvd8pTk3\",\n        \"showtimesUrl\": \"https://XGDwVZVDUVqneWAcdCDaO.emkudAc-ajNl7RF90gO\",\n        \"media\": {\n          \"key_0\": \"https://PDtppbPmVbGgilpjPAjYqGiqS.ytfsVkwMfBsGE-pq,\",\n          \"key_1\": \"http://cZWpGyjJXLaBvDvBZtQHTCMSNeKA.bwbIBz9X8zWlF+bDnyA8fHhMcJQAf5QfYZ-3wnOeLdyv0A\",\n          \"key_2\": \"https://HAejMVKLdxfSWHEoUpQlCdvFUXRJuld.qjtdtov1dhaoaSCvCG5oZxFFSLaICf6ncYco+ufZWG4AA,\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 287,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://tYZCAdCPqAYQUa.axlrd4OZ15Io3vmxbpkiIQ0MBW4wmdIUbbDjnKjgIx4UmkbaF2OqVA3\",\n            \"sort\": 3988,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 5497,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://jbCK.grTzGvEjeFhN48LhiXtWSnS2sF6vuWnumrGo1L-bJqZAe2bpv\",\n            \"sort\": 78,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 5723,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 2936,\n        \"releaseDateUtc\": \"1994-12-27T03:35:14.463Z\",\n        \"earliestShowingUtc\": \"1997-05-25T13:54:02.266Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://hsLVjSkgBvPvjzQjMpGMrLzunEUswD.fosHXfcdtB2bLHdhz945q1kTxYuarm\",\n        \"showtimesUrl\": \"http://vfNflLlzvSDrvAOMapwS.ogtiHjeP9\",\n        \"media\": {\n          \"key_0\": \"http://rjPgrjNcnxOMAmUdef.uiiwP1-3m7t9ymPl9I1NqXe9eWYy6nF.KCPH47W-nHVZwWD\",\n          \"key_1\": \"http://LzNrOishdrnEkbxlokrSMgF.vgunpsNhialjK7sLWBFN0FXx15wQ1\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 4154,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://mVyXlpPvRQkQuXk.bjxzJiM2N4,-1IBLvSz4Qb+IZkkbtC08Vnv+6fx3p+bV-5\",\n            \"sort\": 9667,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 609,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://hbAIxwXOAqebmAbyLvatKswLrECzYn.xvtLoJw3hnQkvys7HZg1pEhTBa778pKdohR+lq07ktIQYJVt88.ipvcAUW75af\",\n            \"sort\": 4436,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "46363b1f-f75f-4b06-aae5-4488ac98bea9",
+          "name": "Get a Movie by Id or Slug",
+          "request": {
+            "name": "Get a Movie by Id or Slug",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "movies",
+                ":idOrSlug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idOrSlug",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "894927d8-fb4c-4963-afda-d2e14413b23a",
+              "name": "Movie representation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies",
+                    ":idOrSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idOrSlug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8101,\n  \"name\": \"string\",\n  \"sortableName\": \"string\",\n  \"slug\": \"string\",\n  \"synopsis\": \"string\",\n  \"synopsisTagLine\": \"string\",\n  \"productionCompany\": \"string\",\n  \"starringActors\": \"string\",\n  \"directors\": \"string\",\n  \"genre\": \"string\",\n  \"mpaaRating\": \"string\",\n  \"runTime\": 3061,\n  \"releaseDateUtc\": \"2004-02-13T08:11:01.477Z\",\n  \"earliestShowingUtc\": \"1985-07-21T13:34:50.366Z\",\n  \"hasScheduledShowtimes\": true,\n  \"websiteUrl\": \"http://LiAZqoHjymYtJbxwruMJOHXvI.yinrljJBr7gH3LUPG1nELgcJoczj1jzTzxpbOguDtjWlrBgA6,I.ojP,TdFCc7GEiA\",\n  \"showtimesUrl\": \"http://SZQcyIfBEHbHAYdylm.ikyue2bvQSEyXfmFEaql+wQmNF3rtdkyK4d+ljn3uedfJacI2A.\",\n  \"media\": {\n    \"key_0\": \"http://cSQrddCnhCxnSvsMFiSLRijYJX.gsszejG7j0LjxZqOZzS0Znl,DwYlNNB+oQHV6tPb\",\n    \"key_1\": \"https://kOawbBWvfBbQBHb.yxX4S-2rrl.FHtFhxvWd1hsDqapT4C1vOpqJRA87jX4er-kCDcp.RnPfDL.vK\",\n    \"key_2\": \"http://thHlfOJBVbDiRSyPw.elr7qee-y+graDynM6mykeZAfnYPPE++8BT5OOcakydjEOTq-BTPK0DwAij3Tx\",\n    \"key_3\": \"https://KjyRTzDDGCqL.dkvbu23TsB6FweKY2r0AD4rdZzDT6xeKSz55c,ySOCDG7uLyGwN0f.YeLyW\"\n  },\n  \"attributes\": [\n    {\n      \"id\": 5211,\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"shortDescription\": \"string\",\n      \"longDescription\": \"string\",\n      \"url\": \"https://JgwgvLaFCNrlrzcBac.rczWCsWWtFowAs0nNmdP0JzXe2x,enegm,Bw1JEP2WC8HCtmyCJwMPB2JxD0v\",\n      \"sort\": 2418,\n      \"appliesToMovie\": true,\n      \"appliesToShowtime\": false,\n      \"appliesToTheatre\": true,\n      \"media\": {},\n      \"_links\": {\n        \"key_0\": {\n          \"href\": \"string\",\n          \"templated\": true\n        },\n        \"key_1\": {\n          \"href\": \"string\",\n          \"templated\": true\n        }\n      }\n    },\n    {\n      \"id\": 7103,\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"shortDescription\": \"string\",\n      \"longDescription\": \"string\",\n      \"url\": \"http://SOwFVk.jrUyBtVOD2y\",\n      \"sort\": 4707,\n      \"appliesToMovie\": true,\n      \"appliesToShowtime\": true,\n      \"appliesToTheatre\": false,\n      \"media\": {},\n      \"_links\": {\n        \"key_0\": {\n          \"href\": \"string\",\n          \"templated\": false\n        }\n      }\n    }\n  ],\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e5fa87df-50a3-4a7a-a720-746eda8f07d5",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies",
+                    ":idOrSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idOrSlug",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 2461,\n  \"message\": \"string\",\n  \"errorCode\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8b824063-eae2-4f85-86b0-3cae6f980879",
+          "name": "List Similar On-Demand Movies",
+          "request": {
+            "name": "List Similar On-Demand Movies",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "movies",
+                ":id",
+                "on-demand",
+                "similar"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e00738a2-e61e-4636-95f9-657e8f3f3056",
+              "name": "Similar movies.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies",
+                    ":id",
+                    "on-demand",
+                    "similar"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 5737,\n  \"pageNumber\": 9991,\n  \"count\": 8793,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"movies\": [\n      {\n        \"id\": 2531,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 5500,\n        \"releaseDateUtc\": \"1955-03-28T07:29:22.649Z\",\n        \"earliestShowingUtc\": \"1983-02-24T20:44:00.900Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://AWHdfbIQRVLeIbsyQoykpaiPUgHwAh.osgXSuwCKr+KAtDujRWqBodvd8pTk3\",\n        \"showtimesUrl\": \"https://XGDwVZVDUVqneWAcdCDaO.emkudAc-ajNl7RF90gO\",\n        \"media\": {\n          \"key_0\": \"https://PDtppbPmVbGgilpjPAjYqGiqS.ytfsVkwMfBsGE-pq,\",\n          \"key_1\": \"http://cZWpGyjJXLaBvDvBZtQHTCMSNeKA.bwbIBz9X8zWlF+bDnyA8fHhMcJQAf5QfYZ-3wnOeLdyv0A\",\n          \"key_2\": \"https://HAejMVKLdxfSWHEoUpQlCdvFUXRJuld.qjtdtov1dhaoaSCvCG5oZxFFSLaICf6ncYco+ufZWG4AA,\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 287,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://tYZCAdCPqAYQUa.axlrd4OZ15Io3vmxbpkiIQ0MBW4wmdIUbbDjnKjgIx4UmkbaF2OqVA3\",\n            \"sort\": 3988,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 5497,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://jbCK.grTzGvEjeFhN48LhiXtWSnS2sF6vuWnumrGo1L-bJqZAe2bpv\",\n            \"sort\": 78,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 5723,\n        \"name\": \"string\",\n        \"sortableName\": \"string\",\n        \"slug\": \"string\",\n        \"synopsis\": \"string\",\n        \"synopsisTagLine\": \"string\",\n        \"productionCompany\": \"string\",\n        \"starringActors\": \"string\",\n        \"directors\": \"string\",\n        \"genre\": \"string\",\n        \"mpaaRating\": \"string\",\n        \"runTime\": 2936,\n        \"releaseDateUtc\": \"1994-12-27T03:35:14.463Z\",\n        \"earliestShowingUtc\": \"1997-05-25T13:54:02.266Z\",\n        \"hasScheduledShowtimes\": false,\n        \"websiteUrl\": \"http://hsLVjSkgBvPvjzQjMpGMrLzunEUswD.fosHXfcdtB2bLHdhz945q1kTxYuarm\",\n        \"showtimesUrl\": \"http://vfNflLlzvSDrvAOMapwS.ogtiHjeP9\",\n        \"media\": {\n          \"key_0\": \"http://rjPgrjNcnxOMAmUdef.uiiwP1-3m7t9ymPl9I1NqXe9eWYy6nF.KCPH47W-nHVZwWD\",\n          \"key_1\": \"http://LzNrOishdrnEkbxlokrSMgF.vgunpsNhialjK7sLWBFN0FXx15wQ1\"\n        },\n        \"attributes\": [\n          {\n            \"id\": 4154,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://mVyXlpPvRQkQuXk.bjxzJiM2N4,-1IBLvSz4Qb+IZkkbtC08Vnv+6fx3p+bV-5\",\n            \"sort\": 9667,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 609,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://hbAIxwXOAqebmAbyLvatKswLrECzYn.xvtLoJw3hnQkvys7HZg1pEhTBa778pKdohR+lq07ktIQYJVt88.ipvcAUW75af\",\n            \"sort\": 4436,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "53999218-273f-44ab-818e-f0ceaa8135df",
+          "name": "Get a Movie by Internal Release Id",
+          "request": {
+            "name": "Get a Movie by Internal Release Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v2",
+                "movies",
+                "internal-release",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "09f48851-5829-4955-a1e4-05ec0ce4ead8",
+              "name": "Movie representation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "movies",
+                    "internal-release",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8101,\n  \"name\": \"string\",\n  \"sortableName\": \"string\",\n  \"slug\": \"string\",\n  \"synopsis\": \"string\",\n  \"synopsisTagLine\": \"string\",\n  \"productionCompany\": \"string\",\n  \"starringActors\": \"string\",\n  \"directors\": \"string\",\n  \"genre\": \"string\",\n  \"mpaaRating\": \"string\",\n  \"runTime\": 3061,\n  \"releaseDateUtc\": \"2004-02-13T08:11:01.477Z\",\n  \"earliestShowingUtc\": \"1985-07-21T13:34:50.366Z\",\n  \"hasScheduledShowtimes\": true,\n  \"websiteUrl\": \"http://LiAZqoHjymYtJbxwruMJOHXvI.yinrljJBr7gH3LUPG1nELgcJoczj1jzTzxpbOguDtjWlrBgA6,I.ojP,TdFCc7GEiA\",\n  \"showtimesUrl\": \"http://SZQcyIfBEHbHAYdylm.ikyue2bvQSEyXfmFEaql+wQmNF3rtdkyK4d+ljn3uedfJacI2A.\",\n  \"media\": {\n    \"key_0\": \"http://cSQrddCnhCxnSvsMFiSLRijYJX.gsszejG7j0LjxZqOZzS0Znl,DwYlNNB+oQHV6tPb\",\n    \"key_1\": \"https://kOawbBWvfBbQBHb.yxX4S-2rrl.FHtFhxvWd1hsDqapT4C1vOpqJRA87jX4er-kCDcp.RnPfDL.vK\",\n    \"key_2\": \"http://thHlfOJBVbDiRSyPw.elr7qee-y+graDynM6mykeZAfnYPPE++8BT5OOcakydjEOTq-BTPK0DwAij3Tx\",\n    \"key_3\": \"https://KjyRTzDDGCqL.dkvbu23TsB6FweKY2r0AD4rdZzDT6xeKSz55c,ySOCDG7uLyGwN0f.YeLyW\"\n  },\n  \"attributes\": [\n    {\n      \"id\": 5211,\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"shortDescription\": \"string\",\n      \"longDescription\": \"string\",\n      \"url\": \"https://JgwgvLaFCNrlrzcBac.rczWCsWWtFowAs0nNmdP0JzXe2x,enegm,Bw1JEP2WC8HCtmyCJwMPB2JxD0v\",\n      \"sort\": 2418,\n      \"appliesToMovie\": true,\n      \"appliesToShowtime\": false,\n      \"appliesToTheatre\": true,\n      \"media\": {},\n      \"_links\": {\n        \"key_0\": {\n          \"href\": \"string\",\n          \"templated\": true\n        },\n        \"key_1\": {\n          \"href\": \"string\",\n          \"templated\": true\n        }\n      }\n    },\n    {\n      \"id\": 7103,\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"shortDescription\": \"string\",\n      \"longDescription\": \"string\",\n      \"url\": \"http://SOwFVk.jrUyBtVOD2y\",\n      \"sort\": 4707,\n      \"appliesToMovie\": true,\n      \"appliesToShowtime\": true,\n      \"appliesToTheatre\": false,\n      \"media\": {},\n      \"_links\": {\n        \"key_0\": {\n          \"href\": \"string\",\n          \"templated\": false\n        }\n      }\n    }\n  ],\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.amctheatres.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AMC-Vendor-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "89c06b47-dde1-4294-8fef-a92a01b75f3d",
+    "name": "AMC Theatres Barcodes Movies API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AMC Theatres API is a public REST API published by AMC Entertainment Holdings\nthat exposes data and transactional capabilities for AMC theatres, movies, showtimes,\nlocations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended\nfor partner integrations such as movie discovery, ticket sales, dine-in / express pickup\nconcession ordering, AMC Stubs loyalty integrations, and entertainment listings on\nthird-party sites and apps.\n\nAuthentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`\nrequest header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,\n`count`, `_embedded`, `_links`) for collections.\n\nThis OpenAPI definition was reconstructed from the public AMC Developer Portal\ndocumentation (developers.amctheatres.com) and known integrations. The dev portal\nblocks automated retrieval, so this spec was assembled from third-party mirrors\nof the AMC documentation and verified against open-source AMC API clients.\n\nContact Support:\n Name: AMC Theatres Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

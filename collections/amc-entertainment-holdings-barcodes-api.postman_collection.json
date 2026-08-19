@@ -1,0 +1,341 @@
+{
+  "item": [
+    {
+      "id": "89c8e0e3-644e-427b-8422-105dc65efa32",
+      "name": "Barcodes",
+      "description": {
+        "content": "Ticket and loyalty QR codes and Code 128 barcodes.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1391e64b-e00b-452a-a312-6dec0d92039f",
+          "name": "Get Ticket QR Code",
+          "request": {
+            "name": "Get Ticket QR Code",
+            "description": {
+              "content": "Returns the referenceId as a QR Code for the given encrypted product/reference id combination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "qr-codes",
+                ":encrypted-reference-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encrypted-reference-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4b229620-072d-4009-b293-eeea64b69377",
+              "name": "QR code image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "qr-codes",
+                    ":encrypted-reference-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encrypted-reference-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b14c11a-309e-48bd-8439-e7d8b799301a",
+          "name": "Get Ticket Code 128 Barcode",
+          "request": {
+            "name": "Get Ticket Code 128 Barcode",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "code128",
+                ":encrypted-reference-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encrypted-reference-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d10b48ce-0b9a-46b2-a5cf-84f9f01f3bca",
+              "name": "Code 128 image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "code128",
+                    ":encrypted-reference-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encrypted-reference-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e1b8f41-b34d-4cd9-adcd-72ee0d375335",
+          "name": "Get Loyalty Card QR Code",
+          "request": {
+            "name": "Get Loyalty Card QR Code",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "amc-accounts",
+                ":account-id",
+                "loyalty",
+                "qr-code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b7705a6d-2ec2-4017-9a6b-dfd20cc772ea",
+              "name": "QR code image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "amc-accounts",
+                    ":account-id",
+                    "loyalty",
+                    "qr-code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.amctheatres.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AMC-Vendor-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "86fdc3b0-b271-41a1-af23-ca95d59ce033",
+    "name": "AMC Theatres Barcodes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AMC Theatres API is a public REST API published by AMC Entertainment Holdings\nthat exposes data and transactional capabilities for AMC theatres, movies, showtimes,\nlocations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended\nfor partner integrations such as movie discovery, ticket sales, dine-in / express pickup\nconcession ordering, AMC Stubs loyalty integrations, and entertainment listings on\nthird-party sites and apps.\n\nAuthentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`\nrequest header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,\n`count`, `_embedded`, `_links`) for collections.\n\nThis OpenAPI definition was reconstructed from the public AMC Developer Portal\ndocumentation (developers.amctheatres.com) and known integrations. The dev portal\nblocks automated retrieval, so this spec was assembled from third-party mirrors\nof the AMC documentation and verified against open-source AMC API clients.\n\nContact Support:\n Name: AMC Theatres Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

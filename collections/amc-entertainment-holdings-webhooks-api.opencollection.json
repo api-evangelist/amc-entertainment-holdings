@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Webhooks API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Available Webhook Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/webhook-events"
+          },
+          "docs": "List Available Webhook Events"
+        },
+        {
+          "info": {
+            "name": "List Subscribed Webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/webhooks"
+          },
+          "docs": "List Subscribed Webhooks"
+        },
+        {
+          "info": {
+            "name": "Subscribe To Webhook Event",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v1/webhooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Subscribe To Webhook Event"
+        },
+        {
+          "info": {
+            "name": "Unsubscribe From Webhook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v1/webhooks/:webhook-token-id",
+            "params": [
+              {
+                "name": "webhook-token-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unsubscribe From Webhook"
+        },
+        {
+          "info": {
+            "name": "Test Webhook Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v1/webhooks/:webhook-token-id/test",
+            "params": [
+              {
+                "name": "webhook-token-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Test Webhook Subscription"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Media API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Media",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Media By Type and Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/media/:media-type/:media-id",
+            "params": [
+              {
+                "name": "media-type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "media-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Media By Type and Id"
+        },
+        {
+          "info": {
+            "name": "List Media for a Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/media/:resource-type/:resource-id/:media-type",
+            "params": [
+              {
+                "name": "resource-type",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "resource-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "media-type",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "List Media for a Resource"
+        },
+        {
+          "info": {
+            "name": "List Image Content Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/media/images/content-types"
+          },
+          "docs": "List Image Content Types"
+        },
+        {
+          "info": {
+            "name": "List Video Content Types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/media/videos/content-types"
+          },
+          "docs": "List Video Content Types"
+        },
+        {
+          "info": {
+            "name": "List Image Sizes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v2/images/sizes"
+          },
+          "docs": "List Image Sizes"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

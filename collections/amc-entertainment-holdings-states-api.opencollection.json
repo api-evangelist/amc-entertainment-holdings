@@ -1,0 +1,55 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes States API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "States",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All States",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/states"
+          },
+          "docs": "List All States"
+        },
+        {
+          "info": {
+            "name": "Get State By Slug",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/states/:state-slug",
+            "params": [
+              {
+                "name": "state-slug",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get State By Slug"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

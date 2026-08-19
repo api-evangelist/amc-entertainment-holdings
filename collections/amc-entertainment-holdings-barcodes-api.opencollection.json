@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Barcodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Ticket QR Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/qr-codes/:encrypted-reference-id",
+            "params": [
+              {
+                "name": "encrypted-reference-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the referenceId as a QR Code for the given encrypted product/reference id combination."
+        },
+        {
+          "info": {
+            "name": "Get Ticket Code 128 Barcode",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/code128/:encrypted-reference-id",
+            "params": [
+              {
+                "name": "encrypted-reference-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Ticket Code 128 Barcode"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Card QR Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/amc-accounts/:account-id/loyalty/qr-code",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Card QR Code"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

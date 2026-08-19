@@ -1,0 +1,256 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Loyalty API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loyalty",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Apply Loyalty Rewards To Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/loyalty-rewards-application",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Apply Loyalty Rewards To Order"
+        },
+        {
+          "info": {
+            "name": "Remove Loyalty Rewards From Order",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v3/orders/:order-id/loyalty-rewards-application",
+            "params": [
+              {
+                "name": "order-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove Loyalty Rewards From Order"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Account By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/:loyalty-account-id",
+            "params": [
+              {
+                "name": "loyalty-account-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Account By Id"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Account By Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/email-:email-address",
+            "params": [
+              {
+                "name": "email-address",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Account By Email"
+        },
+        {
+          "info": {
+            "name": "Register For Loyalty Campaign By Email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/email-:email-address/:campaign/registration",
+            "params": [
+              {
+                "name": "email-address",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "campaign",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Register For Loyalty Campaign By Email"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Account By Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/card-:card-number",
+            "params": [
+              {
+                "name": "card-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Account By Card"
+        },
+        {
+          "info": {
+            "name": "Register For Loyalty Campaign By Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/card-:card-number/:campaign/registration",
+            "params": [
+              {
+                "name": "card-number",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "campaign",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Register For Loyalty Campaign By Card"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Account By Phone",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/phone-:phone",
+            "params": [
+              {
+                "name": "phone",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Account By Phone"
+        },
+        {
+          "info": {
+            "name": "Unlink Loyalty Account From AMC Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.amctheatres.com/v4/amc-accounts/:amc-account-id/loyalty",
+            "params": [
+              {
+                "name": "amc-account-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Unlink Loyalty Account From AMC Account"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Card",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/loyalty-cards/:card-number",
+            "params": [
+              {
+                "name": "card-number",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Card"
+        },
+        {
+          "info": {
+            "name": "Create Loyalty Points Redemption",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.amctheatres.com/v4/loyalty-accounts/:loyalty-account-id/redemptions",
+            "params": [
+              {
+                "name": "loyalty-account-id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create Loyalty Points Redemption"
+        },
+        {
+          "info": {
+            "name": "Get Loyalty Card QR Code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v3/amc-accounts/:account-id/loyalty/qr-code",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Loyalty Card QR Code"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

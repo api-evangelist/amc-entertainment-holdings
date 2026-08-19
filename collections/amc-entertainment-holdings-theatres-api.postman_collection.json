@@ -1,0 +1,528 @@
+{
+  "item": [
+    {
+      "id": "121d9278-900c-44f8-b147-0e3a215e697a",
+      "name": "Theatres",
+      "description": {
+        "content": "AMC theatre locations, attributes, and metadata.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b443bc45-1a7f-434c-8036-530a4a1e0723",
+          "name": "List All Active Theatres",
+          "request": {
+            "name": "List All Active Theatres",
+            "description": {
+              "content": "Returns a paginated list of active AMC theatres, optionally filtered by attributes, market, state/city, brand, or name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "theatres"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include-attributes",
+                  "value": "<string>",
+                  "description": "Comma-delimited list of attributes that results must have."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude-attributes",
+                  "value": "<string>",
+                  "description": "Comma-delimited list of attributes that results must not have."
+                },
+                {
+                  "disabled": false,
+                  "key": "attribute-operator",
+                  "value": "<string>",
+                  "description": "Whether the include/exclude attribute filter is `and` (all) or `or` (any)."
+                },
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "Comma-delimited list of theatre ids to filter by."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter theatres whose name contains the specified text."
+                },
+                {
+                  "disabled": false,
+                  "key": "market",
+                  "value": "<string>",
+                  "description": "Filter theatres in the specified market."
+                },
+                {
+                  "disabled": false,
+                  "key": "state",
+                  "value": "<string>",
+                  "description": "Filter theatres in the specified state (required when `city` is given)."
+                },
+                {
+                  "disabled": false,
+                  "key": "city",
+                  "value": "<string>",
+                  "description": "Filter theatres in the specified city (requires `state`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "brand",
+                  "value": "<string>",
+                  "description": "Filter theatres by brand abbreviation."
+                },
+                {
+                  "disabled": false,
+                  "key": "include",
+                  "value": "<string>",
+                  "description": "Set to `closed` to include closed theatres."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-number",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "10",
+                  "description": "Results per page (max 100). Defaults to 10."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f73c7367-80fd-45c3-ae8d-be7774fe15c6",
+              "name": "A paged list of theatres.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "theatres"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include-attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude-attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribute-operator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "market",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "state",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "city",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "brand",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-number",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 7862,\n  \"pageNumber\": 8050,\n  \"count\": 9522,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_2\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_3\": {\n      \"href\": \"string\",\n      \"templated\": false\n    }\n  },\n  \"_embedded\": {\n    \"theatres\": [\n      {\n        \"id\": 366,\n        \"name\": \"string\",\n        \"longName\": \"string\",\n        \"secondaryLongName\": \"string\",\n        \"showtimesPhoneNumber\": \"string\",\n        \"guestServicesPhoneNumber\": \"string\",\n        \"utcOffset\": \"string\",\n        \"timezone\": \"string\",\n        \"timezoneAbbreviation\": \"string\",\n        \"slug\": \"string\",\n        \"facebookUrl\": \"https://mF.heRljosQrmm9h4aKi26G2HzY\",\n        \"outageDescription\": \"string\",\n        \"websiteUrl\": \"http://gkGhojIwyEzxxVuPUBQyUxYBmTRwyNAy.jaH6EKd1E+IJl4maFSE7-e1a-bbCQyS0dMrj.sMJLXC-R\",\n        \"directionsUrl\": \"https://XQrPt.prgtn42ul+h-Wfe9ZQu4qPoTn.8XNW1Xn5nQbHRX\",\n        \"loyaltyVersion\": \"string\",\n        \"isClosed\": false,\n        \"lastBusinessDate\": \"1958-12-13\",\n        \"attributes\": [\n          {\n            \"id\": 844,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://tihvQkY.kgrjCOC9OS8vH4vL.uyKOq+yExHsKm2e6Dv4k8gdwfrpOP+Xgt18\",\n            \"sort\": 6807,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 5660,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://AtqPaetUJIpafGCMkaDsZWcVksu.xyDKibDn5AFphIDsIKoiIeeSX,2CBLbJh-omJiJm8K+ibSL7fortbor7ImXA\",\n            \"sort\": 8210,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"location\": {\n          \"addressLine1\": \"string\",\n          \"addressLine2\": \"string\",\n          \"city\": \"string\",\n          \"postalCode\": \"string\",\n          \"state\": \"string\",\n          \"stateName\": \"string\",\n          \"country\": \"string\",\n          \"latitude\": 2064.233679296199,\n          \"longitude\": 1950.0962008079714,\n          \"marketName\": \"string\",\n          \"marketId\": 2876\n        },\n        \"media\": {\n          \"theatreImageIcon\": \"http://uubPZzEJSRWhNJAyAQZHaeoQlofqYqzYf.piWsyVSjtOIMEZ\",\n          \"theatreImageStandard\": \"https://IJYLgu.ggmpTTHCZEIQlWTktIZwQFUL9tmAAewao1K2.8vh-04seJtNf\",\n          \"theatreImageThumbnail\": \"http://HxvlXEIfei.udmbHQwDC-t2ASJL.crPw5hlCNqHiA.KnwSBzqoKG5M47us+Pr8y7JWPTPDfi\",\n          \"theatreImageLarge\": \"https://puJwDqRCkKTlMbMvhnMxGXFTIwuLdrFL.bgbYzS+egDTL5rjsaTFmn6C+4IYGylkSH8hFPbGJ7U10TcJKU1ZJHdHpfdiuIsUS9\",\n          \"heroDesktopDynamic\": \"http://VMcFblpmTSNRjvSTyBsXLWuuphMvFiKLW.khvscu2unxNDXLDIUEC,HDZ9aP9v.N8QLdkMGI-PQTgJusAw+aX\",\n          \"heroMobileDynamic\": \"https://wFlHwWQsJLkTVtLUrAdnoAHuAYgMkgk.mowb8fUtJ.2BUCj-R3vhPjTw,72mIMBusaP9njQ\",\n          \"interiorDynamic\": \"http://g.ycI6VPhB9uKqyGPRevzH1Zz-QaotDlmqgeHnjeL9rcj3S11wJbkAFQbUalSXmb+FRbN3lCfJ-oa64c-S\",\n          \"exteriorDynamic\": \"https://RxoBZalwhPodBW.seuwW0p,8YUoze3Gxo2xp.C.Ux.T6OHZpZRTWDYUE5zu,N+1oA8KMWrO6gVvT8sWE2Qk6xuLQ3Ac\",\n          \"promotionDynamic\": \"https://ZNWxeLPMHsNfhilSMIlHQW.gkzyefv2AhNH.Yx0sg6vmhnSq2Yf61JqtpQggkpyD.JSOeGkT-fHXKOqPBkr1MYE\"\n        },\n        \"redemptionMethods\": [\n          \"string\",\n          \"string\"\n        ],\n        \"westWorldMediaTheatreNumber\": 1495,\n        \"concessionsDeliveryOptions\": [\n          \"ExpressPickup\",\n          \"DeliveryToSeat\"\n        ],\n        \"convenienceFeeTaxPercent\": 1558.0164567951372,\n        \"convenienceFeeTaxFlatAmount\": 545.7645845901149,\n        \"brand\": \"string\",\n        \"productSubscriptionUsageLevel\": \"string\",\n        \"onlineConcessions\": false,\n        \"hasMultipleKitchens\": false,\n        \"estimatedConcessionsOrderFees\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 5457,\n        \"name\": \"string\",\n        \"longName\": \"string\",\n        \"secondaryLongName\": \"string\",\n        \"showtimesPhoneNumber\": \"string\",\n        \"guestServicesPhoneNumber\": \"string\",\n        \"utcOffset\": \"string\",\n        \"timezone\": \"string\",\n        \"timezoneAbbreviation\": \"string\",\n        \"slug\": \"string\",\n        \"facebookUrl\": \"http://oVUWjXjdDcDt.nzlynFP+1xrPi5kE4t4ffRzhp.HXWZ4YkekhKcS9Nh1SUUMJj,M6mkxb9zuVtbkKHvlWN5,\",\n        \"outageDescription\": \"string\",\n        \"websiteUrl\": \"https://FLcYA.hxbGJO.nUUYxVfmKAPrgYLLK4G5uAdyCK1UEgwaWd.aS2jd9YcR+lW3T2X6\",\n        \"directionsUrl\": \"https://uHaWKYPEwqRPEOtqCzjvITqPMoxbP.dcgrC5JA3OQOXEY-lEPz4k-N,fr5CQ5\",\n        \"loyaltyVersion\": \"string\",\n        \"isClosed\": false,\n        \"lastBusinessDate\": \"1980-01-14\",\n        \"attributes\": [\n          {\n            \"id\": 5963,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://RKLTopkkQmBNtPoKHpLCfIPrnXom.xhcntItuJKC-KcXeI6O7T\",\n            \"sort\": 5590,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 5576,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://pCSfyeMgKJpVkDpLnarqZueWuPH.hzxiX1lYFJL-MK3WkWrXm5baxFOb1KCvY\",\n            \"sort\": 7568,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"location\": {\n          \"addressLine1\": \"string\",\n          \"addressLine2\": \"string\",\n          \"city\": \"string\",\n          \"postalCode\": \"string\",\n          \"state\": \"string\",\n          \"stateName\": \"string\",\n          \"country\": \"string\",\n          \"latitude\": 4470.049649636319,\n          \"longitude\": 1605.6645188361729,\n          \"marketName\": \"string\",\n          \"marketId\": 5069\n        },\n        \"media\": {\n          \"theatreImageIcon\": \"https://TwhSaeUTVrblLLalAdHPcTKvSWKqhf.eyy37dV+Otpe6BF8P5RizhcNTn2.iSHTdcZf\",\n          \"theatreImageStandard\": \"https://zLyxlEVKBfnPHMdahyjrvOhakpWEv.ymPWhkxNIYeaOZ6cb74231eQ1Wqx,tfAmLVwU2UsYiqaVCY-wUtfDqArUE.FoyPQG0T24MwnYA\",\n          \"theatreImageThumbnail\": \"http://wUrLPevJNe.stOJqHsbOgHcD68Q+8MVhD6Z8+aRuRHz+bYx,pHNeVVAw3Smmpl+WQxUK9R\",\n          \"theatreImageLarge\": \"http://lGMLHqpmnU.unlyko2uoU16yfUr,rJE+pZM4huMC1QWPP.dyGNXj-1ZPDh.eaK-WFcsJGr\",\n          \"heroDesktopDynamic\": \"http://tESMlvTJonkbTpP.cfpeXWXAUgQd.b\",\n          \"heroMobileDynamic\": \"https://kyIaolcxPMPSxQSeDGDSdKoFiUcgm.vwP2UqQ9FmT22nieSCKVUGPY7JFLctLwK2BPuIsuI923CwOSr\",\n          \"interiorDynamic\": \"http://keYVHAgOiRrcwPJOjdEABwn.khqY4KypRwGb,-s5ypq87ggkYfR+\",\n          \"exteriorDynamic\": \"https://IaOoXzcUUzFOeZlE.axqyHSZFi98JhikAatT7D1POEnWPUM0vbXzrIUJ0CS6HEbpg\",\n          \"promotionDynamic\": \"https://mhAXepeGwXYYAWBkjEPoNKqDRDmm.kdgiZAtKW70HNszReZSSPpDRRruu4yqef3hrCFiBzV+FRGw9lajZPJAMi82aZEv5LlUn8nC\"\n        },\n        \"redemptionMethods\": [\n          \"string\",\n          \"string\"\n        ],\n        \"westWorldMediaTheatreNumber\": 5321,\n        \"concessionsDeliveryOptions\": [\n          \"ExpressPickup\",\n          \"ExpressPickup\"\n        ],\n        \"convenienceFeeTaxPercent\": 7485.54246342834,\n        \"convenienceFeeTaxFlatAmount\": 1998.9709589934434,\n        \"brand\": \"string\",\n        \"productSubscriptionUsageLevel\": \"string\",\n        \"onlineConcessions\": true,\n        \"hasMultipleKitchens\": true,\n        \"estimatedConcessionsOrderFees\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0203bd40-e031-461f-904e-11d827f52e52",
+          "name": "Get a Theatre by Id or Slug",
+          "request": {
+            "name": "Get a Theatre by Id or Slug",
+            "description": {
+              "content": "Returns a single theatre matched by numeric id or url-friendly slug.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "theatres",
+                ":idOrSlug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "idOrSlug",
+                  "description": "(Required) The theatre id (integer) or theatre slug."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1cdee8b2-6559-4643-b409-d4f8215f2d45",
+              "name": "Theatre representation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "theatres",
+                    ":idOrSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idOrSlug",
+                      "description": "(Required) The theatre id (integer) or theatre slug."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1313,\n  \"name\": \"string\",\n  \"longName\": \"string\",\n  \"secondaryLongName\": \"string\",\n  \"showtimesPhoneNumber\": \"string\",\n  \"guestServicesPhoneNumber\": \"string\",\n  \"utcOffset\": \"string\",\n  \"timezone\": \"string\",\n  \"timezoneAbbreviation\": \"string\",\n  \"slug\": \"string\",\n  \"facebookUrl\": \"http://TMDHUAHRWjKNBiESJrRaFYGcRZhEu.xshQ9N5rRLvVsOf.WrRIguYyWokxxhJOytwrY0HmaLIBQOP\",\n  \"outageDescription\": \"string\",\n  \"websiteUrl\": \"http://EXFbxdNWLoRU.qorkWcgPig1ffVCvV5VAxP3tS2d1elMgWSgnt7TuCie8juZdYhaK,hI3oQhhG\",\n  \"directionsUrl\": \"https://ZGXWFwMPuOnbBjoihsmqNdilv.uunpS\",\n  \"loyaltyVersion\": \"string\",\n  \"isClosed\": false,\n  \"lastBusinessDate\": \"1992-02-06\",\n  \"attributes\": [\n    {\n      \"id\": 4016,\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"shortDescription\": \"string\",\n      \"longDescription\": \"string\",\n      \"url\": \"http://QeErVbsEVOYfmSbrgxeirZ.yzcnHpZnNxJY3QstudR.k\",\n      \"sort\": 228,\n      \"appliesToMovie\": false,\n      \"appliesToShowtime\": true,\n      \"appliesToTheatre\": false,\n      \"media\": {},\n      \"_links\": {\n        \"key_0\": {\n          \"href\": \"string\",\n          \"templated\": true\n        },\n        \"key_1\": {\n          \"href\": \"string\",\n          \"templated\": true\n        }\n      }\n    },\n    {\n      \"id\": 9952,\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"shortDescription\": \"string\",\n      \"longDescription\": \"string\",\n      \"url\": \"https://lUZivsLCipJTSiYTUKV.wpmqCPNvqvCYzT3a,z-.uFuTuDT3,e\",\n      \"sort\": 3929,\n      \"appliesToMovie\": true,\n      \"appliesToShowtime\": false,\n      \"appliesToTheatre\": true,\n      \"media\": {},\n      \"_links\": {\n        \"key_0\": {\n          \"href\": \"string\",\n          \"templated\": true\n        },\n        \"key_1\": {\n          \"href\": \"string\",\n          \"templated\": true\n        },\n        \"key_2\": {\n          \"href\": \"string\",\n          \"templated\": false\n        }\n      }\n    }\n  ],\n  \"location\": {\n    \"addressLine1\": \"string\",\n    \"addressLine2\": \"string\",\n    \"city\": \"string\",\n    \"postalCode\": \"string\",\n    \"state\": \"string\",\n    \"stateName\": \"string\",\n    \"country\": \"string\",\n    \"latitude\": 2209.8795623174806,\n    \"longitude\": 3055.5456286628655,\n    \"marketName\": \"string\",\n    \"marketId\": 7717\n  },\n  \"media\": {\n    \"theatreImageIcon\": \"http://hoecGrQb.adaqps-qDbHpwDFoOlm6mJIlJxgL-xnrcMopo9\",\n    \"theatreImageStandard\": \"http://EYHUxvCYxOSrrVyJNgGbwCWeUj.gcseh24uVXmGlZUY76FKXzCJbxLYiP6.D+jvyUNyYc.O2YySjSHgfLBRcPun6RGK,MUglxZ1\",\n    \"theatreImageThumbnail\": \"http://TwnDbSjCadEodwMQlMR.joirVcwGSrxwuLPUw3\",\n    \"theatreImageLarge\": \"http://sZHTwFlROG.irqlxDuQXnWiIlUeaGVgtDxR\",\n    \"heroDesktopDynamic\": \"http://FMEMuoAcSLjoddnAkbXHrA.cthoghGQPaCWOyH,6Ayr35So1qaReO6giKMzJhFAGfsr2DV\",\n    \"heroMobileDynamic\": \"http://zpZCBIdCPpdTL.rvuzoQ6CGU-pgCPgaglATwLaaQI1tkSFKZcn54ZH\",\n    \"interiorDynamic\": \"https://DLAumACceRLshQLAnGHHl.fvzKJd8TCzmLxKiqPhCjf9T.qOFiyMei\",\n    \"exteriorDynamic\": \"http://YwUtLxik.uwrkLcE7wtMkI.HFNa,GouBASgT,yd.ft3efhwrvOL8YnHOr,eEUzpsgDmYJg7B8i\",\n    \"promotionDynamic\": \"http://ZpYmbU.psihD.2,dbD4uWa12eqzXShcqDp3iKiOhZD\"\n  },\n  \"redemptionMethods\": [\n    \"string\",\n    \"string\"\n  ],\n  \"westWorldMediaTheatreNumber\": 3927,\n  \"concessionsDeliveryOptions\": [\n    \"ExpressPickup\",\n    \"ExpressPickup\"\n  ],\n  \"convenienceFeeTaxPercent\": 6431.636438863198,\n  \"convenienceFeeTaxFlatAmount\": 4564.245386878422,\n  \"brand\": \"string\",\n  \"productSubscriptionUsageLevel\": \"string\",\n  \"onlineConcessions\": false,\n  \"hasMultipleKitchens\": true,\n  \"estimatedConcessionsOrderFees\": {},\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_2\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_3\": {\n      \"href\": \"string\",\n      \"templated\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e75cb96e-da40-4d6a-a802-495660dcb6d6",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "theatres",
+                    ":idOrSlug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "idOrSlug",
+                      "description": "(Required) The theatre id (integer) or theatre slug."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 8669,\n  \"message\": \"string\",\n  \"errorCode\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d9b3891-e5cc-4186-885f-e9d5287428f6",
+          "name": "List Theatres Now Playing a WWM Release",
+          "request": {
+            "name": "List Theatres Now Playing a WWM Release",
+            "description": {
+              "content": "Returns theatres now playing the specified West World Media release number.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "theatres",
+                "views",
+                "now-playing",
+                "wwm-release-number",
+                ":wwm-release-number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page-number",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "10",
+                  "description": "Results per page (max 100). Defaults to 10."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "wwm-release-number",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2a0361a1-c759-4e5f-9a3c-1fd69a4c8477",
+              "name": "Theatres playing the release.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "theatres",
+                    "views",
+                    "now-playing",
+                    "wwm-release-number",
+                    ":wwm-release-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page-number",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "wwm-release-number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 5295,\n  \"pageNumber\": 1313,\n  \"count\": 5292,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": false\n    }\n  },\n  \"_embedded\": {\n    \"theatres\": [\n      {\n        \"id\": 2042,\n        \"name\": \"string\",\n        \"longName\": \"string\",\n        \"secondaryLongName\": \"string\",\n        \"showtimesPhoneNumber\": \"string\",\n        \"guestServicesPhoneNumber\": \"string\",\n        \"utcOffset\": \"string\",\n        \"timezone\": \"string\",\n        \"timezoneAbbreviation\": \"string\",\n        \"slug\": \"string\",\n        \"facebookUrl\": \"http://BRgUgrKZVHXjZmYdlu.wvxlOmKxr9FCVUPqSCujE8eMpC107M8DAMCF,RBiGpu2\",\n        \"outageDescription\": \"string\",\n        \"websiteUrl\": \"https://NrHkAysYgODjvQK.iiwnvfwcwvIi5SEXudCxIY-t\",\n        \"directionsUrl\": \"https://Qi.gxfdtDPSyu758kxRon1p3KIiqDdEQYlhawcxEaBw.A-.pqBB61ago\",\n        \"loyaltyVersion\": \"string\",\n        \"isClosed\": false,\n        \"lastBusinessDate\": \"1958-08-25\",\n        \"attributes\": [\n          {\n            \"id\": 6012,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://aRyVEQ.xrjbEAdTLX4KzsaWH2LWFCL0rVAolT+5vQLkOLUbyiG+cuyEXAJ\",\n            \"sort\": 2043,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 767,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://pqCWTBVvtLXtutolUaMoWKqZWHYW.hvpKk3l.xkgj6WQG+yc5saovOB8dZia+CHUnaBo3s,DRYpHE8UJPPTkVg,2eg\",\n            \"sort\": 5022,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"location\": {\n          \"addressLine1\": \"string\",\n          \"addressLine2\": \"string\",\n          \"city\": \"string\",\n          \"postalCode\": \"string\",\n          \"state\": \"string\",\n          \"stateName\": \"string\",\n          \"country\": \"string\",\n          \"latitude\": 9491.539788181806,\n          \"longitude\": 2902.340969731221,\n          \"marketName\": \"string\",\n          \"marketId\": 9884\n        },\n        \"media\": {\n          \"theatreImageIcon\": \"https://tjjTNmS.fwxamFe0aow29\",\n          \"theatreImageStandard\": \"https://jdTlHdiq.yqcC30cxsWiN3\",\n          \"theatreImageThumbnail\": \"https://yayVqV.enIUnwUeBZKJ0ByhjS80YHCYzuaGToufhyj5j+tCblGJmSbmycIiOLtAWBz8b\",\n          \"theatreImageLarge\": \"https://UCavSgtLpIO.bqwdIH-NhARXeYIzeZyfI9.9WFJz3G41,oZs51\",\n          \"heroDesktopDynamic\": \"https://xjCApDrOdXirOqkBaTegm.bkdGBbdv.O5oBG9WagWRGalaBNunbpd6eo0mxH7mIRnF\",\n          \"heroMobileDynamic\": \"https://IWu.xzxHfZDa2fzp50AlgBZIOHKls7m0k8ygn87sC0jHvl\",\n          \"interiorDynamic\": \"http://QaSrYxLGfTLN.fwRya0PP8+KLGSy0WXYizT.\",\n          \"exteriorDynamic\": \"https://LETCNBGaCcYLZKYSribyWOuHvwCLuEMaG.cygBNrp-RJDcOfkI3UukiaPhHV,en5QgJJS3h4-EcmCAe\",\n          \"promotionDynamic\": \"http://QNTUsZfTZLstERsgBOijpGoSrWxDlhw.keikRcMQ4dLCQRCvqfzFA\"\n        },\n        \"redemptionMethods\": [\n          \"string\",\n          \"string\"\n        ],\n        \"westWorldMediaTheatreNumber\": 3632,\n        \"concessionsDeliveryOptions\": [\n          \"DeliveryToSeat\",\n          \"ExpressPickup\"\n        ],\n        \"convenienceFeeTaxPercent\": 4929.028214594575,\n        \"convenienceFeeTaxFlatAmount\": 1743.0802399886636,\n        \"brand\": \"string\",\n        \"productSubscriptionUsageLevel\": \"string\",\n        \"onlineConcessions\": false,\n        \"hasMultipleKitchens\": false,\n        \"estimatedConcessionsOrderFees\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      },\n      {\n        \"id\": 2483,\n        \"name\": \"string\",\n        \"longName\": \"string\",\n        \"secondaryLongName\": \"string\",\n        \"showtimesPhoneNumber\": \"string\",\n        \"guestServicesPhoneNumber\": \"string\",\n        \"utcOffset\": \"string\",\n        \"timezone\": \"string\",\n        \"timezoneAbbreviation\": \"string\",\n        \"slug\": \"string\",\n        \"facebookUrl\": \"https://BgYhNCryqCcHYkwcgkFyKsfNKSgs.uvuBUwCZDNdF-6xFFCsXm7vx4dTwatFcxhX\",\n        \"outageDescription\": \"string\",\n        \"websiteUrl\": \"http://ljPmpNXlPKDdEWZH.oqjlWHZdcZ0.a00uBORRfN5sNUJ4HSWGZDj,juc.dpgAM\",\n        \"directionsUrl\": \"http://UNyndeiGGtDOyksSkxtLW.kmbpMtpCRS7,hRviadOugCEh0bFIwCoyzVSbY5v\",\n        \"loyaltyVersion\": \"string\",\n        \"isClosed\": true,\n        \"lastBusinessDate\": \"1978-09-05\",\n        \"attributes\": [\n          {\n            \"id\": 3708,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://vCjWKQeluohbuGAbJillsHBiGN.zdgqb-ZpIejF1M5ZHNV6,MBYhJ0ZDhkhIPUhpXixCKkU9+QrunX.q+M2lGRVOTj3JK+1Z4RnwQR-VQ05mj\",\n            \"sort\": 5295,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 410,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://igTNDR.vdoaamWxKlZ,\",\n            \"sort\": 8138,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"location\": {\n          \"addressLine1\": \"string\",\n          \"addressLine2\": \"string\",\n          \"city\": \"string\",\n          \"postalCode\": \"string\",\n          \"state\": \"string\",\n          \"stateName\": \"string\",\n          \"country\": \"string\",\n          \"latitude\": 5538.308625915745,\n          \"longitude\": 4724.687358327884,\n          \"marketName\": \"string\",\n          \"marketId\": 9837\n        },\n        \"media\": {\n          \"theatreImageIcon\": \"http://N.kmklVQBDe4r\",\n          \"theatreImageStandard\": \"http://nvjJyqcSkvjpduF.htimnv.QIIwfTUt\",\n          \"theatreImageThumbnail\": \"https://uTCzMSBPzxlbQYjaEDzHiFaLoGaR.gqqvheGK.mYvsCReNLMOY,j6.LomT4ACWphgHqckd,UnnuHxSO6VMN\",\n          \"theatreImageLarge\": \"http://vKcjnlxupvujCHLjVLALnzoYW.lmfuZrDUJQUwUgnNp5\",\n          \"heroDesktopDynamic\": \"http://aYoz.vfcr0M9.a8IzNXrXhv,-9\",\n          \"heroMobileDynamic\": \"https://AnD.zhwJCQgrOTZVCf2epTMWnsMWIEarnv7dcMxhgl,mcw-gI5.U\",\n          \"interiorDynamic\": \"https://FGhKHKVqinGQIUbd.vwhDADSIbIL9gXp0293LGbEADAvD\",\n          \"exteriorDynamic\": \"http://NpXoeQfJqubKnCJFLFvibf.khgalW4e\",\n          \"promotionDynamic\": \"http://ZNxCSfXtjqJwWwbabltn.zdmNjhqWeHmDXiPc5SqBiqLYrXK9p5JvfEbE,gXUdf\"\n        },\n        \"redemptionMethods\": [\n          \"string\",\n          \"string\"\n        ],\n        \"westWorldMediaTheatreNumber\": 9399,\n        \"concessionsDeliveryOptions\": [\n          \"ExpressPickup\",\n          \"DeliveryToSeat\"\n        ],\n        \"convenienceFeeTaxPercent\": 1467.6162285953742,\n        \"convenienceFeeTaxFlatAmount\": 6009.051043012382,\n        \"brand\": \"string\",\n        \"productSubscriptionUsageLevel\": \"string\",\n        \"onlineConcessions\": false,\n        \"hasMultipleKitchens\": false,\n        \"estimatedConcessionsOrderFees\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.amctheatres.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AMC-Vendor-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1f4472fc-3b1c-483d-8522-c69e497baa77",
+    "name": "AMC Barcodes Theatres API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AMC Theatres API is a public REST API published by AMC Entertainment Holdings\nthat exposes data and transactional capabilities for AMC theatres, movies, showtimes,\nlocations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended\nfor partner integrations such as movie discovery, ticket sales, dine-in / express pickup\nconcession ordering, AMC Stubs loyalty integrations, and entertainment listings on\nthird-party sites and apps.\n\nAuthentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`\nrequest header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,\n`count`, `_embedded`, `_links`) for collections.\n\nThis OpenAPI definition was reconstructed from the public AMC Developer Portal\ndocumentation (developers.amctheatres.com) and known integrations. The dev portal\nblocks automated retrieval, so this spec was assembled from third-party mirrors\nof the AMC documentation and verified against open-source AMC API clients.\n\nContact Support:\n Name: AMC Theatres Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

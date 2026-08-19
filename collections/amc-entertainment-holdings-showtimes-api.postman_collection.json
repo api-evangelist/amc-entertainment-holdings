@@ -1,0 +1,946 @@
+{
+  "item": [
+    {
+      "id": "4fff6313-3f7f-4283-be1a-6b09dc944f63",
+      "name": "Showtimes",
+      "description": {
+        "content": "Theatre showtimes for movies, including embargoed and proximity-based searches.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fae8baa8-4eeb-437b-aabb-27d45a253538",
+          "name": "List Showtimes for a Theatre",
+          "request": {
+            "name": "List Showtimes for a Theatre",
+            "description": {
+              "content": "Returns all future showtimes for the specified theatre.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "theatres",
+                ":theatre-number",
+                "showtimes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "movie-id",
+                  "value": "<integer>",
+                  "description": "Filter to showtimes for a specific movie id."
+                },
+                {
+                  "disabled": false,
+                  "key": "include-attributes",
+                  "value": "<string>",
+                  "description": "Comma-delimited list of attributes that results must have."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude-attributes",
+                  "value": "<string>",
+                  "description": "Comma-delimited list of attributes that results must not have."
+                },
+                {
+                  "disabled": false,
+                  "key": "attribute-operator",
+                  "value": "<string>",
+                  "description": "Whether the include/exclude attribute filter is `and` (all) or `or` (any)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-number",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "10",
+                  "description": "Results per page (max 100). Defaults to 10."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-number",
+                  "description": "(Required) The theatre number / id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d7c55ed-ea0c-4600-b07e-5e60a5961c6b",
+              "name": "Showtimes collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "theatres",
+                    ":theatre-number",
+                    "showtimes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "movie-id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "include-attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude-attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribute-operator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-number",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-number",
+                      "description": "(Required) The theatre number / id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 3781,\n  \"pageNumber\": 7820,\n  \"count\": 8720,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"showtimes\": [\n      {\n        \"id\": 9526,\n        \"movieId\": 3309,\n        \"movieName\": \"string\",\n        \"showDateTimeUtc\": \"2001-08-22T13:47:46.686Z\",\n        \"showDateTimeLocal\": \"1996-06-20T07:10:35.669Z\",\n        \"utcOffset\": \"string\",\n        \"theatreId\": 385,\n        \"auditorium\": 1463,\n        \"layoutId\": 6336,\n        \"wamc\": \"string\",\n        \"sortableMovieName\": \"string\",\n        \"movieSlug\": \"string\",\n        \"runTime\": 4942,\n        \"mpaaRating\": \"string\",\n        \"genre\": \"string\",\n        \"purchaseUrl\": \"https://JCjWtviWZXBLkWEvOGTTe.bqGoFAgiTBpq\",\n        \"mobilePurchaseUrl\": \"http://rgedTLgjYKqySDpbNhXjOFUNJwLJ.ssziyaymKpFB-UW5gu2E5HAp9UvhHOfJeRhHISZY\",\n        \"ticketPrices\": [\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 6119.072320952188,\n            \"tax\": 775.8283210639382,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          },\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 9136.827267257411,\n            \"tax\": 9170.667599387752,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          }\n        ],\n        \"utcSession\": \"string\",\n        \"isAlmostSoldOut\": true,\n        \"isSoldOut\": true,\n        \"isCanceled\": true,\n        \"isPrivateRental\": true,\n        \"isDiscountMatineePriced\": true,\n        \"attributes\": [\n          {\n            \"id\": 2500,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://KorftDfFvh.ukrvW+O05fu-Y2AvH6SYnUDE5Olp,C7MxnVYX5ecc.ITFmcXYSYDNo.0\",\n            \"sort\": 9111,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 897,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://xFMbAm.zhqmzm36kIFe83ybqedE\",\n            \"sort\": 1143,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"media\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      },\n      {\n        \"id\": 1967,\n        \"movieId\": 7393,\n        \"movieName\": \"string\",\n        \"showDateTimeUtc\": \"1985-01-26T19:33:52.378Z\",\n        \"showDateTimeLocal\": \"1970-07-01T09:44:44.331Z\",\n        \"utcOffset\": \"string\",\n        \"theatreId\": 3020,\n        \"auditorium\": 8010,\n        \"layoutId\": 4840,\n        \"wamc\": \"string\",\n        \"sortableMovieName\": \"string\",\n        \"movieSlug\": \"string\",\n        \"runTime\": 7989,\n        \"mpaaRating\": \"string\",\n        \"genre\": \"string\",\n        \"purchaseUrl\": \"https://KImGBZuJRPnAbcsIUlxz.rfo2lP-1NwE4BDhvvAPFlye-tFOaRjFLmaYOFZ8aGZmlJG\",\n        \"mobilePurchaseUrl\": \"https://d.cbaA3u8FlLM7cE6laX\",\n        \"ticketPrices\": [\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 7087.937340299175,\n            \"tax\": 6167.83613249212,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          },\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 3897.4971917350044,\n            \"tax\": 4436.545290649921,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          }\n        ],\n        \"utcSession\": \"string\",\n        \"isAlmostSoldOut\": true,\n        \"isSoldOut\": false,\n        \"isCanceled\": true,\n        \"isPrivateRental\": false,\n        \"isDiscountMatineePriced\": true,\n        \"attributes\": [\n          {\n            \"id\": 8069,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://eLRtGylUKKeZP.ejvtrFh6endAS5Ar+c8p9cya6dM-PcdVzmsfIxmFRC\",\n            \"sort\": 5877,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 2015,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://iyq.fpO5KkdSImAX6zIyhREi8FuJVzORKUhed.x2u\",\n            \"sort\": 6873,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": true,\n            \"appliesToTheatre\": true,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"media\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8e36f6b9-f0d2-4759-aae0-656153a06b35",
+          "name": "List Showtimes for a Theatre on a Date",
+          "request": {
+            "name": "List Showtimes for a Theatre on a Date",
+            "description": {
+              "content": "Returns all showtimes for the specified theatre on the specified date that meet the supplied search criteria.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "theatres",
+                ":theatre-number",
+                "showtimes",
+                ":date"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include-attributes",
+                  "value": "<string>",
+                  "description": "Comma-delimited list of attributes that results must have."
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude-attributes",
+                  "value": "<string>",
+                  "description": "Comma-delimited list of attributes that results must not have."
+                },
+                {
+                  "disabled": false,
+                  "key": "attribute-operator",
+                  "value": "<string>",
+                  "description": "Whether the include/exclude attribute filter is `and` (all) or `or` (any)."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-number",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "10",
+                  "description": "Results per page (max 100). Defaults to 10."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-number",
+                  "description": "(Required) The theatre number / id."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "date",
+                  "description": "(Required) Date in ISO-8601 (YYYY-MM-DD) format."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1dd15f6-9d94-48f1-bc3a-eb8ecabe6dee",
+              "name": "Showtimes collection.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "theatres",
+                    ":theatre-number",
+                    "showtimes",
+                    ":date"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include-attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "exclude-attributes",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "attribute-operator",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page-number",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-number",
+                      "description": "(Required) The theatre number / id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "date",
+                      "description": "(Required) Date in ISO-8601 (YYYY-MM-DD) format."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 9141,\n  \"pageNumber\": 1203,\n  \"count\": 9148,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"showtimes\": [\n      {\n        \"id\": 7301,\n        \"movieId\": 5808,\n        \"movieName\": \"string\",\n        \"showDateTimeUtc\": \"1956-02-06T11:30:05.034Z\",\n        \"showDateTimeLocal\": \"2026-05-26T10:01:18.491Z\",\n        \"utcOffset\": \"string\",\n        \"theatreId\": 8830,\n        \"auditorium\": 4691,\n        \"layoutId\": 6427,\n        \"wamc\": \"string\",\n        \"sortableMovieName\": \"string\",\n        \"movieSlug\": \"string\",\n        \"runTime\": 7666,\n        \"mpaaRating\": \"string\",\n        \"genre\": \"string\",\n        \"purchaseUrl\": \"http://wosy.chuvA7Cu2p+2JQcOxH-R0LWhyqFzrV,vpjSEK8gHJegmR\",\n        \"mobilePurchaseUrl\": \"http://GVeDgdMexgx.fwt8crNnRa7C\",\n        \"ticketPrices\": [\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 6430.880843763507,\n            \"tax\": 5409.707409616493,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          },\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 7490.221807856775,\n            \"tax\": 8214.835481845146,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          }\n        ],\n        \"utcSession\": \"string\",\n        \"isAlmostSoldOut\": false,\n        \"isSoldOut\": true,\n        \"isCanceled\": false,\n        \"isPrivateRental\": false,\n        \"isDiscountMatineePriced\": false,\n        \"attributes\": [\n          {\n            \"id\": 2994,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://Vdhpd.uoyAsvM,nh1rzmvNzK+sVqwrBz8RycMtqYYiNkmZjU\",\n            \"sort\": 8863,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 8123,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://zGlsGHFoZabm.pofeK4.4\",\n            \"sort\": 6754,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"media\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 1771,\n        \"movieId\": 4307,\n        \"movieName\": \"string\",\n        \"showDateTimeUtc\": \"1956-07-08T19:07:45.687Z\",\n        \"showDateTimeLocal\": \"2021-04-23T04:56:04.828Z\",\n        \"utcOffset\": \"string\",\n        \"theatreId\": 8765,\n        \"auditorium\": 1182,\n        \"layoutId\": 1558,\n        \"wamc\": \"string\",\n        \"sortableMovieName\": \"string\",\n        \"movieSlug\": \"string\",\n        \"runTime\": 6236,\n        \"mpaaRating\": \"string\",\n        \"genre\": \"string\",\n        \"purchaseUrl\": \"http://YTAPyztxVkCwhSABEXSJ.fltcJahpwR-1VEdxSVOQnut3Tcxggo-5TLzlFu4u1gJLT3YaJINXjjmXr63h+iESA2xKgRv+YV-\",\n        \"mobilePurchaseUrl\": \"http://oWACmWC.ztoezM2um7rcPaYbcPwHsZhpHNTP9l2F0rXgkqk4.Lu\",\n        \"ticketPrices\": [\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 7788.718379606118,\n            \"tax\": 5817.719123957511,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          },\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 1898.8141829914152,\n            \"tax\": 8960.006046361723,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          }\n        ],\n        \"utcSession\": \"string\",\n        \"isAlmostSoldOut\": false,\n        \"isSoldOut\": true,\n        \"isCanceled\": false,\n        \"isPrivateRental\": false,\n        \"isDiscountMatineePriced\": true,\n        \"attributes\": [\n          {\n            \"id\": 5891,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://lrCZolyXxto.fxmu0p,VGVRDK+7\",\n            \"sort\": 7110,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 15,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://KdnyOityQjW.hkuxvlbvWHjWv-\",\n            \"sort\": 6105,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"media\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_2\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5fb7bd63-7c06-4016-9535-1e7d0aabcdb5",
+          "name": "List Embargoed Showtimes for a Theatre on a Date",
+          "request": {
+            "name": "List Embargoed Showtimes for a Theatre on a Date",
+            "description": {
+              "content": "Returns all embargoed showtimes for the specified theatre and date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "theatres",
+                ":theatre-number",
+                "showtimes",
+                ":date",
+                "views",
+                "embargoed"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page-number",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "10",
+                  "description": "Results per page (max 100). Defaults to 10."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-number",
+                  "description": "(Required) The theatre number / id."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "date",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "05969e9b-4caf-465d-bd68-3e17263f7ced",
+              "name": "Embargoed showtimes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "theatres",
+                    ":theatre-number",
+                    "showtimes",
+                    ":date",
+                    "views",
+                    "embargoed"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page-number",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-number",
+                      "description": "(Required) The theatre number / id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "date",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 9141,\n  \"pageNumber\": 1203,\n  \"count\": 9148,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"showtimes\": [\n      {\n        \"id\": 7301,\n        \"movieId\": 5808,\n        \"movieName\": \"string\",\n        \"showDateTimeUtc\": \"1956-02-06T11:30:05.034Z\",\n        \"showDateTimeLocal\": \"2026-05-26T10:01:18.491Z\",\n        \"utcOffset\": \"string\",\n        \"theatreId\": 8830,\n        \"auditorium\": 4691,\n        \"layoutId\": 6427,\n        \"wamc\": \"string\",\n        \"sortableMovieName\": \"string\",\n        \"movieSlug\": \"string\",\n        \"runTime\": 7666,\n        \"mpaaRating\": \"string\",\n        \"genre\": \"string\",\n        \"purchaseUrl\": \"http://wosy.chuvA7Cu2p+2JQcOxH-R0LWhyqFzrV,vpjSEK8gHJegmR\",\n        \"mobilePurchaseUrl\": \"http://GVeDgdMexgx.fwt8crNnRa7C\",\n        \"ticketPrices\": [\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 6430.880843763507,\n            \"tax\": 5409.707409616493,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          },\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 7490.221807856775,\n            \"tax\": 8214.835481845146,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          }\n        ],\n        \"utcSession\": \"string\",\n        \"isAlmostSoldOut\": false,\n        \"isSoldOut\": true,\n        \"isCanceled\": false,\n        \"isPrivateRental\": false,\n        \"isDiscountMatineePriced\": false,\n        \"attributes\": [\n          {\n            \"id\": 2994,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://Vdhpd.uoyAsvM,nh1rzmvNzK+sVqwrBz8RycMtqYYiNkmZjU\",\n            \"sort\": 8863,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 8123,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://zGlsGHFoZabm.pofeK4.4\",\n            \"sort\": 6754,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"media\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 1771,\n        \"movieId\": 4307,\n        \"movieName\": \"string\",\n        \"showDateTimeUtc\": \"1956-07-08T19:07:45.687Z\",\n        \"showDateTimeLocal\": \"2021-04-23T04:56:04.828Z\",\n        \"utcOffset\": \"string\",\n        \"theatreId\": 8765,\n        \"auditorium\": 1182,\n        \"layoutId\": 1558,\n        \"wamc\": \"string\",\n        \"sortableMovieName\": \"string\",\n        \"movieSlug\": \"string\",\n        \"runTime\": 6236,\n        \"mpaaRating\": \"string\",\n        \"genre\": \"string\",\n        \"purchaseUrl\": \"http://YTAPyztxVkCwhSABEXSJ.fltcJahpwR-1VEdxSVOQnut3Tcxggo-5TLzlFu4u1gJLT3YaJINXjjmXr63h+iESA2xKgRv+YV-\",\n        \"mobilePurchaseUrl\": \"http://oWACmWC.ztoezM2um7rcPaYbcPwHsZhpHNTP9l2F0rXgkqk4.Lu\",\n        \"ticketPrices\": [\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 7788.718379606118,\n            \"tax\": 5817.719123957511,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          },\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 1898.8141829914152,\n            \"tax\": 8960.006046361723,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          }\n        ],\n        \"utcSession\": \"string\",\n        \"isAlmostSoldOut\": false,\n        \"isSoldOut\": true,\n        \"isCanceled\": false,\n        \"isPrivateRental\": false,\n        \"isDiscountMatineePriced\": true,\n        \"attributes\": [\n          {\n            \"id\": 5891,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://lrCZolyXxto.fxmu0p,VGVRDK+7\",\n            \"sort\": 7110,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 15,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://KdnyOityQjW.hkuxvlbvWHjWv-\",\n            \"sort\": 6105,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"media\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_2\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cac6db80-79c4-4764-943f-482ff7819541",
+          "name": "Get Earliest Showtime For Movie at Theatre",
+          "request": {
+            "name": "Get Earliest Showtime For Movie at Theatre",
+            "description": {
+              "content": "Returns the earliest showtime for a specific movie id at the specified theatre.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "theatres",
+                ":theatre-number",
+                "movies",
+                ":movie-id",
+                "earliest-showtime"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-number",
+                  "description": "(Required) The theatre number / id."
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "movie-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90a3d308-71b6-41ac-8c32-f02f77afdacc",
+              "name": "Showtime representation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "theatres",
+                    ":theatre-number",
+                    "movies",
+                    ":movie-id",
+                    "earliest-showtime"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-number",
+                      "description": "(Required) The theatre number / id."
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "movie-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2611,\n  \"movieId\": 736,\n  \"movieName\": \"string\",\n  \"showDateTimeUtc\": \"1966-05-12T12:06:14.760Z\",\n  \"showDateTimeLocal\": \"1952-03-14T01:56:38.465Z\",\n  \"utcOffset\": \"string\",\n  \"theatreId\": 6138,\n  \"auditorium\": 3178,\n  \"layoutId\": 3088,\n  \"wamc\": \"string\",\n  \"sortableMovieName\": \"string\",\n  \"movieSlug\": \"string\",\n  \"runTime\": 7660,\n  \"mpaaRating\": \"string\",\n  \"genre\": \"string\",\n  \"purchaseUrl\": \"http://USOSVencxbOsMIZIiVOwBuCLqMKJLl.odtKunjODb1om.LpX5q6DZBtZc7pzws,5rk\",\n  \"mobilePurchaseUrl\": \"http://BcWtNxDjQXWfWGyweAWlEdHF.agQkdDUnZ+MOX3e4BHzXIS1cc4eWEB616SSI1i8i.BrOlkcA0B-,uxaoubIQucnASh8M.o\",\n  \"ticketPrices\": [\n    {\n      \"priceType\": \"string\",\n      \"sku\": \"string\",\n      \"price\": 9064.694585510355,\n      \"tax\": 9748.409055665748,\n      \"formattedPrice\": \"string\",\n      \"formattedTax\": \"string\"\n    },\n    {\n      \"priceType\": \"string\",\n      \"sku\": \"string\",\n      \"price\": 4745.559532099442,\n      \"tax\": 460.31013817796287,\n      \"formattedPrice\": \"string\",\n      \"formattedTax\": \"string\"\n    }\n  ],\n  \"utcSession\": \"string\",\n  \"isAlmostSoldOut\": false,\n  \"isSoldOut\": true,\n  \"isCanceled\": true,\n  \"isPrivateRental\": true,\n  \"isDiscountMatineePriced\": false,\n  \"attributes\": [\n    {\n      \"id\": 4687,\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"shortDescription\": \"string\",\n      \"longDescription\": \"string\",\n      \"url\": \"http://XSTvxk.okpvx.knIQRTmpfL,oNvpcfqsTpkxbLQSqtJ,cuOE9.5p,\",\n      \"sort\": 4079,\n      \"appliesToMovie\": true,\n      \"appliesToShowtime\": false,\n      \"appliesToTheatre\": false,\n      \"media\": {},\n      \"_links\": {\n        \"key_0\": {\n          \"href\": \"string\",\n          \"templated\": true\n        }\n      }\n    },\n    {\n      \"id\": 4329,\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"shortDescription\": \"string\",\n      \"longDescription\": \"string\",\n      \"url\": \"https://ZoPVzzHyXbDBVhdtAxwvNEcWQppNwTe.ayuxhedfhZNFvut4q8Lo+EeW\",\n      \"sort\": 1682,\n      \"appliesToMovie\": false,\n      \"appliesToShowtime\": false,\n      \"appliesToTheatre\": true,\n      \"media\": {},\n      \"_links\": {\n        \"key_0\": {\n          \"href\": \"string\",\n          \"templated\": false\n        },\n        \"key_1\": {\n          \"href\": \"string\",\n          \"templated\": true\n        },\n        \"key_2\": {\n          \"href\": \"string\",\n          \"templated\": true\n        }\n      }\n    }\n  ],\n  \"media\": {},\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0c331c34-0277-431a-8ce8-7a5c787700e8",
+          "name": "Get Showtime By Id",
+          "request": {
+            "name": "Get Showtime By Id",
+            "description": {
+              "content": "Returns the showtime with the specified id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "showtimes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3f31f52-c54e-4e6b-be9b-b97331b7c520",
+              "name": "Showtime representation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "showtimes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2611,\n  \"movieId\": 736,\n  \"movieName\": \"string\",\n  \"showDateTimeUtc\": \"1966-05-12T12:06:14.760Z\",\n  \"showDateTimeLocal\": \"1952-03-14T01:56:38.465Z\",\n  \"utcOffset\": \"string\",\n  \"theatreId\": 6138,\n  \"auditorium\": 3178,\n  \"layoutId\": 3088,\n  \"wamc\": \"string\",\n  \"sortableMovieName\": \"string\",\n  \"movieSlug\": \"string\",\n  \"runTime\": 7660,\n  \"mpaaRating\": \"string\",\n  \"genre\": \"string\",\n  \"purchaseUrl\": \"http://USOSVencxbOsMIZIiVOwBuCLqMKJLl.odtKunjODb1om.LpX5q6DZBtZc7pzws,5rk\",\n  \"mobilePurchaseUrl\": \"http://BcWtNxDjQXWfWGyweAWlEdHF.agQkdDUnZ+MOX3e4BHzXIS1cc4eWEB616SSI1i8i.BrOlkcA0B-,uxaoubIQucnASh8M.o\",\n  \"ticketPrices\": [\n    {\n      \"priceType\": \"string\",\n      \"sku\": \"string\",\n      \"price\": 9064.694585510355,\n      \"tax\": 9748.409055665748,\n      \"formattedPrice\": \"string\",\n      \"formattedTax\": \"string\"\n    },\n    {\n      \"priceType\": \"string\",\n      \"sku\": \"string\",\n      \"price\": 4745.559532099442,\n      \"tax\": 460.31013817796287,\n      \"formattedPrice\": \"string\",\n      \"formattedTax\": \"string\"\n    }\n  ],\n  \"utcSession\": \"string\",\n  \"isAlmostSoldOut\": false,\n  \"isSoldOut\": true,\n  \"isCanceled\": true,\n  \"isPrivateRental\": true,\n  \"isDiscountMatineePriced\": false,\n  \"attributes\": [\n    {\n      \"id\": 4687,\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"shortDescription\": \"string\",\n      \"longDescription\": \"string\",\n      \"url\": \"http://XSTvxk.okpvx.knIQRTmpfL,oNvpcfqsTpkxbLQSqtJ,cuOE9.5p,\",\n      \"sort\": 4079,\n      \"appliesToMovie\": true,\n      \"appliesToShowtime\": false,\n      \"appliesToTheatre\": false,\n      \"media\": {},\n      \"_links\": {\n        \"key_0\": {\n          \"href\": \"string\",\n          \"templated\": true\n        }\n      }\n    },\n    {\n      \"id\": 4329,\n      \"code\": \"string\",\n      \"name\": \"string\",\n      \"shortDescription\": \"string\",\n      \"longDescription\": \"string\",\n      \"url\": \"https://ZoPVzzHyXbDBVhdtAxwvNEcWQppNwTe.ayuxhedfhZNFvut4q8Lo+EeW\",\n      \"sort\": 1682,\n      \"appliesToMovie\": false,\n      \"appliesToShowtime\": false,\n      \"appliesToTheatre\": true,\n      \"media\": {},\n      \"_links\": {\n        \"key_0\": {\n          \"href\": \"string\",\n          \"templated\": false\n        },\n        \"key_1\": {\n          \"href\": \"string\",\n          \"templated\": true\n        },\n        \"key_2\": {\n          \"href\": \"string\",\n          \"templated\": true\n        }\n      }\n    }\n  ],\n  \"media\": {},\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4d3be14-c361-4fc8-8d9d-fcda5b30ab58",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "showtimes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 558,\n  \"message\": \"string\",\n  \"errorCode\": \"string\",\n  \"moreInfo\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60ac324b-f084-46ca-83a0-1723e89eb39f",
+          "name": "List Showtimes Near a Location",
+          "request": {
+            "name": "List Showtimes Near a Location",
+            "description": {
+              "content": "Returns all showtimes in proximity to the supplied latitude and longitude on the specified date.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v2",
+                "showtimes",
+                "views",
+                "current-location",
+                ":date",
+                ":latitude",
+                ":longitude"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page-number",
+                  "value": "1",
+                  "description": "Page number to retrieve. Defaults to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "page-size",
+                  "value": "10",
+                  "description": "Results per page (max 100). Defaults to 10."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<date>",
+                  "key": "date",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<double>",
+                  "key": "latitude",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<double>",
+                  "key": "longitude",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fcd2b642-ce3c-4e76-8ed9-26fdbacdeec5",
+              "name": "Showtimes near the location.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v2",
+                    "showtimes",
+                    "views",
+                    "current-location",
+                    ":date",
+                    ":latitude",
+                    ":longitude"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page-number",
+                      "value": "1"
+                    },
+                    {
+                      "key": "page-size",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<date>",
+                      "key": "date",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<double>",
+                      "key": "latitude",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<double>",
+                      "key": "longitude",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 9141,\n  \"pageNumber\": 1203,\n  \"count\": 9148,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"showtimes\": [\n      {\n        \"id\": 7301,\n        \"movieId\": 5808,\n        \"movieName\": \"string\",\n        \"showDateTimeUtc\": \"1956-02-06T11:30:05.034Z\",\n        \"showDateTimeLocal\": \"2026-05-26T10:01:18.491Z\",\n        \"utcOffset\": \"string\",\n        \"theatreId\": 8830,\n        \"auditorium\": 4691,\n        \"layoutId\": 6427,\n        \"wamc\": \"string\",\n        \"sortableMovieName\": \"string\",\n        \"movieSlug\": \"string\",\n        \"runTime\": 7666,\n        \"mpaaRating\": \"string\",\n        \"genre\": \"string\",\n        \"purchaseUrl\": \"http://wosy.chuvA7Cu2p+2JQcOxH-R0LWhyqFzrV,vpjSEK8gHJegmR\",\n        \"mobilePurchaseUrl\": \"http://GVeDgdMexgx.fwt8crNnRa7C\",\n        \"ticketPrices\": [\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 6430.880843763507,\n            \"tax\": 5409.707409616493,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          },\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 7490.221807856775,\n            \"tax\": 8214.835481845146,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          }\n        ],\n        \"utcSession\": \"string\",\n        \"isAlmostSoldOut\": false,\n        \"isSoldOut\": true,\n        \"isCanceled\": false,\n        \"isPrivateRental\": false,\n        \"isDiscountMatineePriced\": false,\n        \"attributes\": [\n          {\n            \"id\": 2994,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://Vdhpd.uoyAsvM,nh1rzmvNzK+sVqwrBz8RycMtqYYiNkmZjU\",\n            \"sort\": 8863,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 8123,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"http://zGlsGHFoZabm.pofeK4.4\",\n            \"sort\": 6754,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"media\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"id\": 1771,\n        \"movieId\": 4307,\n        \"movieName\": \"string\",\n        \"showDateTimeUtc\": \"1956-07-08T19:07:45.687Z\",\n        \"showDateTimeLocal\": \"2021-04-23T04:56:04.828Z\",\n        \"utcOffset\": \"string\",\n        \"theatreId\": 8765,\n        \"auditorium\": 1182,\n        \"layoutId\": 1558,\n        \"wamc\": \"string\",\n        \"sortableMovieName\": \"string\",\n        \"movieSlug\": \"string\",\n        \"runTime\": 6236,\n        \"mpaaRating\": \"string\",\n        \"genre\": \"string\",\n        \"purchaseUrl\": \"http://YTAPyztxVkCwhSABEXSJ.fltcJahpwR-1VEdxSVOQnut3Tcxggo-5TLzlFu4u1gJLT3YaJINXjjmXr63h+iESA2xKgRv+YV-\",\n        \"mobilePurchaseUrl\": \"http://oWACmWC.ztoezM2um7rcPaYbcPwHsZhpHNTP9l2F0rXgkqk4.Lu\",\n        \"ticketPrices\": [\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 7788.718379606118,\n            \"tax\": 5817.719123957511,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          },\n          {\n            \"priceType\": \"string\",\n            \"sku\": \"string\",\n            \"price\": 1898.8141829914152,\n            \"tax\": 8960.006046361723,\n            \"formattedPrice\": \"string\",\n            \"formattedTax\": \"string\"\n          }\n        ],\n        \"utcSession\": \"string\",\n        \"isAlmostSoldOut\": false,\n        \"isSoldOut\": true,\n        \"isCanceled\": false,\n        \"isPrivateRental\": false,\n        \"isDiscountMatineePriced\": true,\n        \"attributes\": [\n          {\n            \"id\": 5891,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://lrCZolyXxto.fxmu0p,VGVRDK+7\",\n            \"sort\": 7110,\n            \"appliesToMovie\": false,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"id\": 15,\n            \"code\": \"string\",\n            \"name\": \"string\",\n            \"shortDescription\": \"string\",\n            \"longDescription\": \"string\",\n            \"url\": \"https://KdnyOityQjW.hkuxvlbvWHjWv-\",\n            \"sort\": 6105,\n            \"appliesToMovie\": true,\n            \"appliesToShowtime\": false,\n            \"appliesToTheatre\": false,\n            \"media\": {},\n            \"_links\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ],\n        \"media\": {},\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_2\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.amctheatres.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AMC-Vendor-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "721ce50c-5228-48da-8d44-d21bba32755e",
+    "name": "AMC Theatres Barcodes Showtimes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AMC Theatres API is a public REST API published by AMC Entertainment Holdings\nthat exposes data and transactional capabilities for AMC theatres, movies, showtimes,\nlocations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended\nfor partner integrations such as movie discovery, ticket sales, dine-in / express pickup\nconcession ordering, AMC Stubs loyalty integrations, and entertainment listings on\nthird-party sites and apps.\n\nAuthentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`\nrequest header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,\n`count`, `_embedded`, `_links`) for collections.\n\nThis OpenAPI definition was reconstructed from the public AMC Developer Portal\ndocumentation (developers.amctheatres.com) and known integrations. The dev portal\nblocks automated retrieval, so this spec was assembled from third-party mirrors\nof the AMC documentation and verified against open-source AMC API clients.\n\nContact Support:\n Name: AMC Theatres Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

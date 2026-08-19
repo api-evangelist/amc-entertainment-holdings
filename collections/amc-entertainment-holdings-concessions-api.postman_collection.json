@@ -1,0 +1,901 @@
+{
+  "item": [
+    {
+      "id": "54a4e8cd-0946-48ec-a43b-8119d3d5ce46",
+      "name": "Concessions",
+      "description": {
+        "content": "Concessions ordering, categories, delivery and pickup logistics.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0f59f154-b246-4f07-9688-30c3667bc211",
+          "name": "List Concessions For a Theatre",
+          "request": {
+            "name": "List Concessions For a Theatre",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "theatres",
+                ":theatre-id",
+                "concessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d10f50fa-29f0-49bf-913b-6485b555fc94",
+              "name": "Concessions for theatre.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "theatres",
+                    ":theatre-id",
+                    "concessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pageSize\": 8679,\n  \"pageNumber\": 8696,\n  \"count\": 5120,\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"_embedded\": {\n    \"concessions\": [\n      {\n        \"id\": 9460,\n        \"theatreProductAssignmentId\": 3454,\n        \"sku\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"price\": 4745.366601510619,\n        \"categoryId\": 116,\n        \"category\": \"string\",\n        \"isAvailable\": false,\n        \"deliveryOptions\": [\n          \"DeliveryToSeat\",\n          \"ExpressPickup\"\n        ]\n      },\n      {\n        \"id\": 2384,\n        \"theatreProductAssignmentId\": 5340,\n        \"sku\": \"string\",\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"price\": 9577.4527463143,\n        \"categoryId\": 5648,\n        \"category\": \"string\",\n        \"isAvailable\": false,\n        \"deliveryOptions\": [\n          \"ExpressPickup\",\n          \"DeliveryToSeat\"\n        ]\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "338787de-d612-4bf3-b259-4986c189ed58",
+          "name": "Get Concession By Theatre and Concession Id",
+          "request": {
+            "name": "Get Concession By Theatre and Concession Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "theatres",
+                ":theatre-id",
+                "concessions",
+                ":concession-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "concession-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "43c2fc8e-7864-4025-a41a-778da82d5407",
+              "name": "Concession representation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "theatres",
+                    ":theatre-id",
+                    "concessions",
+                    ":concession-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "concession-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 566,\n  \"theatreProductAssignmentId\": 4154,\n  \"sku\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"price\": 5439.696793852045,\n  \"categoryId\": 5470,\n  \"category\": \"string\",\n  \"isAvailable\": true,\n  \"deliveryOptions\": [\n    \"ExpressPickup\",\n    \"ExpressPickup\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85cd1152-b3d2-4443-934d-9e3c9186e7f1",
+          "name": "Get Concession By Theatre Product Assignment Id",
+          "request": {
+            "name": "Get Concession By Theatre Product Assignment Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "concessions",
+                ":theatre-product-assignment-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-product-assignment-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "598919e1-e34e-4743-a292-61d26097e76f",
+              "name": "Concession representation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "concessions",
+                    ":theatre-product-assignment-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-product-assignment-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 566,\n  \"theatreProductAssignmentId\": 4154,\n  \"sku\": \"string\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"price\": 5439.696793852045,\n  \"categoryId\": 5470,\n  \"category\": \"string\",\n  \"isAvailable\": true,\n  \"deliveryOptions\": [\n    \"ExpressPickup\",\n    \"ExpressPickup\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14502147-bb6f-4d12-a678-4cd91c6074ba",
+          "name": "List Concession Categories For a Theatre",
+          "request": {
+            "name": "List Concession Categories For a Theatre",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "theatres",
+                ":theatre-id",
+                "concessions",
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3d755d1-3229-4122-81c2-e99bf48bc501",
+              "name": "Categories list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "theatres",
+                    ":theatre-id",
+                    "concessions",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 1707,\n    \"name\": \"string\",\n    \"sort\": 9807\n  },\n  {\n    \"id\": 9764,\n    \"name\": \"string\",\n    \"sort\": 6049\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fc5a6083-c9e1-4bed-92e2-06d1509680ff",
+          "name": "List Concession Delivery Locations",
+          "request": {
+            "name": "List Concession Delivery Locations",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "theatres",
+                ":theatre-id",
+                "concessions",
+                "delivery-locations",
+                ":year",
+                ":month",
+                ":day"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "year",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "month",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "day",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8136e77b-9d83-483e-8513-a2fca13ae066",
+              "name": "Delivery locations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "theatres",
+                    ":theatre-id",
+                    "concessions",
+                    "delivery-locations",
+                    ":year",
+                    ":month",
+                    ":day"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "year",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "month",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "day",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33d19790-6c31-4d1b-b3fd-cdb0abf30fe5",
+          "name": "List Concession Pickup Times",
+          "request": {
+            "name": "List Concession Pickup Times",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "theatres",
+                ":theatre-id",
+                "concessions",
+                "pickup-times",
+                ":year",
+                ":month",
+                ":day"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "theatre-id",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "year",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "month",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "day",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b84965bb-6cc4-438f-a464-54cc06f4f78c",
+              "name": "Pickup times.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "theatres",
+                    ":theatre-id",
+                    "concessions",
+                    "pickup-times",
+                    ":year",
+                    ":month",
+                    ":day"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "theatre-id",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "year",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "month",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "day",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4ca57bc4-3f3d-4490-b730-93786d4d1491",
+          "name": "List Concession Delivery Times For Showtime",
+          "request": {
+            "name": "List Concession Delivery Times For Showtime",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "showtimes",
+                ":id",
+                "concession-delivery-times"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "85ea0612-2a4c-40f0-b881-75824cd6ab64",
+              "name": "Delivery times for the showtime.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "showtimes",
+                    ":id",
+                    "concession-delivery-times"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "887450a7-0cd4-479c-96d2-6765b5b97077",
+          "name": "List Concession Pickup Times For Showtime",
+          "request": {
+            "name": "List Concession Pickup Times For Showtime",
+            "description": {},
+            "url": {
+              "path": [
+                "v1",
+                "showtimes",
+                ":showtime-id",
+                "concession-pickup-times"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "showtime-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b87489b-42fa-4a94-830e-a000e45b7a5f",
+              "name": "Pickup times for the showtime.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "showtimes",
+                    ":showtime-id",
+                    "concession-pickup-times"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "showtime-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.amctheatres.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AMC-Vendor-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "e63c6892-f79b-4a72-94cd-54c3c2553729",
+    "name": "AMC Theatres Barcodes Concessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AMC Theatres API is a public REST API published by AMC Entertainment Holdings\nthat exposes data and transactional capabilities for AMC theatres, movies, showtimes,\nlocations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended\nfor partner integrations such as movie discovery, ticket sales, dine-in / express pickup\nconcession ordering, AMC Stubs loyalty integrations, and entertainment listings on\nthird-party sites and apps.\n\nAuthentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`\nrequest header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,\n`count`, `_embedded`, `_links`) for collections.\n\nThis OpenAPI definition was reconstructed from the public AMC Developer Portal\ndocumentation (developers.amctheatres.com) and known integrations. The dev portal\nblocks automated retrieval, so this spec was assembled from third-party mirrors\nof the AMC documentation and verified against open-source AMC API clients.\n\nContact Support:\n Name: AMC Theatres Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

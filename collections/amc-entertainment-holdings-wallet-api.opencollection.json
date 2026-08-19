@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes Wallet API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Wallet",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get External Wallet",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v4/amc-accounts/:account-id/wallet/views/on-demand",
+            "params": [
+              {
+                "name": "account-id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get a version of the external wallet for use by external billers."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

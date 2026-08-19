@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "AMC Theatres Barcodes MovieConfirmations API",
+    "version": "v2"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-AMC-Vendor-Key",
+      "value": "{{X-AMC-Vendor-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MovieConfirmations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Movie Confirmation Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.amctheatres.com/v1/movies/:movie-id/confirmation-check/:confirmation-code",
+            "params": [
+              {
+                "name": "movie-id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "confirmation-code",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the number of tickets associated with a given confirmation code for a particular movie."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

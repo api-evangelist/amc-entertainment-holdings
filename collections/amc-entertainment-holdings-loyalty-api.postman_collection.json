@@ -1,0 +1,1154 @@
+{
+  "item": [
+    {
+      "id": "963ef399-5c67-48a8-8afa-3bd5157b1771",
+      "name": "Loyalty",
+      "description": {
+        "content": "AMC Stubs loyalty accounts, cards, redemptions, and registrations.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e70b5521-b432-4504-aae8-d8628144289a",
+          "name": "Apply Loyalty Rewards To Order",
+          "request": {
+            "name": "Apply Loyalty Rewards To Order",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "orders",
+                ":order-id",
+                "loyalty-rewards-application"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5faa2a12-dd21-4254-b0a1-f8f334e38106",
+              "name": "Rewards applied.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orders",
+                    ":order-id",
+                    "loyalty-rewards-application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b65ba03b-5e30-480b-a127-63cd79ae016a",
+          "name": "Remove Loyalty Rewards From Order",
+          "request": {
+            "name": "Remove Loyalty Rewards From Order",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "orders",
+                ":order-id",
+                "loyalty-rewards-application"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "order-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cac560a3-d30a-4b5a-b66c-762c10893266",
+              "name": "Rewards removed.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "orders",
+                    ":order-id",
+                    "loyalty-rewards-application"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "order-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "52c199a2-bfe7-4508-8933-14bb5ddb0978",
+          "name": "Get Loyalty Account By Id",
+          "request": {
+            "name": "Get Loyalty Account By Id",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "loyalty-accounts",
+                ":loyalty-account-id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loyalty-account-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f729aec4-61db-4737-be0e-d63779b33ba6",
+              "name": "Loyalty account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "loyalty-accounts",
+                    ":loyalty-account-id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loyalty-account-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amcAccountId\": \"string\",\n  \"cardNumber\": \"string\",\n  \"email\": \"uVQ4rkVK6@GSZyaKo.suv\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"loyaltyTier\": \"Insider\",\n  \"pointsBalance\": 8305\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9768992-83f6-4e59-a17c-8338fefb59fa",
+          "name": "Get Loyalty Account By Email",
+          "request": {
+            "name": "Get Loyalty Account By Email",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "loyalty-accounts",
+                "email-{{email-address}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "498a2603-f29f-4e4e-b0c1-129fbbeedce5",
+              "name": "Loyalty account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "loyalty-accounts",
+                    "email-{{email-address}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amcAccountId\": \"string\",\n  \"cardNumber\": \"string\",\n  \"email\": \"AKlBCGKnZTX@YIHWLpXytpv.qq\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"loyaltyTier\": \"A-List\",\n  \"pointsBalance\": 2441\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9fb7123e-e183-4577-ad92-a66302183374",
+          "name": "Register For Loyalty Campaign By Email",
+          "request": {
+            "name": "Register For Loyalty Campaign By Email",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "loyalty-accounts",
+                "email-{{email-address}}",
+                ":campaign",
+                "registration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "df4021f3-d7a1-4025-a42c-6facf154a678",
+              "name": "Registered.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "loyalty-accounts",
+                    "email-{{email-address}}",
+                    ":campaign",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "627dd3c8-e79b-4409-8d6c-68d739d866b2",
+          "name": "Get Loyalty Account By Card",
+          "request": {
+            "name": "Get Loyalty Account By Card",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "loyalty-accounts",
+                "card-{{card-number}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c20cd2e6-09fe-43a1-b0da-bbff83e1c476",
+              "name": "Loyalty account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "loyalty-accounts",
+                    "card-{{card-number}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amcAccountId\": \"string\",\n  \"cardNumber\": \"string\",\n  \"email\": \"AKlBCGKnZTX@YIHWLpXytpv.qq\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"loyaltyTier\": \"A-List\",\n  \"pointsBalance\": 2441\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fccf9d7b-6702-4cd0-8bdb-7825809b36cd",
+          "name": "Register For Loyalty Campaign By Card",
+          "request": {
+            "name": "Register For Loyalty Campaign By Card",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "loyalty-accounts",
+                "card-{{card-number}}",
+                ":campaign",
+                "registration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "campaign",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1d6463b-31b6-4874-b8bd-90d4e49b3dba",
+              "name": "Registered.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "loyalty-accounts",
+                    "card-{{card-number}}",
+                    ":campaign",
+                    "registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "campaign",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db126dfe-39b7-43f5-a0a1-cd378c065913",
+          "name": "Get Loyalty Account By Phone",
+          "request": {
+            "name": "Get Loyalty Account By Phone",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "loyalty-accounts",
+                "phone-{{phone}}"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7768eafe-7942-4640-bc5b-2fa435964a80",
+              "name": "Loyalty account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "loyalty-accounts",
+                    "phone-{{phone}}"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"amcAccountId\": \"string\",\n  \"cardNumber\": \"string\",\n  \"email\": \"AKlBCGKnZTX@YIHWLpXytpv.qq\",\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"loyaltyTier\": \"A-List\",\n  \"pointsBalance\": 2441\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c835073d-4d24-443b-8024-57d9280c3c54",
+          "name": "Unlink Loyalty Account From AMC Account",
+          "request": {
+            "name": "Unlink Loyalty Account From AMC Account",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "amc-accounts",
+                ":amc-account-id",
+                "loyalty"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "amc-account-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8abdb88a-7886-4d56-9e97-fbee8f1b099f",
+              "name": "Unlinked.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "amc-accounts",
+                    ":amc-account-id",
+                    "loyalty"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "amc-account-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f507d3aa-6a18-4968-9644-37bd3f418d47",
+          "name": "Get Loyalty Card",
+          "request": {
+            "name": "Get Loyalty Card",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "loyalty-cards",
+                ":card-number"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "card-number",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e91bf438-d66c-425e-9117-97591817940c",
+              "name": "Loyalty card.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "loyalty-cards",
+                    ":card-number"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "card-number",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cardNumber\": \"string\",\n  \"accountId\": \"string\",\n  \"loyaltyTier\": \"string\",\n  \"memberSince\": \"1947-02-26\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6c1c80ac-b2c0-484f-ace3-52472f90bd42",
+          "name": "Create Loyalty Points Redemption",
+          "request": {
+            "name": "Create Loyalty Points Redemption",
+            "description": {},
+            "url": {
+              "path": [
+                "v4",
+                "loyalty-accounts",
+                ":loyalty-account-id",
+                "redemptions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "loyalty-account-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"points\": \"<integer>\",\n  \"rewardSku\": \"<string>\",\n  \"orderId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f147d65f-94de-424f-8863-2b77bd0877ec",
+              "name": "Redemption created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v4",
+                    "loyalty-accounts",
+                    ":loyalty-account-id",
+                    "redemptions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "loyalty-account-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"points\": \"<integer>\",\n  \"rewardSku\": \"<string>\",\n  \"orderId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a759b1d4-75eb-4832-8594-a8fe08e753eb",
+          "name": "Get Loyalty Card QR Code",
+          "request": {
+            "name": "Get Loyalty Card QR Code",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "amc-accounts",
+                ":account-id",
+                "loyalty",
+                "qr-code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "account-id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "image/png"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "86a25714-d12b-46c1-9e74-c291c972b04d",
+              "name": "QR code image.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "amc-accounts",
+                    ":account-id",
+                    "loyalty",
+                    "qr-code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "account-id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-AMC-Vendor-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "image/png"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "image/png"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.amctheatres.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<email>",
+      "key": "email-address"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "card-number"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) ",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "phone"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-AMC-Vendor-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "632cfbc3-ad32-4adf-8e0d-85d891023e8d",
+    "name": "AMC Theatres Barcodes Loyalty API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The AMC Theatres API is a public REST API published by AMC Entertainment Holdings\nthat exposes data and transactional capabilities for AMC theatres, movies, showtimes,\nlocations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended\nfor partner integrations such as movie discovery, ticket sales, dine-in / express pickup\nconcession ordering, AMC Stubs loyalty integrations, and entertainment listings on\nthird-party sites and apps.\n\nAuthentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`\nrequest header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,\n`count`, `_embedded`, `_links`) for collections.\n\nThis OpenAPI definition was reconstructed from the public AMC Developer Portal\ndocumentation (developers.amctheatres.com) and known integrations. The dev portal\nblocks automated retrieval, so this spec was assembled from third-party mirrors\nof the AMC documentation and verified against open-source AMC API clients.\n\nContact Support:\n Name: AMC Theatres Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}
