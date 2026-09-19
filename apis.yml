@@ -167,6 +167,8 @@ apis:
   humanURL: https://developers.amctheatres.com
   baseURL: https://api.amctheatres.com
   tags:
+  - Location
+  tags_raw:
   - Locations
   properties:
   - type: OpenAPI
