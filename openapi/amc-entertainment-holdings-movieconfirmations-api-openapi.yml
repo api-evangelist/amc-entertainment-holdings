@@ -1,33 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AMC Theatres Barcodes MovieConfirmations API
+  title: AMC Theatres Movie Confirmations API
   description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
 
     that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
 
-    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
-
-    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
-
-    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
-
-    third-party sites and apps.
-
-
-    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
-
-    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
-
-    `count`, `_embedded`, `_links`) for collections.
-
-
-    This OpenAPI definition was reconstructed from the public AMC Developer Portal
-
-    documentation (developers.amctheatres.com) and known integrations. The dev portal
-
-    blocks automated retrieval, so this spec was assembled from third-party mirrors
-
-    of the AMC documentation and verified against open-source AMC API clients.'
+    locations, loyalty, concessions, orders, refunds, media, and webhooks.'
   version: v2
   contact:
     name: AMC Theatres Developer Portal

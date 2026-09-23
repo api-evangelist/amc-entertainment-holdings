@@ -1,22 +1,7 @@
 {
   "provider": "amc-entertainment-holdings",
   "sources": [
-    "amc-entertainment-holdings-barcodes-api-openapi.yml",
-    "amc-entertainment-holdings-concessions-api-openapi.yml",
-    "amc-entertainment-holdings-locations-api-openapi.yml",
-    "amc-entertainment-holdings-loyalty-api-openapi.yml",
-    "amc-entertainment-holdings-markets-api-openapi.yml",
-    "amc-entertainment-holdings-media-api-openapi.yml",
-    "amc-entertainment-holdings-movieconfirmations-api-openapi.yml",
-    "amc-entertainment-holdings-movies-api-openapi.yml",
-    "amc-entertainment-holdings-orders-api-openapi.yml",
-    "amc-entertainment-holdings-refunds-api-openapi.yml",
-    "amc-entertainment-holdings-seating-api-openapi.yml",
-    "amc-entertainment-holdings-showtimes-api-openapi.yml",
-    "amc-entertainment-holdings-states-api-openapi.yml",
-    "amc-entertainment-holdings-theatres-api-openapi.yml",
-    "amc-entertainment-holdings-wallet-api-openapi.yml",
-    "amc-entertainment-holdings-webhooks-api-openapi.yml"
+    "_original/amc-theatres-api-openapi.yml"
   ],
   "outputs": [
     "amc-entertainment-holdings-barcodes-api-openapi.yml",
@@ -39,6 +24,27 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amc-theatres-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "amc-entertainment-holdings-barcodes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-concessions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-locations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-loyalty-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-markets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-media-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-movieconfirmations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-movies-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-orders-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-refunds-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-seating-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-showtimes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-states-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-theatres-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-wallet-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amc-entertainment-holdings-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

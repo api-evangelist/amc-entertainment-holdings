@@ -1,33 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AMC Theatres Barcodes Movies API
+  title: AMC Theatres Movies API
   description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
 
     that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
 
-    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
-
-    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
-
-    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
-
-    third-party sites and apps.
-
-
-    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
-
-    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
-
-    `count`, `_embedded`, `_links`) for collections.
-
-
-    This OpenAPI definition was reconstructed from the public AMC Developer Portal
-
-    documentation (developers.amctheatres.com) and known integrations. The dev portal
-
-    blocks automated retrieval, so this spec was assembled from third-party mirrors
-
-    of the AMC documentation and verified against open-source AMC API clients.'
+    locations, loyalty, concessions, orders, refunds, media, and webhooks.'
   version: v2
   contact:
     name: AMC Theatres Developer Portal
@@ -214,39 +192,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/Movie'
 components:
+  parameters:
+    PageNumber:
+      name: page-number
+      in: query
+      description: Page number to retrieve. Defaults to 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    PageSize:
+      name: page-size
+      in: query
+      description: Results per page (max 100). Defaults to 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
   schemas:
-    MovieCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              movies:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Movie'
-    ApiError:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-        message:
-          type: string
-        errorCode:
-          type: string
-        moreInfo:
-          type: string
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
     Attribute:
       type: object
       properties:
@@ -275,6 +239,27 @@ components:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'
+    MovieCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              movies:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     PagedCollection:
       type: object
       properties:
@@ -338,24 +323,17 @@ components:
             $ref: '#/components/schemas/Attribute'
         _links:
           $ref: '#/components/schemas/HalLinks'
-  parameters:
-    PageSize:
-      name: page-size
-      in: query
-      description: Results per page (max 100). Defaults to 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    PageNumber:
-      name: page-number
-      in: query
-      description: Page number to retrieve. Defaults to 1.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
+    ApiError:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+        errorCode:
+          type: string
+        moreInfo:
+          type: string
   responses:
     NotFound:
       description: Resource not found.

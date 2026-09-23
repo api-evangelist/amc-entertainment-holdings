@@ -1,33 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AMC Theatres Barcodes Orders API
+  title: AMC Theatres Orders API
   description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
 
     that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
 
-    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
-
-    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
-
-    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
-
-    third-party sites and apps.
-
-
-    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
-
-    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
-
-    `count`, `_embedded`, `_links`) for collections.
-
-
-    This OpenAPI definition was reconstructed from the public AMC Developer Portal
-
-    documentation (developers.amctheatres.com) and known integrations. The dev portal
-
-    blocks automated retrieval, so this spec was assembled from third-party mirrors
-
-    of the AMC documentation and verified against open-source AMC API clients.'
+    locations, loyalty, concessions, orders, refunds, media, and webhooks.'
   version: v2
   contact:
     name: AMC Theatres Developer Portal
@@ -337,35 +315,57 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrderCollection'
 components:
+  parameters:
+    PageNumber:
+      name: page-number
+      in: query
+      description: Page number to retrieve. Defaults to 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    PageSize:
+      name: page-size
+      in: query
+      description: Results per page (max 100). Defaults to 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    OrderId:
+      name: order-id
+      in: path
+      required: true
+      schema:
+        type: string
+    AccountId:
+      name: account-id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
-    OrderProduct:
+    OrderProductUpdate:
+      allOf:
+      - $ref: '#/components/schemas/OrderProductAdd'
+    OrderContact:
       type: object
       properties:
-        lineNumber:
-          type: integer
-        sku:
+        firstName:
           type: string
-        productType:
+        lastName:
           type: string
-          enum:
-          - Ticket
-          - Concession
-          - GiftCard
-          - Other
-        quantity:
-          type: integer
-        unitPrice:
-          type: number
-          format: double
-        totalPrice:
-          type: number
-          format: double
-        showtimeId:
-          type: integer
-        seatIds:
-          type: array
-          items:
-            type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        zipCode:
+          type: string
+    OrderProductPatch:
+      type: object
+      properties:
         deliveryLocationId:
           type: integer
         pickupTime:
@@ -383,53 +383,6 @@ components:
           type: string
         message:
           type: string
-    OrderProductPatch:
-      type: object
-      properties:
-        deliveryLocationId:
-          type: integer
-        pickupTime:
-          type: string
-          format: date-time
-        deliveryTime:
-          type: string
-          format: date-time
-    OrderProductAdd:
-      type: object
-      required:
-      - sku
-      - quantity
-      properties:
-        sku:
-          type: string
-        quantity:
-          type: integer
-        showtimeId:
-          type: integer
-        seatIds:
-          type: array
-          items:
-            type: string
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
     OrderCreate:
       type: object
       required:
@@ -441,23 +394,15 @@ components:
           $ref: '#/components/schemas/OrderContact'
         amcAccountId:
           type: string
-    OrderContact:
+    HalLinks:
       type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-          format: email
-        phone:
-          type: string
-        zipCode:
-          type: string
-    OrderProductUpdate:
-      allOf:
-      - $ref: '#/components/schemas/OrderProductAdd'
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     Order:
       type: object
       properties:
@@ -496,6 +441,24 @@ components:
             $ref: '#/components/schemas/Payment'
         _links:
           $ref: '#/components/schemas/HalLinks'
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    OrderRecord:
+      type: object
+      properties:
+        orderId:
+          type: string
+        externalOrderId:
+          type: string
     OrderCollection:
       allOf:
       - $ref: '#/components/schemas/PagedCollection'
@@ -508,6 +471,22 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Order'
+    OrderProductAdd:
+      type: object
+      required:
+      - sku
+      - quantity
+      properties:
+        sku:
+          type: string
+        quantity:
+          type: integer
+        showtimeId:
+          type: integer
+        seatIds:
+          type: array
+          items:
+            type: string
     Payment:
       type: object
       properties:
@@ -535,43 +514,42 @@ components:
               type: string
             zipCode:
               type: string
-    OrderRecord:
+    OrderProduct:
       type: object
       properties:
-        orderId:
+        lineNumber:
+          type: integer
+        sku:
           type: string
-        externalOrderId:
+        productType:
           type: string
-  parameters:
-    PageSize:
-      name: page-size
-      in: query
-      description: Results per page (max 100). Defaults to 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    PageNumber:
-      name: page-number
-      in: query
-      description: Page number to retrieve. Defaults to 1.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    OrderId:
-      name: order-id
-      in: path
-      required: true
-      schema:
-        type: string
-    AccountId:
-      name: account-id
-      in: path
-      required: true
-      schema:
-        type: string
+          enum:
+          - Ticket
+          - Concession
+          - GiftCard
+          - Other
+        quantity:
+          type: integer
+        unitPrice:
+          type: number
+          format: double
+        totalPrice:
+          type: number
+          format: double
+        showtimeId:
+          type: integer
+        seatIds:
+          type: array
+          items:
+            type: string
+        deliveryLocationId:
+          type: integer
+        pickupTime:
+          type: string
+          format: date-time
+        deliveryTime:
+          type: string
+          format: date-time
   securitySchemes:
     VendorKey:
       type: apiKey

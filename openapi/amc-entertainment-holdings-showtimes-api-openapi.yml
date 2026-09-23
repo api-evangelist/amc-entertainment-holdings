@@ -1,33 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AMC Theatres Barcodes Showtimes API
+  title: AMC Theatres Showtimes API
   description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
 
     that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
 
-    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
-
-    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
-
-    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
-
-    third-party sites and apps.
-
-
-    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
-
-    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
-
-    `count`, `_embedded`, `_links`) for collections.
-
-
-    This OpenAPI definition was reconstructed from the public AMC Developer Portal
-
-    documentation (developers.amctheatres.com) and known integrations. The dev portal
-
-    blocks automated retrieval, so this spec was assembled from third-party mirrors
-
-    of the AMC documentation and verified against open-source AMC API clients.'
+    locations, loyalty, concessions, orders, refunds, media, and webhooks.'
   version: v2
   contact:
     name: AMC Theatres Developer Portal
@@ -202,7 +180,130 @@ paths:
               schema:
                 $ref: '#/components/schemas/ShowtimeCollection'
 components:
+  parameters:
+    PageNumber:
+      name: page-number
+      in: query
+      description: Page number to retrieve. Defaults to 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    PageSize:
+      name: page-size
+      in: query
+      description: Results per page (max 100). Defaults to 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    IncludeAttributes:
+      name: include-attributes
+      in: query
+      description: Comma-delimited list of attributes that results must have.
+      schema:
+        type: string
+    TheatreNumber:
+      name: theatre-number
+      in: path
+      required: true
+      description: The theatre number / id.
+      schema:
+        type: integer
+    AttributeOperator:
+      name: attribute-operator
+      in: query
+      description: Whether the include/exclude attribute filter is `and` (all) or `or` (any).
+      schema:
+        type: string
+        enum:
+        - and
+        - or
+    ExcludeAttributes:
+      name: exclude-attributes
+      in: query
+      description: Comma-delimited list of attributes that results must not have.
+      schema:
+        type: string
   schemas:
+    Attribute:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        url:
+          type: string
+          format: uri
+        sort:
+          type: integer
+        appliesToMovie:
+          type: boolean
+        appliesToShowtime:
+          type: boolean
+        appliesToTheatre:
+          type: boolean
+        media:
+          type: object
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    ShowtimeCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              showtimes:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Showtime'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    TicketPrice:
+      type: object
+      properties:
+        priceType:
+          type: string
+        sku:
+          type: string
+        price:
+          type: number
+          format: double
+        tax:
+          type: number
+          format: double
+        formattedPrice:
+          type: string
+        formattedTax:
+          type: string
     Showtime:
       type: object
       properties:
@@ -268,18 +369,6 @@ components:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'
-    ShowtimeCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              showtimes:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Showtime'
     ApiError:
       type: object
       properties:
@@ -291,117 +380,6 @@ components:
           type: string
         moreInfo:
           type: string
-    TicketPrice:
-      type: object
-      properties:
-        priceType:
-          type: string
-        sku:
-          type: string
-        price:
-          type: number
-          format: double
-        tax:
-          type: number
-          format: double
-        formattedPrice:
-          type: string
-        formattedTax:
-          type: string
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    Attribute:
-      type: object
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        name:
-          type: string
-        shortDescription:
-          type: string
-        longDescription:
-          type: string
-        url:
-          type: string
-          format: uri
-        sort:
-          type: integer
-        appliesToMovie:
-          type: boolean
-        appliesToShowtime:
-          type: boolean
-        appliesToTheatre:
-          type: boolean
-        media:
-          type: object
-        _links:
-          $ref: '#/components/schemas/HalLinks'
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
-  parameters:
-    PageSize:
-      name: page-size
-      in: query
-      description: Results per page (max 100). Defaults to 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    ExcludeAttributes:
-      name: exclude-attributes
-      in: query
-      description: Comma-delimited list of attributes that results must not have.
-      schema:
-        type: string
-    TheatreNumber:
-      name: theatre-number
-      in: path
-      required: true
-      description: The theatre number / id.
-      schema:
-        type: integer
-    PageNumber:
-      name: page-number
-      in: query
-      description: Page number to retrieve. Defaults to 1.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    IncludeAttributes:
-      name: include-attributes
-      in: query
-      description: Comma-delimited list of attributes that results must have.
-      schema:
-        type: string
-    AttributeOperator:
-      name: attribute-operator
-      in: query
-      description: Whether the include/exclude attribute filter is `and` (all) or `or` (any).
-      schema:
-        type: string
-        enum:
-        - and
-        - or
   responses:
     NotFound:
       description: Resource not found.

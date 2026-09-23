@@ -1,33 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: AMC Theatres Barcodes Locations API
+  title: AMC Theatres Locations API
   description: 'The AMC Theatres API is a public REST API published by AMC Entertainment Holdings
 
     that exposes data and transactional capabilities for AMC theatres, movies, showtimes,
 
-    locations, loyalty, concessions, orders, refunds, media, and webhooks. It is intended
-
-    for partner integrations such as movie discovery, ticket sales, dine-in / express pickup
-
-    concession ordering, AMC Stubs loyalty integrations, and entertainment listings on
-
-    third-party sites and apps.
-
-
-    Authentication is performed by sending a vendor API key in the `X-AMC-Vendor-Key`
-
-    request header. Responses follow a HAL-style envelope (`pageSize`, `pageNumber`,
-
-    `count`, `_embedded`, `_links`) for collections.
-
-
-    This OpenAPI definition was reconstructed from the public AMC Developer Portal
-
-    documentation (developers.amctheatres.com) and known integrations. The dev portal
-
-    blocks automated retrieval, so this spec was assembled from third-party mirrors
-
-    of the AMC documentation and verified against open-source AMC API clients.'
+    locations, loyalty, concessions, orders, refunds, media, and webhooks.'
   version: v2
   contact:
     name: AMC Theatres Developer Portal
@@ -105,6 +83,45 @@ paths:
                 $ref: '#/components/schemas/LocationSuggestionCollection'
 components:
   schemas:
+    LocationCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              locations:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
+    LocationSuggestionCollection:
+      type: object
+      properties:
+        suggestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationSuggestion'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
     Location:
       type: object
       properties:
@@ -128,24 +145,6 @@ components:
           type: string
         postalCode:
           type: string
-    LocationSuggestionCollection:
-      type: object
-      properties:
-        suggestions:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocationSuggestion'
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
     LocationSuggestion:
       type: object
       properties:
@@ -162,27 +161,6 @@ components:
         url:
           type: string
           format: uri
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    LocationCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              locations:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Location'
   securitySchemes:
     VendorKey:
       type: apiKey
