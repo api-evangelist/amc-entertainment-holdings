@@ -198,18 +198,6 @@ paths:
           description: Pickup times for the showtime.
 components:
   schemas:
-    ConcessionCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              concessions:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Concession'
     ConcessionCategory:
       type: object
       properties:
@@ -228,17 +216,18 @@ components:
             type: string
           templated:
             type: boolean
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
+    ConcessionCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              concessions:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Concession'
     Concession:
       type: object
       properties:
@@ -268,6 +257,17 @@ components:
             enum:
             - DeliveryToSeat
             - ExpressPickup
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
   securitySchemes:
     VendorKey:
       type: apiKey

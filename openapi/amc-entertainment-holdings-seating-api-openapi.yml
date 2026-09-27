@@ -61,24 +61,27 @@ paths:
                 $ref: '#/components/schemas/SeatingLayout'
 components:
   schemas:
-    SeatingLayout:
-      type: object
-      properties:
-        layoutId:
-          type: integer
-        name:
-          type: string
-        rows:
-          type: array
-          items:
+    SeatingLayoutCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
             type: object
             properties:
-              name:
-                type: string
-              seats:
+              seatingLayouts:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Seat'
+                  $ref: '#/components/schemas/SeatingLayout'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     Seat:
       type: object
       properties:
@@ -100,15 +103,6 @@ components:
           type: string
         column:
           type: integer
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
     PagedCollection:
       type: object
       properties:
@@ -120,18 +114,24 @@ components:
           type: integer
         _links:
           $ref: '#/components/schemas/HalLinks'
-    SeatingLayoutCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
+    SeatingLayout:
+      type: object
+      properties:
+        layoutId:
+          type: integer
+        name:
+          type: string
+        rows:
+          type: array
+          items:
             type: object
             properties:
-              seatingLayouts:
+              name:
+                type: string
+              seats:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SeatingLayout'
+                  $ref: '#/components/schemas/Seat'
   parameters:
     TheatreNumber:
       name: theatre-number

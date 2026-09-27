@@ -189,15 +189,12 @@ components:
         type: integer
         minimum: 1
         default: 1
-    PageSize:
-      name: page-size
+    ExcludeAttributes:
+      name: exclude-attributes
       in: query
-      description: Results per page (max 100). Defaults to 10.
+      description: Comma-delimited list of attributes that results must not have.
       schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
+        type: string
     IncludeAttributes:
       name: include-attributes
       in: query
@@ -220,90 +217,16 @@ components:
         enum:
         - and
         - or
-    ExcludeAttributes:
-      name: exclude-attributes
+    PageSize:
+      name: page-size
       in: query
-      description: Comma-delimited list of attributes that results must not have.
+      description: Results per page (max 100). Defaults to 10.
       schema:
-        type: string
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
   schemas:
-    Attribute:
-      type: object
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        name:
-          type: string
-        shortDescription:
-          type: string
-        longDescription:
-          type: string
-        url:
-          type: string
-          format: uri
-        sort:
-          type: integer
-        appliesToMovie:
-          type: boolean
-        appliesToShowtime:
-          type: boolean
-        appliesToTheatre:
-          type: boolean
-        media:
-          type: object
-        _links:
-          $ref: '#/components/schemas/HalLinks'
-    ShowtimeCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              showtimes:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Showtime'
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
-    TicketPrice:
-      type: object
-      properties:
-        priceType:
-          type: string
-        sku:
-          type: string
-        price:
-          type: number
-          format: double
-        tax:
-          type: number
-          format: double
-        formattedPrice:
-          type: string
-        formattedTax:
-          type: string
     Showtime:
       type: object
       properties:
@@ -365,6 +288,83 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Attribute'
+        media:
+          type: object
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    TicketPrice:
+      type: object
+      properties:
+        priceType:
+          type: string
+        sku:
+          type: string
+        price:
+          type: number
+          format: double
+        tax:
+          type: number
+          format: double
+        formattedPrice:
+          type: string
+        formattedTax:
+          type: string
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    ShowtimeCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              showtimes:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Showtime'
+    Attribute:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        url:
+          type: string
+          format: uri
+        sort:
+          type: integer
+        appliesToMovie:
+          type: boolean
+        appliesToShowtime:
+          type: boolean
+        appliesToTheatre:
+          type: boolean
         media:
           type: object
         _links:

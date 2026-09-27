@@ -211,6 +211,38 @@ components:
         maximum: 100
         default: 10
   schemas:
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    MovieCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              movies:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
     Attribute:
       type: object
       properties:
@@ -239,38 +271,17 @@ components:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'
-    MovieCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              movies:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Movie'
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    PagedCollection:
+    ApiError:
       type: object
       properties:
-        pageSize:
+        statusCode:
           type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
+        message:
+          type: string
+        errorCode:
+          type: string
+        moreInfo:
+          type: string
     Movie:
       type: object
       properties:
@@ -323,17 +334,6 @@ components:
             $ref: '#/components/schemas/Attribute'
         _links:
           $ref: '#/components/schemas/HalLinks'
-    ApiError:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-        message:
-          type: string
-        errorCode:
-          type: string
-        moreInfo:
-          type: string
   responses:
     NotFound:
       description: Resource not found.

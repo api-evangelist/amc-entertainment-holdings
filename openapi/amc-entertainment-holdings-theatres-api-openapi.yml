@@ -135,15 +135,12 @@ components:
         type: integer
         minimum: 1
         default: 1
-    PageSize:
-      name: page-size
+    ExcludeAttributes:
+      name: exclude-attributes
       in: query
-      description: Results per page (max 100). Defaults to 10.
+      description: Comma-delimited list of attributes that results must not have.
       schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
+        type: string
     IncludeAttributes:
       name: include-attributes
       in: query
@@ -159,13 +156,48 @@ components:
         enum:
         - and
         - or
-    ExcludeAttributes:
-      name: exclude-attributes
+    PageSize:
+      name: page-size
       in: query
-      description: Comma-delimited list of attributes that results must not have.
+      description: Results per page (max 100). Defaults to 10.
       schema:
-        type: string
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
   schemas:
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    TheatreCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              theatres:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Theatre'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     Attribute:
       type: object
       properties:
@@ -194,38 +226,17 @@ components:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    TheatreCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              theatres:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Theatre'
-    PagedCollection:
+    ApiError:
       type: object
       properties:
-        pageSize:
+        statusCode:
           type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
+        message:
+          type: string
+        errorCode:
+          type: string
+        moreInfo:
+          type: string
     Theatre:
       type: object
       description: An AMC Theatre representation.
@@ -366,17 +377,6 @@ components:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'
-    ApiError:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-        message:
-          type: string
-        errorCode:
-          type: string
-        moreInfo:
-          type: string
   responses:
     NotFound:
       description: Resource not found.

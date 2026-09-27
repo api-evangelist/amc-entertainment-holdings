@@ -95,13 +95,22 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Location'
-    LocationSuggestionCollection:
+    LocationSuggestion:
       type: object
       properties:
-        suggestions:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocationSuggestion'
+        type:
+          type: string
+          enum:
+          - Theatre
+          - City
+          - State
+          - Postal
+          - Market
+        text:
+          type: string
+        url:
+          type: string
+          format: uri
     HalLinks:
       type: object
       additionalProperties:
@@ -111,17 +120,6 @@ components:
             type: string
           templated:
             type: boolean
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
     Location:
       type: object
       properties:
@@ -145,22 +143,24 @@ components:
           type: string
         postalCode:
           type: string
-    LocationSuggestion:
+    LocationSuggestionCollection:
       type: object
       properties:
-        type:
-          type: string
-          enum:
-          - Theatre
-          - City
-          - State
-          - Postal
-          - Market
-        text:
-          type: string
-        url:
-          type: string
-          format: uri
+        suggestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationSuggestion'
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
   securitySchemes:
     VendorKey:
       type: apiKey
