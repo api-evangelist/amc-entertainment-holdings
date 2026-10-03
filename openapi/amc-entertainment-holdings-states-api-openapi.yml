@@ -57,13 +57,6 @@ paths:
                 $ref: '#/components/schemas/State'
 components:
   schemas:
-    StateCollection:
-      type: object
-      properties:
-        states:
-          type: array
-          items:
-            $ref: '#/components/schemas/State'
     State:
       type: object
       properties:
@@ -73,6 +66,13 @@ components:
           type: string
         slug:
           type: string
+    StateCollection:
+      type: object
+      properties:
+        states:
+          type: array
+          items:
+            $ref: '#/components/schemas/State'
   securitySchemes:
     VendorKey:
       type: apiKey

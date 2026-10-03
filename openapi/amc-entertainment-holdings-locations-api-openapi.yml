@@ -83,18 +83,6 @@ paths:
                 $ref: '#/components/schemas/LocationSuggestionCollection'
 components:
   schemas:
-    LocationCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              locations:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Location'
     LocationSuggestion:
       type: object
       properties:
@@ -120,6 +108,36 @@ components:
             type: string
           templated:
             type: boolean
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    LocationSuggestionCollection:
+      type: object
+      properties:
+        suggestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationSuggestion'
+    LocationCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              locations:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
     Location:
       type: object
       properties:
@@ -143,24 +161,6 @@ components:
           type: string
         postalCode:
           type: string
-    LocationSuggestionCollection:
-      type: object
-      properties:
-        suggestions:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocationSuggestion'
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
   securitySchemes:
     VendorKey:
       type: apiKey

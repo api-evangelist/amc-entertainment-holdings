@@ -106,17 +106,6 @@ components:
           type: string
         description:
           type: string
-    WebhookSubscriptionCreate:
-      type: object
-      required:
-      - eventName
-      - url
-      properties:
-        eventName:
-          type: string
-        url:
-          type: string
-          format: uri
     WebhookSubscription:
       type: object
       properties:
@@ -129,6 +118,17 @@ components:
           format: uri
         active:
           type: boolean
+    WebhookSubscriptionCreate:
+      type: object
+      required:
+      - eventName
+      - url
+      properties:
+        eventName:
+          type: string
+        url:
+          type: string
+          format: uri
   securitySchemes:
     VendorKey:
       type: apiKey

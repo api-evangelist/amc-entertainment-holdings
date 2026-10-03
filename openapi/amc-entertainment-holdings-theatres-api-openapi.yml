@@ -127,6 +127,15 @@ paths:
                 $ref: '#/components/schemas/TheatreCollection'
 components:
   parameters:
+    AttributeOperator:
+      name: attribute-operator
+      in: query
+      description: Whether the include/exclude attribute filter is `and` (all) or `or` (any).
+      schema:
+        type: string
+        enum:
+        - and
+        - or
     PageNumber:
       name: page-number
       in: query
@@ -135,6 +144,15 @@ components:
         type: integer
         minimum: 1
         default: 1
+    PageSize:
+      name: page-size
+      in: query
+      description: Results per page (max 100). Defaults to 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
     ExcludeAttributes:
       name: exclude-attributes
       in: query
@@ -147,48 +165,7 @@ components:
       description: Comma-delimited list of attributes that results must have.
       schema:
         type: string
-    AttributeOperator:
-      name: attribute-operator
-      in: query
-      description: Whether the include/exclude attribute filter is `and` (all) or `or` (any).
-      schema:
-        type: string
-        enum:
-        - and
-        - or
-    PageSize:
-      name: page-size
-      in: query
-      description: Results per page (max 100). Defaults to 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
   schemas:
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
-    TheatreCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              theatres:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Theatre'
     HalLinks:
       type: object
       additionalProperties:
@@ -198,34 +175,6 @@ components:
             type: string
           templated:
             type: boolean
-    Attribute:
-      type: object
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        name:
-          type: string
-        shortDescription:
-          type: string
-        longDescription:
-          type: string
-        url:
-          type: string
-          format: uri
-        sort:
-          type: integer
-        appliesToMovie:
-          type: boolean
-        appliesToShowtime:
-          type: boolean
-        appliesToTheatre:
-          type: boolean
-        media:
-          type: object
-        _links:
-          $ref: '#/components/schemas/HalLinks'
     ApiError:
       type: object
       properties:
@@ -374,6 +323,57 @@ components:
         hasMultipleKitchens:
           type: boolean
         estimatedConcessionsOrderFees:
+          type: object
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    TheatreCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              theatres:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Theatre'
+    Attribute:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        url:
+          type: string
+          format: uri
+        sort:
+          type: integer
+        appliesToMovie:
+          type: boolean
+        appliesToShowtime:
+          type: boolean
+        appliesToTheatre:
+          type: boolean
+        media:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'

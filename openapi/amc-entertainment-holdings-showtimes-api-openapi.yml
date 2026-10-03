@@ -181,6 +181,24 @@ paths:
                 $ref: '#/components/schemas/ShowtimeCollection'
 components:
   parameters:
+    AttributeOperator:
+      name: attribute-operator
+      in: query
+      description: Whether the include/exclude attribute filter is `and` (all) or `or` (any).
+      schema:
+        type: string
+        enum:
+        - and
+        - or
+    PageSize:
+      name: page-size
+      in: query
+      description: Results per page (max 100). Defaults to 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
     PageNumber:
       name: page-number
       in: query
@@ -208,25 +226,44 @@ components:
       description: The theatre number / id.
       schema:
         type: integer
-    AttributeOperator:
-      name: attribute-operator
-      in: query
-      description: Whether the include/exclude attribute filter is `and` (all) or `or` (any).
-      schema:
-        type: string
-        enum:
-        - and
-        - or
-    PageSize:
-      name: page-size
-      in: query
-      description: Results per page (max 100). Defaults to 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
   schemas:
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    TicketPrice:
+      type: object
+      properties:
+        priceType:
+          type: string
+        sku:
+          type: string
+        price:
+          type: number
+          format: double
+        tax:
+          type: number
+          format: double
+        formattedPrice:
+          type: string
+        formattedTax:
+          type: string
+    ApiError:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+        errorCode:
+          type: string
+        moreInfo:
+          type: string
     Showtime:
       type: object
       properties:
@@ -303,32 +340,6 @@ components:
           type: integer
         _links:
           $ref: '#/components/schemas/HalLinks'
-    TicketPrice:
-      type: object
-      properties:
-        priceType:
-          type: string
-        sku:
-          type: string
-        price:
-          type: number
-          format: double
-        tax:
-          type: number
-          format: double
-        formattedPrice:
-          type: string
-        formattedTax:
-          type: string
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
     ShowtimeCollection:
       allOf:
       - $ref: '#/components/schemas/PagedCollection'
@@ -369,17 +380,6 @@ components:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'
-    ApiError:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-        message:
-          type: string
-        errorCode:
-          type: string
-        moreInfo:
-          type: string
   responses:
     NotFound:
       description: Resource not found.

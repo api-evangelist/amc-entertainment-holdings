@@ -316,6 +316,15 @@ paths:
                 $ref: '#/components/schemas/OrderCollection'
 components:
   schemas:
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     OrderProduct:
       type: object
       properties:
@@ -352,18 +361,9 @@ components:
         deliveryTime:
           type: string
           format: date-time
-    OrderCollection:
+    OrderProductUpdate:
       allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              orders:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Order'
+      - $ref: '#/components/schemas/OrderProductAdd'
     Order:
       type: object
       properties:
@@ -429,6 +429,56 @@ components:
               type: string
             zipCode:
               type: string
+    OrderCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              orders:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+    OrderCreate:
+      type: object
+      required:
+      - theatreId
+      properties:
+        theatreId:
+          type: integer
+        contact:
+          $ref: '#/components/schemas/OrderContact'
+        amcAccountId:
+          type: string
+    OrderRecord:
+      type: object
+      properties:
+        orderId:
+          type: string
+        externalOrderId:
+          type: string
+    FailedPaymentAuth:
+      type: object
+      properties:
+        gateway:
+          type: string
+        responseCode:
+          type: string
+        message:
+          type: string
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
     OrderContact:
       type: object
       properties:
@@ -443,42 +493,17 @@ components:
           type: string
         zipCode:
           type: string
-    OrderRecord:
+    OrderProductPatch:
       type: object
       properties:
-        orderId:
-          type: string
-        externalOrderId:
-          type: string
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    OrderCreate:
-      type: object
-      required:
-      - theatreId
-      properties:
-        theatreId:
+        deliveryLocationId:
           type: integer
-        contact:
-          $ref: '#/components/schemas/OrderContact'
-        amcAccountId:
+        pickupTime:
           type: string
-    FailedPaymentAuth:
-      type: object
-      properties:
-        gateway:
+          format: date-time
+        deliveryTime:
           type: string
-        responseCode:
-          type: string
-        message:
-          type: string
+          format: date-time
     OrderProductAdd:
       type: object
       required:
@@ -495,32 +520,16 @@ components:
           type: array
           items:
             type: string
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
-    OrderProductUpdate:
-      allOf:
-      - $ref: '#/components/schemas/OrderProductAdd'
-    OrderProductPatch:
-      type: object
-      properties:
-        deliveryLocationId:
-          type: integer
-        pickupTime:
-          type: string
-          format: date-time
-        deliveryTime:
-          type: string
-          format: date-time
   parameters:
+    PageSize:
+      name: page-size
+      in: query
+      description: Results per page (max 100). Defaults to 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
     PageNumber:
       name: page-number
       in: query
@@ -541,15 +550,6 @@ components:
       required: true
       schema:
         type: string
-    PageSize:
-      name: page-size
-      in: query
-      description: Results per page (max 100). Defaults to 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
   securitySchemes:
     VendorKey:
       type: apiKey

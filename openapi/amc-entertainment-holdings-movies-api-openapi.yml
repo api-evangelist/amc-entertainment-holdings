@@ -192,45 +192,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Movie'
 components:
-  parameters:
-    PageNumber:
-      name: page-number
-      in: query
-      description: Page number to retrieve. Defaults to 1.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    PageSize:
-      name: page-size
-      in: query
-      description: Results per page (max 100). Defaults to 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
   schemas:
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
     MovieCollection:
       allOf:
       - $ref: '#/components/schemas/PagedCollection'
@@ -243,34 +205,15 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Movie'
-    Attribute:
+    HalLinks:
       type: object
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        name:
-          type: string
-        shortDescription:
-          type: string
-        longDescription:
-          type: string
-        url:
-          type: string
-          format: uri
-        sort:
-          type: integer
-        appliesToMovie:
-          type: boolean
-        appliesToShowtime:
-          type: boolean
-        appliesToTheatre:
-          type: boolean
-        media:
-          type: object
-        _links:
-          $ref: '#/components/schemas/HalLinks'
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     ApiError:
       type: object
       properties:
@@ -282,6 +225,17 @@ components:
           type: string
         moreInfo:
           type: string
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
     Movie:
       type: object
       properties:
@@ -334,6 +288,52 @@ components:
             $ref: '#/components/schemas/Attribute'
         _links:
           $ref: '#/components/schemas/HalLinks'
+    Attribute:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        url:
+          type: string
+          format: uri
+        sort:
+          type: integer
+        appliesToMovie:
+          type: boolean
+        appliesToShowtime:
+          type: boolean
+        appliesToTheatre:
+          type: boolean
+        media:
+          type: object
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+  parameters:
+    PageNumber:
+      name: page-number
+      in: query
+      description: Page number to retrieve. Defaults to 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    PageSize:
+      name: page-size
+      in: query
+      description: Results per page (max 100). Defaults to 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
   responses:
     NotFound:
       description: Resource not found.
