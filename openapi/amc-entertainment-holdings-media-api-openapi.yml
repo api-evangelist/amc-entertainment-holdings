@@ -130,6 +130,13 @@ paths:
                   type: string
 components:
   schemas:
+    MediaCollection:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/MediaItem'
     MediaItem:
       type: object
       properties:
@@ -144,13 +151,6 @@ components:
           type: integer
         height:
           type: integer
-    MediaCollection:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/MediaItem'
   securitySchemes:
     VendorKey:
       type: apiKey

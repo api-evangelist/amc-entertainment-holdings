@@ -193,6 +193,34 @@ paths:
                 $ref: '#/components/schemas/Movie'
 components:
   schemas:
+    Attribute:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        url:
+          type: string
+          format: uri
+        sort:
+          type: integer
+        appliesToMovie:
+          type: boolean
+        appliesToShowtime:
+          type: boolean
+        appliesToTheatre:
+          type: boolean
+        media:
+          type: object
+        _links:
+          $ref: '#/components/schemas/HalLinks'
     MovieCollection:
       allOf:
       - $ref: '#/components/schemas/PagedCollection'
@@ -214,17 +242,6 @@ components:
             type: string
           templated:
             type: boolean
-    ApiError:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-        message:
-          type: string
-        errorCode:
-          type: string
-        moreInfo:
-          type: string
     PagedCollection:
       type: object
       properties:
@@ -288,43 +305,18 @@ components:
             $ref: '#/components/schemas/Attribute'
         _links:
           $ref: '#/components/schemas/HalLinks'
-    Attribute:
+    ApiError:
       type: object
       properties:
-        id:
+        statusCode:
           type: integer
-        code:
+        message:
           type: string
-        name:
+        errorCode:
           type: string
-        shortDescription:
+        moreInfo:
           type: string
-        longDescription:
-          type: string
-        url:
-          type: string
-          format: uri
-        sort:
-          type: integer
-        appliesToMovie:
-          type: boolean
-        appliesToShowtime:
-          type: boolean
-        appliesToTheatre:
-          type: boolean
-        media:
-          type: object
-        _links:
-          $ref: '#/components/schemas/HalLinks'
   parameters:
-    PageNumber:
-      name: page-number
-      in: query
-      description: Page number to retrieve. Defaults to 1.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
     PageSize:
       name: page-size
       in: query
@@ -334,6 +326,14 @@ components:
         minimum: 1
         maximum: 100
         default: 10
+    PageNumber:
+      name: page-number
+      in: query
+      description: Page number to retrieve. Defaults to 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
   responses:
     NotFound:
       description: Resource not found.

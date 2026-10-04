@@ -83,6 +83,13 @@ paths:
                 $ref: '#/components/schemas/LocationSuggestionCollection'
 components:
   schemas:
+    LocationSuggestionCollection:
+      type: object
+      properties:
+        suggestions:
+          type: array
+          items:
+            $ref: '#/components/schemas/LocationSuggestion'
     LocationSuggestion:
       type: object
       properties:
@@ -119,25 +126,6 @@ components:
           type: integer
         _links:
           $ref: '#/components/schemas/HalLinks'
-    LocationSuggestionCollection:
-      type: object
-      properties:
-        suggestions:
-          type: array
-          items:
-            $ref: '#/components/schemas/LocationSuggestion'
-    LocationCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              locations:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Location'
     Location:
       type: object
       properties:
@@ -161,6 +149,18 @@ components:
           type: string
         postalCode:
           type: string
+    LocationCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              locations:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
   securitySchemes:
     VendorKey:
       type: apiKey

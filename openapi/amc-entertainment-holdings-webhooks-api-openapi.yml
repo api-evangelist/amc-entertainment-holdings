@@ -99,13 +99,6 @@ paths:
           description: Test sent.
 components:
   schemas:
-    WebhookEvent:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
     WebhookSubscription:
       type: object
       properties:
@@ -118,6 +111,13 @@ components:
           format: uri
         active:
           type: boolean
+    WebhookEvent:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
     WebhookSubscriptionCreate:
       type: object
       required:

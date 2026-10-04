@@ -61,15 +61,6 @@ paths:
                 $ref: '#/components/schemas/SeatingLayout'
 components:
   schemas:
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
     SeatingLayoutCollection:
       allOf:
       - $ref: '#/components/schemas/PagedCollection'
@@ -103,17 +94,6 @@ components:
           type: string
         column:
           type: integer
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
     SeatingLayout:
       type: object
       properties:
@@ -132,6 +112,26 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Seat'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
   parameters:
     TheatreNumber:
       name: theatre-number

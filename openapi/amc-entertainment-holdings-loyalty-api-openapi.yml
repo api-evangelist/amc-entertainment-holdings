@@ -232,6 +232,19 @@ paths:
                 type: string
                 format: binary
 components:
+  parameters:
+    AccountId:
+      name: account-id
+      in: path
+      required: true
+      schema:
+        type: string
+    OrderId:
+      name: order-id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
     RedemptionCreate:
       type: object
@@ -288,19 +301,6 @@ components:
           type: array
           items:
             type: object
-  parameters:
-    OrderId:
-      name: order-id
-      in: path
-      required: true
-      schema:
-        type: string
-    AccountId:
-      name: account-id
-      in: path
-      required: true
-      schema:
-        type: string
   securitySchemes:
     VendorKey:
       type: apiKey

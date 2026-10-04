@@ -315,7 +315,83 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrderCollection'
 components:
+  parameters:
+    PageNumber:
+      name: page-number
+      in: query
+      description: Page number to retrieve. Defaults to 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    AccountId:
+      name: account-id
+      in: path
+      required: true
+      schema:
+        type: string
+    PageSize:
+      name: page-size
+      in: query
+      description: Results per page (max 100). Defaults to 10.
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        default: 10
+    OrderId:
+      name: order-id
+      in: path
+      required: true
+      schema:
+        type: string
   schemas:
+    OrderCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              orders:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+    OrderProductPatch:
+      type: object
+      properties:
+        deliveryLocationId:
+          type: integer
+        pickupTime:
+          type: string
+          format: date-time
+        deliveryTime:
+          type: string
+          format: date-time
+    OrderContact:
+      type: object
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+          format: email
+        phone:
+          type: string
+        zipCode:
+          type: string
+    FailedPaymentAuth:
+      type: object
+      properties:
+        gateway:
+          type: string
+        responseCode:
+          type: string
+        message:
+          type: string
     HalLinks:
       type: object
       additionalProperties:
@@ -325,6 +401,27 @@ components:
             type: string
           templated:
             type: boolean
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    OrderProductUpdate:
+      allOf:
+      - $ref: '#/components/schemas/OrderProductAdd'
+    OrderRecord:
+      type: object
+      properties:
+        orderId:
+          type: string
+        externalOrderId:
+          type: string
     OrderProduct:
       type: object
       properties:
@@ -361,9 +458,6 @@ components:
         deliveryTime:
           type: string
           format: date-time
-    OrderProductUpdate:
-      allOf:
-      - $ref: '#/components/schemas/OrderProductAdd'
     Order:
       type: object
       properties:
@@ -429,18 +523,6 @@ components:
               type: string
             zipCode:
               type: string
-    OrderCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              orders:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Order'
     OrderCreate:
       type: object
       required:
@@ -452,58 +534,6 @@ components:
           $ref: '#/components/schemas/OrderContact'
         amcAccountId:
           type: string
-    OrderRecord:
-      type: object
-      properties:
-        orderId:
-          type: string
-        externalOrderId:
-          type: string
-    FailedPaymentAuth:
-      type: object
-      properties:
-        gateway:
-          type: string
-        responseCode:
-          type: string
-        message:
-          type: string
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
-    OrderContact:
-      type: object
-      properties:
-        firstName:
-          type: string
-        lastName:
-          type: string
-        email:
-          type: string
-          format: email
-        phone:
-          type: string
-        zipCode:
-          type: string
-    OrderProductPatch:
-      type: object
-      properties:
-        deliveryLocationId:
-          type: integer
-        pickupTime:
-          type: string
-          format: date-time
-        deliveryTime:
-          type: string
-          format: date-time
     OrderProductAdd:
       type: object
       required:
@@ -520,36 +550,6 @@ components:
           type: array
           items:
             type: string
-  parameters:
-    PageSize:
-      name: page-size
-      in: query
-      description: Results per page (max 100). Defaults to 10.
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 100
-        default: 10
-    PageNumber:
-      name: page-number
-      in: query
-      description: Page number to retrieve. Defaults to 1.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-    OrderId:
-      name: order-id
-      in: path
-      required: true
-      schema:
-        type: string
-    AccountId:
-      name: account-id
-      in: path
-      required: true
-      schema:
-        type: string
   securitySchemes:
     VendorKey:
       type: apiKey
