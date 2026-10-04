@@ -954,6 +954,9 @@ apis:
   - type: Examples
     url: examples/amc-theatres-get-loyalty-account-example.json
 common:
+  - type: CapabilityMap
+    url: capabilities/amc-entertainment-holdings-capability-edges.yml
+    name: AMC Entertainment Holdings Business Capability Map
   - type: AgenticAccess
     url: agentic-access/amc-entertainment-holdings-agentic-access.yml
   - type: VulnerabilityDisclosure
