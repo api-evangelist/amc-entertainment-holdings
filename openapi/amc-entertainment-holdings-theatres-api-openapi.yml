@@ -127,66 +127,6 @@ paths:
                 $ref: '#/components/schemas/TheatreCollection'
 components:
   schemas:
-    Attribute:
-      type: object
-      properties:
-        id:
-          type: integer
-        code:
-          type: string
-        name:
-          type: string
-        shortDescription:
-          type: string
-        longDescription:
-          type: string
-        url:
-          type: string
-          format: uri
-        sort:
-          type: integer
-        appliesToMovie:
-          type: boolean
-        appliesToShowtime:
-          type: boolean
-        appliesToTheatre:
-          type: boolean
-        media:
-          type: object
-        _links:
-          $ref: '#/components/schemas/HalLinks'
-    TheatreCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              theatres:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Theatre'
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
     Theatre:
       type: object
       description: An AMC Theatre representation.
@@ -327,6 +267,54 @@ components:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'
+    Attribute:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        name:
+          type: string
+        shortDescription:
+          type: string
+        longDescription:
+          type: string
+        url:
+          type: string
+          format: uri
+        sort:
+          type: integer
+        appliesToMovie:
+          type: boolean
+        appliesToShowtime:
+          type: boolean
+        appliesToTheatre:
+          type: boolean
+        media:
+          type: object
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     ApiError:
       type: object
       properties:
@@ -338,6 +326,18 @@ components:
           type: string
         moreInfo:
           type: string
+    TheatreCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              theatres:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Theatre'
   parameters:
     PageSize:
       name: page-size
@@ -348,16 +348,24 @@ components:
         minimum: 1
         maximum: 100
         default: 10
-    ExcludeAttributes:
-      name: exclude-attributes
-      in: query
-      description: Comma-delimited list of attributes that results must not have.
-      schema:
-        type: string
     IncludeAttributes:
       name: include-attributes
       in: query
       description: Comma-delimited list of attributes that results must have.
+      schema:
+        type: string
+    PageNumber:
+      name: page-number
+      in: query
+      description: Page number to retrieve. Defaults to 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    ExcludeAttributes:
+      name: exclude-attributes
+      in: query
+      description: Comma-delimited list of attributes that results must not have.
       schema:
         type: string
     AttributeOperator:
@@ -369,14 +377,6 @@ components:
         enum:
         - and
         - or
-    PageNumber:
-      name: page-number
-      in: query
-      description: Page number to retrieve. Defaults to 1.
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
   responses:
     NotFound:
       description: Resource not found.

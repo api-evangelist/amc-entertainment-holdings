@@ -38,6 +38,27 @@ paths:
                 $ref: '#/components/schemas/MarketCollection'
 components:
   schemas:
+    MarketCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
+            type: object
+            properties:
+              markets:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Market'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     PagedCollection:
       type: object
       properties:
@@ -58,27 +79,6 @@ components:
           type: string
         slug:
           type: string
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    MarketCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              markets:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Market'
   securitySchemes:
     VendorKey:
       type: apiKey

@@ -99,6 +99,24 @@ paths:
           description: Test sent.
 components:
   schemas:
+    WebhookSubscriptionCreate:
+      type: object
+      required:
+      - eventName
+      - url
+      properties:
+        eventName:
+          type: string
+        url:
+          type: string
+          format: uri
+    WebhookEvent:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
     WebhookSubscription:
       type: object
       properties:
@@ -111,24 +129,6 @@ components:
           format: uri
         active:
           type: boolean
-    WebhookEvent:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-    WebhookSubscriptionCreate:
-      type: object
-      required:
-      - eventName
-      - url
-      properties:
-        eventName:
-          type: string
-        url:
-          type: string
-          format: uri
   securitySchemes:
     VendorKey:
       type: apiKey

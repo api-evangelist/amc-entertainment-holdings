@@ -232,31 +232,7 @@ paths:
                 type: string
                 format: binary
 components:
-  parameters:
-    AccountId:
-      name: account-id
-      in: path
-      required: true
-      schema:
-        type: string
-    OrderId:
-      name: order-id
-      in: path
-      required: true
-      schema:
-        type: string
   schemas:
-    RedemptionCreate:
-      type: object
-      required:
-      - points
-      properties:
-        points:
-          type: integer
-        rewardSku:
-          type: string
-        orderId:
-          type: string
     LoyaltyCard:
       type: object
       properties:
@@ -269,6 +245,17 @@ components:
         memberSince:
           type: string
           format: date
+    RedemptionCreate:
+      type: object
+      required:
+      - points
+      properties:
+        points:
+          type: integer
+        rewardSku:
+          type: string
+        orderId:
+          type: string
     LoyaltyAccount:
       type: object
       properties:
@@ -301,6 +288,19 @@ components:
           type: array
           items:
             type: object
+  parameters:
+    OrderId:
+      name: order-id
+      in: path
+      required: true
+      schema:
+        type: string
+    AccountId:
+      name: account-id
+      in: path
+      required: true
+      schema:
+        type: string
   securitySchemes:
     VendorKey:
       type: apiKey

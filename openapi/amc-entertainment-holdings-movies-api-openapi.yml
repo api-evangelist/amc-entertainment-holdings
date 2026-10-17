@@ -221,6 +221,37 @@ components:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
+    ApiError:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        message:
+          type: string
+        errorCode:
+          type: string
+        moreInfo:
+          type: string
     MovieCollection:
       allOf:
       - $ref: '#/components/schemas/PagedCollection'
@@ -233,26 +264,6 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Movie'
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
     Movie:
       type: object
       properties:
@@ -305,17 +316,6 @@ components:
             $ref: '#/components/schemas/Attribute'
         _links:
           $ref: '#/components/schemas/HalLinks'
-    ApiError:
-      type: object
-      properties:
-        statusCode:
-          type: integer
-        message:
-          type: string
-        errorCode:
-          type: string
-        moreInfo:
-          type: string
   parameters:
     PageSize:
       name: page-size

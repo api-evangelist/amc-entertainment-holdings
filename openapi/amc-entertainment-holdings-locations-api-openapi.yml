@@ -83,6 +83,17 @@ paths:
                 $ref: '#/components/schemas/LocationSuggestionCollection'
 components:
   schemas:
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
     LocationSuggestionCollection:
       type: object
       properties:
@@ -90,6 +101,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LocationSuggestion'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     LocationSuggestion:
       type: object
       properties:
@@ -106,26 +126,18 @@ components:
         url:
           type: string
           format: uri
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
+    LocationCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
         properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
+          _embedded:
+            type: object
+            properties:
+              locations:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Location'
     Location:
       type: object
       properties:
@@ -149,18 +161,6 @@ components:
           type: string
         postalCode:
           type: string
-    LocationCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
-            type: object
-            properties:
-              locations:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Location'
   securitySchemes:
     VendorKey:
       type: apiKey

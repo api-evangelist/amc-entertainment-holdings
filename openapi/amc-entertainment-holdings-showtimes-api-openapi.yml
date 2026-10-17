@@ -209,6 +209,17 @@ components:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
     ShowtimeCollection:
       allOf:
       - $ref: '#/components/schemas/PagedCollection'
@@ -221,15 +232,6 @@ components:
                 type: array
                 items:
                   $ref: '#/components/schemas/Showtime'
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
     Showtime:
       type: object
       properties:
@@ -295,17 +297,15 @@ components:
           type: object
         _links:
           $ref: '#/components/schemas/HalLinks'
-    PagedCollection:
+    HalLinks:
       type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     TicketPrice:
       type: object
       properties:
@@ -344,23 +344,24 @@ components:
         minimum: 1
         maximum: 100
         default: 10
-    TheatreNumber:
-      name: theatre-number
-      in: path
-      required: true
-      description: The theatre number / id.
-      schema:
-        type: integer
-    ExcludeAttributes:
-      name: exclude-attributes
-      in: query
-      description: Comma-delimited list of attributes that results must not have.
-      schema:
-        type: string
     IncludeAttributes:
       name: include-attributes
       in: query
       description: Comma-delimited list of attributes that results must have.
+      schema:
+        type: string
+    PageNumber:
+      name: page-number
+      in: query
+      description: Page number to retrieve. Defaults to 1.
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+    ExcludeAttributes:
+      name: exclude-attributes
+      in: query
+      description: Comma-delimited list of attributes that results must not have.
       schema:
         type: string
     AttributeOperator:
@@ -372,14 +373,13 @@ components:
         enum:
         - and
         - or
-    PageNumber:
-      name: page-number
-      in: query
-      description: Page number to retrieve. Defaults to 1.
+    TheatreNumber:
+      name: theatre-number
+      in: path
+      required: true
+      description: The theatre number / id.
       schema:
         type: integer
-        minimum: 1
-        default: 1
   responses:
     NotFound:
       description: Resource not found.

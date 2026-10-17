@@ -61,18 +61,44 @@ paths:
                 $ref: '#/components/schemas/SeatingLayout'
 components:
   schemas:
-    SeatingLayoutCollection:
-      allOf:
-      - $ref: '#/components/schemas/PagedCollection'
-      - type: object
-        properties:
-          _embedded:
+    SeatingLayout:
+      type: object
+      properties:
+        layoutId:
+          type: integer
+        name:
+          type: string
+        rows:
+          type: array
+          items:
             type: object
             properties:
-              seatingLayouts:
+              name:
+                type: string
+              seats:
                 type: array
                 items:
-                  $ref: '#/components/schemas/SeatingLayout'
+                  $ref: '#/components/schemas/Seat'
+    PagedCollection:
+      type: object
+      properties:
+        pageSize:
+          type: integer
+        pageNumber:
+          type: integer
+        count:
+          type: integer
+        _links:
+          $ref: '#/components/schemas/HalLinks'
+    HalLinks:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          href:
+            type: string
+          templated:
+            type: boolean
     Seat:
       type: object
       properties:
@@ -94,44 +120,18 @@ components:
           type: string
         column:
           type: integer
-    SeatingLayout:
-      type: object
-      properties:
-        layoutId:
-          type: integer
-        name:
-          type: string
-        rows:
-          type: array
-          items:
+    SeatingLayoutCollection:
+      allOf:
+      - $ref: '#/components/schemas/PagedCollection'
+      - type: object
+        properties:
+          _embedded:
             type: object
             properties:
-              name:
-                type: string
-              seats:
+              seatingLayouts:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Seat'
-    HalLinks:
-      type: object
-      additionalProperties:
-        type: object
-        properties:
-          href:
-            type: string
-          templated:
-            type: boolean
-    PagedCollection:
-      type: object
-      properties:
-        pageSize:
-          type: integer
-        pageNumber:
-          type: integer
-        count:
-          type: integer
-        _links:
-          $ref: '#/components/schemas/HalLinks'
+                  $ref: '#/components/schemas/SeatingLayout'
   parameters:
     TheatreNumber:
       name: theatre-number
